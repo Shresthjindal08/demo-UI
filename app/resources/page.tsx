@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
-import { Kicker, PageHeader, Section } from "@/components/ui/primitives";
+import { Kicker, Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { MediaSlot } from "@/components/ui/media-slot";
 
 export const metadata: Metadata = {
@@ -27,10 +28,12 @@ const documents = [
 export default function ResourcesPage() {
   return (
     <>
-      <PageHeader
+      <PageMasthead
         kicker="Resources & learn"
         title="Answers, not email gates."
         lead="The buying guidance that used to sit behind a download form is published here as pages and interactive tools. Documents remain only where a specifier genuinely needs one."
+        index="05 / Learn"
+        imageLabel="Full-bleed engineering diagram"
       />
 
       <Section surface="tint" data-treatment="A" label="Learn">

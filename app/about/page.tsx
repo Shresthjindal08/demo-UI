@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Kicker, PageHeader, Section } from "@/components/ui/primitives";
+import { Kicker, Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { MediaSlot } from "@/components/ui/media-slot";
 
 export const metadata: Metadata = {
@@ -38,10 +39,12 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <PageHeader
+      <PageMasthead
         kicker="About"
         title="An engineering company that installs."
         lead="Vagus Energy has designed and delivered renewable infrastructure across Victoria since 2014. We employ our own engineers and our own crews."
+        index="02 / The practice"
+        imageLabel="Consultation meeting with our engineers"
       />
 
       <Section surface="dark" data-treatment="B" label="Founder message">

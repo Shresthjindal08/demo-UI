@@ -1,25 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
-export function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+const listeners = new Set<() => void>();
 
-  useEffect(() => {
-    setTheme((document.documentElement.dataset.theme as Theme) ?? "light");
-    setMounted(true);
-  }, []);
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  return () => {
+    listeners.delete(callback);
+  };
+}
+
+function getSnapshot(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
+function getServerSnapshot(): Theme {
+  return "light";
+}
+
+export function ThemeToggle({ className = "" }: { className?: string }) {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem("vagus-theme", next);
     } catch {}
+    listeners.forEach((notify) => notify());
   };
 
   return (
@@ -28,11 +39,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
       className={`theme-toggle ${className}`}
-      data-state={mounted ? theme : "light"}
+      data-state={theme}
     >
-      <span className="theme-toggle__track" aria-hidden="true">
-        <span className="theme-toggle__thumb" />
-      </span>
       <svg viewBox="0 0 24 24" className="theme-toggle__icon" aria-hidden="true">
         <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
         <path
@@ -43,7 +51,11 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
           strokeLinecap="round"
         />
       </svg>
-      <svg viewBox="0 0 24 24" className="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        className="theme-toggle__icon theme-toggle__icon--moon"
+        aria-hidden="true"
+      >
         <path
           d="M20 14.4A8.4 8.4 0 0 1 9.6 4a8.4 8.4 0 1 0 10.4 10.4Z"
           fill="none"

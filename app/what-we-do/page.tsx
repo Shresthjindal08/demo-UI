@@ -4,7 +4,8 @@ import { categories } from "@/lib/content/categories";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Container, Kicker, Section, TierBadge } from "@/components/ui/primitives";
+import { Kicker, Section, TierBadge } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { MediaSlot } from "@/components/ui/media-slot";
 
 export const metadata: Metadata = {
@@ -46,18 +47,13 @@ export default function WhatWeDoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <section data-treatment="F" className="section">
-        <Container>
-          <Kicker>What we do</Kicker>
-          <h1 className="mt-8 max-w-[18ch] text-display-2">
-            Five capabilities. One instrument.
-          </h1>
-          <p className="measure mt-8 text-lead">
-            These are the five things Vagus does. The services you buy sit inside them —
-            so you can see the whole business before you choose a part of it.
-          </p>
-        </Container>
-      </section>
+      <PageMasthead
+        kicker="What we do"
+        title="Five capabilities. One instrument."
+        lead="These are the five things Vagus does. The services you buy sit inside them — so you can see the whole business before you choose a part of it."
+        index="01 / Capabilities"
+        imageLabel="Renewable Energy"
+      />
 
       <Section surface="tint" data-treatment="D" label="Ecosystem">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">

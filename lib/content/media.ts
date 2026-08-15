@@ -43,7 +43,7 @@ const pools = {
     photo.constructionSite,
     photo.siteCrewAerial,
   ],
-  ev: [photo.evPlug, photo.evChargerCarpark],
+  ev: [photo.evChargerCarpark, photo.evPlug],
   storage: [photo.circuitBoard, photo.engineerWorkshop, photo.transmissionLines],
   efficiency: [photo.insulationRetrofit, photo.warmInterior],
   monitoring: [photo.monitoringScreens, photo.circuitBoard],

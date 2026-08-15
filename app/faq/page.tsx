@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { PageHeader, Section } from "@/components/ui/primitives";
+import { Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { FaqList } from "@/components/faq-list";
 
 export const metadata: Metadata = {
@@ -58,10 +59,12 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <PageHeader
+      <PageMasthead
         kicker="FAQ"
         title="The questions we are actually asked."
         lead="If yours is not here, an engineer will answer it directly."
+        index="07 / Answers"
+        imageLabel="Customer story"
       />
 
       <Section surface="tint" data-treatment="C" label="Questions">

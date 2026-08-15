@@ -27,7 +27,7 @@ export function MediaSlot({
       {children ? (
         <>
           <div
-            className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/60 to-black/80"
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/78 to-black/88"
             aria-hidden="true"
           />
           <div className="relative z-10 w-full py-16">{children}</div>

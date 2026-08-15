@@ -3,7 +3,8 @@ import { projects, projectFilters } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Container, Kicker, Section } from "@/components/ui/primitives";
+import { Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { ProjectFilters } from "@/components/project-filters";
 
 export const metadata: Metadata = {
@@ -33,20 +34,19 @@ export default function ProjectsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <section className="section-tight pt-[calc(var(--nav-height)+64px)]">
-        <Container>
-          <Kicker>Selected work</Kicker>
-          <h1 className="mt-8 max-w-[16ch] text-display-2">
-            {projects.length} systems, measured after handover.
-          </h1>
-          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-            <li className="mono-fact">{projects.length} projects</li>
-            <li className="mono-fact">46.2 MW installed</li>
-            <li className="mono-fact">2014—2026</li>
-            <li className="mono-fact">{filters.locations.length} suburbs</li>
-          </ul>
-        </Container>
-      </section>
+      <PageMasthead
+        kicker="Selected work"
+        title={`${projects.length} systems, measured after handover.`}
+        index="04 / Project archive"
+        imageLabel="Norwood Manufacturing — full-bleed"
+      >
+        <ul className="flex flex-wrap gap-x-8 gap-y-3">
+          <li className="mono-fact">{projects.length} projects</li>
+          <li className="mono-fact">46.2 MW installed</li>
+          <li className="mono-fact">2014—2026</li>
+          <li className="mono-fact">{filters.locations.length} suburbs</li>
+        </ul>
+      </PageMasthead>
 
       <ProjectFilters filters={filters} projects={projects} />
 

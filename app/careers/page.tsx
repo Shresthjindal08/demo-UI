@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Kicker, PageHeader, Section } from "@/components/ui/primitives";
+import { Kicker, Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -19,10 +20,12 @@ const roles = [
 export default function CareersPage() {
   return (
     <>
-      <PageHeader
+      <PageMasthead
         kicker="Careers"
         title="Real problems, measured outcomes."
         lead="We hire engineers who want to see a system through from load profile to monitoring data — not to hand it over at the drawing stage."
+        index="06 / Join us"
+        imageLabel="Engineering Consulting"
       />
 
       <Section surface="tint" data-treatment="A" label="Open roles">

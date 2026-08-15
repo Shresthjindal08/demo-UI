@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { site } from "@/lib/content/site";
 import { contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Kicker, PageHeader, Section } from "@/components/ui/primitives";
+import { Kicker, Section } from "@/components/ui/primitives";
+import { PageMasthead } from "@/components/ui/page-masthead";
 import { MediaSlot } from "@/components/ui/media-slot";
 
 export const metadata: Metadata = {
@@ -33,10 +34,12 @@ const principles = [
 export default function VisionPage() {
   return (
     <>
-      <PageHeader
+      <PageMasthead
         kicker="Vision"
         title="Infrastructure, not appliances."
         lead="Australia is rebuilding its energy system one building at a time. That work deserves engineering discipline, not a sales funnel."
+        index="03 / Direction"
+        imageLabel="Renewable Energy"
       />
 
       <Section surface="tint" data-treatment="C" label="Principles">
