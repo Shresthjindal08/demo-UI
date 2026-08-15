@@ -184,27 +184,40 @@ export default function HomePage() {
             See all solutions →
           </Link>
         </div>
-        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
-          {popular.map((solution) => (
-            <li key={solution.slug}>
+        <ul className="requested">
+          {popular.map((solution, index) => (
+            <li key={solution.slug} className="requested__item">
               <Link
                 href={routes.solution(solution.category.slug, solution.slug)}
-                className="group flex h-full flex-col border border-hairline p-6 transition-colors hover:border-accent"
+                className="requested__link"
               >
-                <MediaSlot label={solution.name} className="aspect-[3/2]" />
-                <span className="mt-6 flex items-center gap-3">
-                  <span className="font-display text-display-4 text-ink">
-                    {solution.name}
-                  </span>
+                <span className="requested__index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="requested__media">
+                  <Image
+                    src={dummyImage(solution.name)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </span>
+
+                <span className="requested__head">
+                  <span className="requested__name">{solution.name}</span>
                   <TierBadge tier={solution.tier} />
                 </span>
+
                 {solution.spec ? (
-                  <span className="mono-fact mt-3 block">{solution.spec}</span>
+                  <span className="requested__spec">{solution.spec}</span>
                 ) : null}
-                <span className="mt-4 block text-body-sm">{solution.outcome}</span>
+                <span className="requested__outcome">{solution.outcome}</span>
+
                 {solution.investment ? (
-                  <span className="mono-fact mt-auto pt-6">
-                    From {solution.investment.split("–")[0].trim()}
+                  <span className="requested__price">
+                    <em>From</em>
+                    {solution.investment.split("–")[0].trim()}
                   </span>
                 ) : null}
               </Link>
