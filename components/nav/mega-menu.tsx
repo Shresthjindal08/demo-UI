@@ -65,7 +65,7 @@ export function MegaMenu({
     <div
       ref={panelRef}
       id={panelId}
-      data-surface="dark"
+      data-surface="base"
       hidden={!open}
       className="absolute inset-x-0 top-full hidden shadow-menu xl:block"
       style={{

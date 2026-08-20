@@ -1,3 +1,3 @@
-export function heroSurface(): "dark" | "light" {
-  return "dark";
+export function heroSurface(): "base" {
+  return "base";
 }

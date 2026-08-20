@@ -70,7 +70,7 @@ export function SiteHeader() {
 
   useEffect(() => clearHoverTimer, []);
 
-  const surface = sheetOpen || panelOpen ? "dark" : heroSurface();
+  const surface = sheetOpen || panelOpen ? "base" : heroSurface();
   const isTransparent = !frosted && !panelOpen && !sheetOpen;
 
   return (

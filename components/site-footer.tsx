@@ -5,7 +5,7 @@ const model = footerModel();
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer mt-auto" data-surface="dark">
+    <footer className="site-footer mt-auto" data-surface="light">
       <div className="site-footer__inner">
         <div className="site-footer__top">
           <div className="site-footer__lead">

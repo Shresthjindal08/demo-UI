@@ -71,7 +71,7 @@ export function MobileNav({
     <div
       ref={sheetRef}
       id={sheetId}
-      data-surface="dark"
+      data-surface="base"
       role="dialog"
       aria-modal="true"
       aria-label="Site menu"

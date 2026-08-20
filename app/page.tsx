@@ -51,6 +51,15 @@ const heroStats = [
   "Australian owned",
 ];
 
+const heroImageLight =
+  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2200&q=80";
+const heroImageDark =
+  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=2200&q=80";
+const statsImageLight =
+  "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2200&q=80";
+const statsImageDark =
+  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=2200&q=80";
+
 const journey = [
   "Enquiry",
   "Site assessment",
@@ -66,7 +75,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="hero" data-surface="dark">
+      <section className="hero" data-surface="base">
         <div className="hero__glow" aria-hidden="true" />
 
         <div className="container-grid hero__inner">
@@ -84,11 +93,20 @@ export default function HomePage() {
 
             <div className="hero__media">
               <Image
-                src={dummyImage("Renewable Energy — hero")}
-                alt="Vagus engineers commissioning a rooftop solar array"
+                src={heroImageLight}
+                alt=""
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                className="hero__image hero__image--light"
+              />
+              <Image
+                src={heroImageDark}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="hero__image hero__image--dark"
               />
             </div>
           </div>
@@ -126,7 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section data-surface="dark" data-treatment="C" aria-label="Accreditation">
+      <section data-surface="light" data-treatment="C" aria-label="Accreditation">
         <Container>
           <ul className="flex gap-8 overflow-x-auto border-t border-hairline py-6 lg:justify-between">
             {site.trustBar.map((item) => (
@@ -138,7 +156,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Section surface="dark" data-treatment="A" label="What we do" className="what-we-do">
+      <Section surface="tint" data-treatment="A" label="What we do" className="what-we-do">
         <div className="what-we-do__header">
           <Kicker>What we do</Kicker>
           <h2>
@@ -240,7 +258,7 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <Section surface="dark" data-treatment="A" label="Featured projects">
+      <Section surface="light" data-treatment="A" label="Featured projects">
         <Kicker>Selected work</Kicker>
         <h2 className="mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
         <ul className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
@@ -275,9 +293,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <section data-surface="dark" data-treatment="E" className="relative">
+      <section data-surface="light" data-treatment="E" className="relative">
         <MediaSlot
           label="Statistics over full-bleed imagery"
+          lightSrc={statsImageLight}
+          darkSrc={statsImageDark}
           className="min-h-[60svh] w-full"
         >
           <Container>
@@ -333,13 +353,13 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="Engineering statement">
+      <Section surface="cream" data-treatment="F" label="Engineering statement">
         <p className="mx-auto max-w-[20ch] text-center font-display text-display-2 text-ink">
           Engineered for what&rsquo;s next.
         </p>
       </Section>
 
-      <Section surface="dark" data-treatment="C" label="Start a consultation">
+      <Section surface="light" data-treatment="C" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="max-w-[16ch] text-display-3">
             An engineer will call you back.
