@@ -9,7 +9,6 @@ import { site } from "@/lib/content/site";
 import { heroSurface } from "@/lib/nav-surface";
 import { track } from "@/lib/analytics";
 import { ButtonLink } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 
@@ -70,8 +69,8 @@ export function SiteHeader() {
 
   useEffect(() => clearHoverTimer, []);
 
-  const surface = sheetOpen || panelOpen ? "base" : heroSurface();
   const isTransparent = !frosted && !panelOpen && !sheetOpen;
+  const surface = isTransparent ? heroSurface(pathname) : "base";
 
   return (
     <>
@@ -183,7 +182,6 @@ export function SiteHeader() {
             >
               Shop ↗
             </Link>
-            <ThemeToggle />
             <span className="hidden xl:block">
               <ButtonLink
                 href={routes.contact}

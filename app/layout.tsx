@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope, IBM_Plex_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/lib/content/site";
 import { SiteHeader } from "@/components/nav/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -46,14 +44,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-AU"
       data-surface="light"
       suppressHydrationWarning
-      className={`${instrumentSerif.variable} ${manrope.variable} ${plexMono.variable} h-full`}
+      className={`${jakarta.variable} ${inter.variable} ${plexMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("vagus-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}})()`,
-          }}
-        />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}

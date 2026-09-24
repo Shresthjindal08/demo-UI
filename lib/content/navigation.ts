@@ -1,4 +1,4 @@
-import { categories, mostRequested } from "./categories";
+import { categories, launchCategories, mostRequested } from "./categories";
 import { featuredProjects } from "./projects";
 import { routes } from "../routes";
 
@@ -19,7 +19,7 @@ export const primaryNav: NavItem[] = [
 
 export function megaMenuModel() {
   return {
-    columns: categories.map((category) => ({
+    columns: launchCategories.map((category) => ({
       index: category.index,
       name: category.name,
       href: routes.category(category.slug),

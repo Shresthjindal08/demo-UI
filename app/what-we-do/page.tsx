@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { categories } from "@/lib/content/categories";
+import { launchCategories } from "@/lib/content/categories";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import { MediaSlot } from "@/components/ui/media-slot";
 export const metadata: Metadata = {
   title: "What we do",
   description:
-    "Five business capabilities — renewable energy, electric mobility, energy efficiency, community energy and future services — and the solutions inside each.",
+    "Four business capabilities — renewable energy, electric mobility, energy efficiency and community energy — and the solutions inside each.",
   alternates: { canonical: routes.whatWeDo },
 };
 
@@ -32,7 +32,7 @@ export default function WhatWeDoPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: categories.map((category, index) => ({
+    itemListElement: launchCategories.map((category, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: category.name,
@@ -49,8 +49,8 @@ export default function WhatWeDoPage() {
 
       <PageMasthead
         kicker="What we do"
-        title="Five capabilities. One instrument."
-        lead="These are the five things Vagus does. The services you buy sit inside them — so you can see the whole business before you choose a part of it."
+        title="Four capabilities. One instrument."
+        lead="These are the four things Vagus does. The services you buy sit inside them — so you can see the whole business before you choose a part of it."
         index="01 / Capabilities"
         imageLabel="Renewable Energy"
       />
@@ -58,11 +58,11 @@ export default function WhatWeDoPage() {
       <Section surface="tint" data-treatment="D" label="Ecosystem">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <MediaSlot
-            label="Interactive SVG — how the five categories interconnect"
+            label="Interactive SVG — how the four categories interconnect"
             className="aspect-[4/3]"
           />
           <ol className="border-t border-hairline">
-            {categories.map((category) => (
+            {launchCategories.map((category) => (
               <li key={category.slug} className="border-b border-hairline">
                 <Link
                   href={routes.category(category.slug)}
@@ -84,11 +84,11 @@ export default function WhatWeDoPage() {
         </div>
       </Section>
 
-      {categories.map((category, index) => (
+      {launchCategories.map((category, index) => (
         <Section
           key={category.slug}
           id={category.slug}
-          surface={index % 2 === 0 ? "light" : "dark"}
+          surface={index % 2 === 0 ? "light" : "tint"}
           data-treatment="B"
           label={category.name}
         >
@@ -175,7 +175,7 @@ export default function WhatWeDoPage() {
         </ul>
       </Section>
 
-      <Section surface="dark" data-treatment="C" label="Start a consultation">
+      <Section surface="cream" data-treatment="C" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="max-w-[16ch] text-display-3">
             Not sure which capability you need?

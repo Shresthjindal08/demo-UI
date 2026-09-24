@@ -21,7 +21,7 @@ export const site = {
   trustBar: [
     "10+ yrs",
     "2,500+ projects",
-    "30 MW+ installed",
+    "46.2 MW installed",
     "NETCC Approved Seller",
     "Solar Victoria Approved Retailer",
     "25-yr warranty",

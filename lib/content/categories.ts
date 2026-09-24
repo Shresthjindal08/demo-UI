@@ -228,6 +228,10 @@ export const categories: Category[] = [
   },
 ];
 
+export const launchCategories: Category[] = categories.filter(
+  (category) => category.slug !== "future-services",
+);
+
 export interface SolutionWithCategory extends Solution {
   category: Category;
 }

@@ -76,7 +76,7 @@ export function MegaMenu({
     >
       <div className="hairline-t border-t">
         <div className="container-grid py-10">
-          <div className="grid grid-cols-[repeat(5,minmax(0,1fr))_320px] gap-6">
+          <div className="grid grid-cols-[repeat(4,minmax(0,1fr))_320px] gap-6">
             {model.columns.map((column) => (
               <div key={column.href}>
                 <Link

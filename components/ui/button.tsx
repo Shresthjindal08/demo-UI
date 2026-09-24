@@ -6,12 +6,12 @@ type Size = "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 font-sans font-medium tracking-tight " +
-  "min-h-[var(--hit-target)] rounded-sm transition-colors duration-[var(--duration-micro)] " +
+  "min-h-[var(--hit-target)] rounded-pill transition-colors duration-[var(--duration-micro)] " +
   "ease-brand disabled:pointer-events-none disabled:opacity-40";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-accent text-on-accent hover:bg-accent-hover border border-transparent",
+    "bg-highlight text-on-highlight hover:bg-highlight-hover border border-transparent",
   secondary:
     "border border-hairline-strong text-ink hover:border-ink bg-transparent",
   text: "text-ink hover:text-accent px-0 min-h-0 underline-offset-4",

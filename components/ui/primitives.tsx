@@ -51,15 +51,8 @@ export function MonoFact({ children }: { children: ReactNode }) {
   return <span className="mono-fact">{children}</span>;
 }
 
-export function TierBadge({ tier }: { tier: string }) {
-  return (
-    <span
-      className="mono-fact border border-hairline px-1.5 py-0.5 text-[0.6875rem] tracking-widest"
-      aria-label={`Priority tier ${tier}`}
-    >
-      {tier}
-    </span>
-  );
+export function TierBadge(_props: { tier: string }) {
+  return null;
 }
 
 export function PageHeader({

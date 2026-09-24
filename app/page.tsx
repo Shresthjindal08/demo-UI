@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { categories, mostRequested } from "@/lib/content/categories";
+import { launchCategories, mostRequested } from "@/lib/content/categories";
 import { featuredProjects } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
 import { dummyImage } from "@/lib/content/media";
@@ -51,14 +51,7 @@ const heroStats = [
   "Australian owned",
 ];
 
-const heroImageLight =
-  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2200&q=80";
-const heroImageDark =
-  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=2200&q=80";
-const statsImageLight =
-  "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2200&q=80";
-const statsImageDark =
-  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=2200&q=80";
+const heroImage = "/hero-renewable.png";
 
 const journey = [
   "Enquiry",
@@ -76,55 +69,46 @@ export default function HomePage() {
   return (
     <>
       <section className="hero" data-surface="base">
-        <div className="hero__glow" aria-hidden="true" />
+        <div className="hero__bg" aria-hidden="true">
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero__image"
+          />
+        </div>
+        <div className="hero__scrim" aria-hidden="true" />
 
         <div className="container-grid hero__inner">
-          <div className="hero__top">
-            <span className="hero__eyebrow">Since 2014 · Victoria, Australia</span>
-            <span className="hero__index">01 / Renewable infrastructure</span>
-          </div>
-
-          <div className="hero__main">
+          <div className="hero__content">
             <h1 className="hero__title">
               <span className="hero__line">Engineered</span>
               <span className="hero__line hero__line--accent">for what&rsquo;s</span>
               <span className="hero__line hero__line--shift">next.</span>
             </h1>
 
-            <div className="hero__media">
-              <Image
-                src={heroImageLight}
-                alt=""
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="hero__image hero__image--light"
-              />
-              <Image
-                src={heroImageDark}
-                alt=""
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="hero__image hero__image--dark"
-              />
+            <div className="hero__base">
+              <p className="hero__lead">
+                Solar, storage, EV charging, heat pumps and grid integration — designed as
+                one system by the engineers who commission it, then measured after handover.
+              </p>
+
+              <div className="hero__actions">
+                <ButtonLink href={contactWithContext("home-hero")} size="lg">
+                  {site.consultationCta}
+                </ButtonLink>
+                <ButtonLink href={routes.projects} variant="secondary" size="lg">
+                  View projects
+                </ButtonLink>
+              </div>
             </div>
           </div>
 
-          <div className="hero__base">
-            <p className="hero__lead">
-              Solar, storage, EV charging, heat pumps and grid integration — designed as
-              one system by the engineers who commission it, then measured after handover.
-            </p>
-
-            <div className="hero__actions">
-              <ButtonLink href={contactWithContext("home-hero")} size="lg">
-                {site.consultationCta}
-              </ButtonLink>
-              <ButtonLink href={routes.projects} variant="secondary" size="lg">
-                View projects
-              </ButtonLink>
-            </div>
+          <div className="hero__meta">
+            <span className="hero__eyebrow">Since 2014 · Victoria, Australia</span>
+            <span className="hero__index">01 / Renewable infrastructure</span>
           </div>
         </div>
 
@@ -160,7 +144,7 @@ export default function HomePage() {
         <div className="what-we-do__header">
           <Kicker>What we do</Kicker>
           <h2>
-            Five capabilities,
+            Four capabilities,
             <br />
             engineered as
             <br />
@@ -168,21 +152,25 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <ul className="premium-cards" aria-label="Service capabilities">
-          {categories.map((category) => (
-            <li key={category.slug} className="premium-card">
-              <Link href={routes.category(category.slug)} className="premium-card__link">
-                <span className="premium-card__index">{category.index}</span>
+        <ul className="capability-rows" aria-label="Service capabilities">
+          {launchCategories.map((category) => (
+            <li key={category.slug} className="capability-row">
+              <Link href={routes.category(category.slug)} className="capability-row__link">
+                <div className="capability-row__media">
+                  <span className="capability-row__blob" aria-hidden="true" />
+                  <span
+                    className="capability-row__image"
+                    style={{ backgroundImage: `url(${dummyImage(category.name)})` }}
+                  />
+                </div>
 
-                <div
-                  className="premium-card__media"
-                  style={{ backgroundImage: `url(${dummyImage(category.name)})` }}
-                />
-
-                <span className="premium-card__label">{category.name}</span>
-                <div className="premium-card__meta">
-                  <span>{category.descriptor}</span>
-                  <b>{category.solutions.length} solutions →</b>
+                <div className="capability-row__text">
+                  <span className="capability-row__index">{category.index}</span>
+                  <h3 className="capability-row__name">{category.name}</h3>
+                  <p className="capability-row__descriptor">{category.descriptor}</p>
+                  <span className="capability-row__cta">
+                    {category.solutions.length} solutions →
+                  </span>
                 </div>
               </Link>
             </li>
@@ -259,45 +247,59 @@ export default function HomePage() {
       </Section>
 
       <Section surface="light" data-treatment="A" label="Featured projects">
-        <Kicker>Selected work</Kicker>
-        <h2 className="mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
-        <ul className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
-          {featured.map((project) => (
-            <li key={project.slug}>
-              <Link href={routes.project(project.slug)} className="group block">
-                <MediaSlot label={project.name} className="aspect-[16/10]" />
-                <span className="mono-fact mt-5 block">
-                  {project.industry} · {project.suburb} · {project.year}
-                </span>
-                <span className="mt-2 block font-display text-display-4 text-ink group-hover:text-accent">
-                  {project.name}
-                </span>
-                <ul className="mt-5 flex flex-wrap gap-8 border-t border-hairline pt-5">
-                  {project.metrics.map((metric) => (
-                    <li key={metric.label}>
-                      <span className="block font-display text-[1.75rem] text-ink">
-                        {metric.value}
-                      </span>
-                      <span className="mono-fact">{metric.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-12">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Kicker>Selected work</Kicker>
+            <h2 className="mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
+          </div>
           <Link href={routes.projects} className="text-body-sm text-accent">
             All projects →
           </Link>
         </div>
+        <ul className="mt-16 grid gap-x-8 gap-y-16 lg:grid-cols-12">
+          {featured.map((project, index) => {
+            const lead = index % 2 === 0;
+            return (
+              <li
+                key={project.slug}
+                className={lead ? "lg:col-span-7" : "lg:col-span-5 lg:col-start-8 lg:mt-32"}
+              >
+                <Link href={routes.project(project.slug)} className="group block">
+                  <MediaSlot
+                    label={project.name}
+                    className={lead ? "aspect-[4/3]" : "aspect-[4/5]"}
+                  />
+                  <span className="mono-fact mt-6 block">
+                    {project.industry} · {project.suburb} · {project.year}
+                  </span>
+                  <span
+                    className={`mt-3 block font-display text-ink group-hover:text-accent ${
+                      lead ? "text-display-3" : "text-display-4"
+                    }`}
+                  >
+                    {project.name}
+                  </span>
+                  <ul className="mt-6 flex flex-wrap gap-8 border-t border-hairline pt-6">
+                    {project.metrics.map((metric) => (
+                      <li key={metric.label}>
+                        <span className="block font-display text-[1.75rem] text-ink">
+                          {metric.value}
+                        </span>
+                        <span className="mono-fact">{metric.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </Section>
 
       <section data-surface="light" data-treatment="E" className="relative">
         <MediaSlot
-          label="Statistics over full-bleed imagery"
-          lightSrc={statsImageLight}
-          darkSrc={statsImageDark}
+          label="Rooftop solar array at golden hour — Victoria"
+          src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2000&q=80"
           className="min-h-[60svh] w-full"
         >
           <Container>

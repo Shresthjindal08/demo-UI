@@ -52,7 +52,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <div data-surface="dark">
+      <div data-surface="cream">
         <Breadcrumbs
           trail={[
             { label: "What we do", href: routes.whatWeDo },
@@ -60,7 +60,7 @@ export default async function CategoryPage({
           ]}
         />
 
-        <Section surface="dark" data-treatment="B" label={category.name}>
+        <Section surface="cream" data-treatment="B" label={category.name}>
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <Kicker>
@@ -201,7 +201,7 @@ export default async function CategoryPage({
       </section>
 
       {projects.length ? (
-        <Section surface="dark" data-treatment="A" label="Projects in this category">
+        <Section surface="light" data-treatment="A" label="Projects in this category">
           <Kicker>Projects in this category</Kicker>
           <ul className="mt-12 grid gap-8 lg:grid-cols-3">
             {projects.map((project) => (

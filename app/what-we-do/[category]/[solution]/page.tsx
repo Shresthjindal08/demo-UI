@@ -6,7 +6,7 @@ import { projectsForSolution } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Kicker, Section, TierBadge } from "@/components/ui/primitives";
+import { Kicker, Section } from "@/components/ui/primitives";
 import { MediaSlot } from "@/components/ui/media-slot";
 import { Breadcrumbs } from "@/components/nav/breadcrumbs";
 import { SolutionSubBar } from "@/components/solution-sub-bar";
@@ -42,6 +42,33 @@ const installProcess = [
   { when: "Wk 2", title: "Approvals" },
   { when: "Wk 4", title: "Installation" },
   { when: "Wk 5", title: "Switch-on" },
+];
+
+const keyFeatures = [
+  {
+    title: "Designed to your load profile",
+    body: "Sized to how the building actually draws power, not a catalogue default.",
+  },
+  {
+    title: "Network-aware engineering",
+    body: "Export limits, switchboard and connection constraints resolved before install.",
+  },
+  {
+    title: "Battery- and EV-ready",
+    body: "Architecture sized so storage or charging can be added without re-engineering.",
+  },
+  {
+    title: "One accountable team",
+    body: "The engineer who designs the system stays with it through commissioning.",
+  },
+  {
+    title: "Measured after handover",
+    body: "Performance is monitored against the design and tuned, not assumed.",
+  },
+  {
+    title: "Single warranty relationship",
+    body: "Workmanship and equipment answer to one party, not a chain of subcontractors.",
+  },
 ];
 
 export default async function SolutionPage({
@@ -93,9 +120,6 @@ export default async function SolutionPage({
             <Kicker>
               {solution.category.index} / {solution.category.name}
             </Kicker>
-            <span className="mt-4 inline-flex">
-              <TierBadge tier={solution.tier} />
-            </span>
             <h1 className="mt-6 max-w-[14ch] text-display-2">{solution.outcome}</h1>
             <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               {specs.map((spec) => (
@@ -130,13 +154,11 @@ export default async function SolutionPage({
       <Section surface="light" data-treatment="A" label="Key features">
         <Kicker>Key features</Kicker>
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }, (_, index) => (
-            <li key={index}>
-              <div className="size-8 border border-hairline-strong" aria-hidden="true" />
-              <h3 className="mt-4 text-display-4">Feature {index + 1}</h3>
-              <p className="mt-3 text-body-sm">
-                One line describing what this does for the system.
-              </p>
+          {keyFeatures.map((feature, index) => (
+            <li key={feature.title}>
+              <span className="kicker">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="mt-4 text-display-4">{feature.title}</h3>
+              <p className="mt-3 text-body-sm">{feature.body}</p>
             </li>
           ))}
         </ul>
@@ -208,33 +230,16 @@ export default async function SolutionPage({
       <Section surface="light" data-treatment="C" id="specifications" label="Specifications">
         <Kicker>Specifications</Kicker>
         <h2 className="mt-6 text-display-3">The full detail.</h2>
-        <div className="mt-10 overflow-x-auto">
-          <table className="w-full min-w-[36rem] border-collapse text-body-sm">
-            <caption className="sr-only">
-              {solution.name} technical specifications
-            </caption>
-            <thead>
-              <tr className="border-b border-hairline-strong">
-                <th scope="col" className="py-3 text-left font-normal">
-                  <span className="kicker">Specification</span>
-                </th>
-                <th scope="col" className="py-3 text-left font-normal">
-                  <span className="kicker">Value</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {specs.map((spec) => (
-                <tr key={spec} className="border-b border-hairline">
-                  <th scope="row" className="py-3 text-left font-normal text-ink">
-                    {solution.name} range
-                  </th>
-                  <td className="py-3 font-mono">{spec}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ul className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2 xl:grid-cols-3">
+          {specs.map((spec) => (
+            <li key={spec} className="bg-bg p-6">
+              <span className="block font-mono text-body-sm text-ink">{spec}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="measure mt-8 text-body-sm text-muted">
+          Full component schedules and datasheets are issued with your engineered design.
+        </p>
       </Section>
 
       <Section surface="cream" data-treatment="F" label="Start a consultation">

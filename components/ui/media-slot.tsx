@@ -21,7 +21,7 @@ export function MediaSlot({
 
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden border border-hairline-faint bg-surface ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden rounded-[var(--radius-lg)] border border-hairline-faint bg-surface ${className}`}
     >
       {lightSrc && darkSrc ? (
         <>
