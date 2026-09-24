@@ -53,8 +53,8 @@
 
 :root {
   --palette-white: #ffffff;
-  --palette-mist: #f6f9f8;
-  --palette-fog: #e3efed;
+  --palette-mist: #f2f0e9;
+  --palette-fog: #ebeae4;
   --palette-ink: #13201e;
   --palette-slate: #35423f;
   --palette-stone: #667370;
@@ -77,8 +77,8 @@
   --palette-orange-bright: #d08a55;
   --palette-orange-lift: #e2a878;
 
-  --base-bg: var(--palette-white);
-  --base-surface: var(--palette-mist);
+  --base-bg: var(--palette-mist);
+  --base-surface: var(--palette-white);
   --base-tint: var(--palette-fog);
   --base-ink: var(--palette-ink);
   --base-body: var(--palette-slate);
@@ -90,10 +90,10 @@
   --base-highlight-hover: var(--palette-orange-deep);
   --base-on-highlight: var(--palette-white);
   --base-line: 26 26 26;
-  --base-nav-fill: rgb(255 255 255 / 0.82);
+  --base-nav-fill: rgb(242 240 233 / 0.82);
   --base-scheme: light;
 
-  --raised-bg: var(--palette-fog);
+  --raised-bg: var(--palette-mist);
   --raised-surface: var(--palette-white);
   --raised-tint: #d7edd9;
   --raised-ink: var(--palette-ink);
@@ -106,7 +106,7 @@
   --raised-highlight-hover: var(--palette-orange-deep);
   --raised-on-highlight: var(--palette-white);
   --raised-line: 26 26 26;
-  --raised-nav-fill: rgb(232 245 233 / 0.86);
+  --raised-nav-fill: rgb(242 240 233 / 0.86);
   --raised-scheme: light;
 
   --contrast-bg: var(--palette-forest);
