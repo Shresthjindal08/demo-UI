@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/lib/content/site";
 import { SiteHeader } from "@/components/nav/site-header";
 import { SiteFooter } from "@/components/site-footer";

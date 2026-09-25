@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { primaryNav } from "@/lib/content/navigation";
@@ -8,7 +9,6 @@ import { routes } from "@/lib/routes";
 import { site } from "@/lib/content/site";
 import { heroSurface } from "@/lib/nav-surface";
 import { track } from "@/lib/analytics";
-import { ButtonLink } from "@/components/ui/button";
 import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 
@@ -84,18 +84,14 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className="fixed inset-x-2 top-2 z-[100] rounded-[20px]"
+        className="fixed inset-x-0 top-0 z-[100]"
         style={{
-          transform: hidden && !panelOpen && !sheetOpen ? "translateY(calc(-100% - 8px))" : "none",
-          transition: `transform var(--duration-base) var(--ease), background-color var(--duration-base) var(--ease)`,
-          backgroundColor: isTransparent
-            ? "color-mix(in srgb, var(--v-bg) 38%, transparent)"
-            : "var(--v-nav-fill)",
-          backgroundImage: "linear-gradient(135deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.03) 55%, rgb(255 255 255 / 0.08))",
-          backdropFilter: "saturate(140%) blur(20px)",
-          WebkitBackdropFilter: "saturate(140%) blur(20px)",
-          border: "1px solid rgb(255 255 255 / 0.3)",
-          boxShadow: "inset 0 1px 1px rgb(255 255 255 / 0.35), inset 0 -1px 1px rgb(255 255 255 / 0.08), 0 8px 32px rgb(0 0 0 / 0.06)",
+          transform: hidden && !panelOpen && !sheetOpen ? "translateY(-100%)" : "none",
+          transition: `transform var(--duration-base) var(--ease), background-color var(--duration-base) var(--ease), border-color var(--duration-base) var(--ease)`,
+          backgroundColor: isTransparent ? "transparent" : "var(--v-nav-fill)",
+          backdropFilter: isTransparent ? "none" : "saturate(140%) blur(18px)",
+          WebkitBackdropFilter: isTransparent ? "none" : "saturate(140%) blur(18px)",
+          borderBottom: `1px solid ${isTransparent ? "transparent" : "var(--v-hairline)"}`,
         }}
       >
         <div
@@ -107,10 +103,16 @@ export function SiteHeader() {
         >
           <Link
             href={routes.home}
-            className="wordmark text-body-lg"
+            className="flex shrink-0 items-center"
             onClick={() => track("nav_click", { surface: "header", label: "wordmark" })}
           >
-            {site.wordmark}
+            <Image
+              src={pathname === routes.home ? "/logo-text-transparent.png" : "/logo-text-light.png"}
+              alt={site.name}
+              width={153}
+              height={47}
+              className="h-auto w-[124px]"
+            />
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">
@@ -139,7 +141,7 @@ export function SiteHeader() {
                           closePanel(true);
                         }
                       }}
-                      className="flex min-h-11 items-center gap-1.5 text-body-sm text-ink"
+                      className="flex min-h-11 items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                       <svg
@@ -167,7 +169,7 @@ export function SiteHeader() {
                       onClick={() =>
                         track("nav_click", { surface: "header", label: item.label })
                       }
-                      className="flex min-h-11 items-center text-body-sm text-ink transition-colors hover:text-accent"
+                      className="flex min-h-11 items-center text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                     </Link>
@@ -177,33 +179,26 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href={routes.shop}
-              className="hidden min-h-11 items-center text-body-sm text-muted transition-colors hover:text-ink xl:flex"
+              className="hidden min-h-11 items-center text-[0.7rem] uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink xl:flex"
             >
               Shop ↗
             </Link>
-            <span className="hidden xl:block">
-              <ButtonLink
-                href={routes.contact}
-                variant="secondary"
-                style={{
-                  borderRadius: "10px",
-                  background: "linear-gradient(135deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03))",
-                  boxShadow: "inset 0 1px 0 rgb(255 255 255 / 0.2)",
-                }}
-                onClick={() =>
-                  track("cta_click", {
-                    page: pathname,
-                    section: "header",
-                    label: site.consultationCta,
-                  })
-                }
-              >
-                {site.consultationCta}
-              </ButtonLink>
-            </span>
+            <Link
+              href={routes.contact}
+              onClick={() =>
+                track("cta_click", {
+                  page: pathname,
+                  section: "header",
+                  label: site.consultationCta,
+                })
+              }
+              className="hidden min-h-10 items-center rounded-full border border-ink/25 px-5 text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:border-accent hover:text-accent xl:inline-flex"
+            >
+              {site.consultationCta}
+            </Link>
 
             <button
               type="button"
