@@ -84,16 +84,18 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className="fixed inset-x-0 top-0 z-[100]"
+        className="fixed inset-x-2 top-2 z-[100] rounded-[20px]"
         style={{
-          transform: hidden && !panelOpen && !sheetOpen ? "translateY(-100%)" : "none",
+          transform: hidden && !panelOpen && !sheetOpen ? "translateY(calc(-100% - 8px))" : "none",
           transition: `transform var(--duration-base) var(--ease), background-color var(--duration-base) var(--ease)`,
-          backgroundColor: isTransparent ? "transparent" : "var(--v-nav-fill)",
-          backdropFilter: isTransparent ? "none" : "saturate(180%) blur(20px)",
-          WebkitBackdropFilter: isTransparent ? "none" : "saturate(180%) blur(20px)",
-          borderBottom: isTransparent
-            ? "1px solid transparent"
-            : "1px solid var(--v-hairline)",
+          backgroundColor: isTransparent
+            ? "color-mix(in srgb, var(--v-bg) 38%, transparent)"
+            : "var(--v-nav-fill)",
+          backgroundImage: "linear-gradient(135deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.03) 55%, rgb(255 255 255 / 0.08))",
+          backdropFilter: "saturate(140%) blur(20px)",
+          WebkitBackdropFilter: "saturate(140%) blur(20px)",
+          border: "1px solid rgb(255 255 255 / 0.3)",
+          boxShadow: "inset 0 1px 1px rgb(255 255 255 / 0.35), inset 0 -1px 1px rgb(255 255 255 / 0.08), 0 8px 32px rgb(0 0 0 / 0.06)",
         }}
       >
         <div
@@ -185,6 +187,12 @@ export function SiteHeader() {
             <span className="hidden xl:block">
               <ButtonLink
                 href={routes.contact}
+                variant="secondary"
+                style={{
+                  borderRadius: "10px",
+                  background: "linear-gradient(135deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03))",
+                  boxShadow: "inset 0 1px 0 rgb(255 255 255 / 0.2)",
+                }}
                 onClick={() =>
                   track("cta_click", {
                     page: pathname,
