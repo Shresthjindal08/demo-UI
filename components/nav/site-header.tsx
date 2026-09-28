@@ -7,13 +7,10 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { primaryNav } from "@/lib/content/navigation";
 import { routes } from "@/lib/routes";
 import { site } from "@/lib/content/site";
-import { heroSurface } from "@/lib/nav-surface";
 import { track } from "@/lib/analytics";
 import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 
-const FROST_AT = 80;
-const HIDE_AFTER = 600;
 const HOVER_INTENT = 150;
 
 export function SiteHeader() {
@@ -21,14 +18,12 @@ export function SiteHeader() {
   const panelId = useId();
   const sheetId = useId();
 
-  const [frosted, setFrosted] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const lastScrollY = useRef(0);
 
   const [lastPathname, setLastPathname] = useState(pathname);
   if (pathname !== lastPathname) {
@@ -36,21 +31,6 @@ export function SiteHeader() {
     setPanelOpen(false);
     setSheetOpen(false);
   }
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setFrosted(y > FROST_AT);
-
-      const scrollingDown = y > lastScrollY.current;
-      setHidden(scrollingDown && y > HIDE_AFTER);
-      lastScrollY.current = y;
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const closePanel = useCallback(
     (returnFocus = false) => {
@@ -69,8 +49,12 @@ export function SiteHeader() {
 
   useEffect(() => clearHoverTimer, []);
 
-  const isTransparent = !frosted && !panelOpen && !sheetOpen;
-  const surface = isTransparent ? heroSurface(pathname) : "base";
+  useEffect(() => {
+    const updateScroll = () => setScrolled(window.scrollY > 40);
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
 
   return (
     <>
@@ -79,44 +63,31 @@ export function SiteHeader() {
       </a>
 
       <header
-        data-surface={surface}
+        data-surface="base"
         onMouseLeave={() => {
           clearHoverTimer();
           closePanel();
         }}
-        className="fixed inset-x-0 top-0 z-[100]"
-        style={{
-          transform: hidden && !panelOpen && !sheetOpen ? "translateY(-100%)" : "none",
-          transition: `transform var(--duration-base) var(--ease), background-color var(--duration-base) var(--ease), border-color var(--duration-base) var(--ease)`,
-          backgroundColor: isTransparent ? "transparent" : "var(--v-nav-fill)",
-          backdropFilter: isTransparent ? "none" : "saturate(140%) blur(18px)",
-          WebkitBackdropFilter: isTransparent ? "none" : "saturate(140%) blur(18px)",
-          borderBottom: `1px solid ${isTransparent ? "transparent" : "var(--v-hairline)"}`,
-        }}
+        className="site-nav sticky top-0 z-[100] mb-[calc(-1*var(--nav-height))] shrink-0"
+        data-scrolled={scrolled}
       >
-        <div
-          className="container-grid flex items-center justify-between gap-6"
-          style={{
-            height: frosted ? "var(--nav-height-scrolled)" : "var(--nav-height)",
-            transition: "height var(--duration-base) var(--ease)",
-          }}
-        >
+        <div className="container-grid flex h-[var(--nav-height)] items-center justify-between gap-6">
           <Link
             href={routes.home}
             className="flex shrink-0 items-center"
             onClick={() => track("nav_click", { surface: "header", label: "wordmark" })}
           >
             <Image
-              src={pathname === routes.home ? "/logo-text-transparent.png" : "/logo-text-light.png"}
+              src="/logo-text-transparent.png"
               alt={site.name}
               width={153}
               height={47}
-              className="h-auto w-[124px]"
+              className="h-auto w-[153px]"
             />
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">
-            <ul className="flex items-center gap-8">
+            <ul className="flex h-14 items-center gap-7">
               {primaryNav.map((item) =>
                 item.hasPanel ? (
                   <li key={item.href}>
@@ -179,10 +150,10 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-6">
             <Link
               href={routes.shop}
-              className="hidden min-h-11 items-center text-[0.7rem] uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink xl:flex"
+              className="hidden min-h-11 items-center text-[0.7rem] uppercase tracking-[0.12em] text-ink transition-colors hover:text-accent xl:flex"
             >
               Shop ↗
             </Link>
@@ -195,9 +166,12 @@ export function SiteHeader() {
                   label: site.consultationCta,
                 })
               }
-              className="hidden min-h-10 items-center rounded-full border border-ink/25 px-5 text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:border-accent hover:text-accent xl:inline-flex"
+              className="group hidden min-h-11 items-center gap-4 rounded-md bg-[var(--v-accent)] px-5 text-[0.75rem] font-medium text-[var(--v-on-accent)] transition-colors hover:bg-[var(--v-accent-hover)] xl:inline-flex"
             >
-              {site.consultationCta}
+              Start an energy consultation
+              <span aria-hidden="true" className="text-lg transition-transform group-hover:translate-x-0.5">
+                ↗
+              </span>
             </Link>
 
             <button
@@ -205,7 +179,7 @@ export function SiteHeader() {
               aria-expanded={sheetOpen}
               aria-controls={sheetId}
               onClick={() => setSheetOpen((value) => !value)}
-              className="grid size-11 place-items-center text-ink xl:hidden"
+              className="grid size-11 place-items-center rounded-md border border-hairline text-ink xl:hidden"
             >
               <span className="sr-only">{sheetOpen ? "Close menu" : "Open menu"}</span>
               <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">

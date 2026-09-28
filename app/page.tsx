@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { launchCategories, mostRequested } from "@/lib/content/categories";
@@ -9,6 +10,13 @@ import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
 import { Container, Kicker, Section, TierBadge } from "@/components/ui/primitives";
 import { MediaSlot } from "@/components/ui/media-slot";
+
+const heroFont = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: "500",
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Renewable infrastructure engineering — Victoria",
@@ -39,19 +47,8 @@ const howWeWork = [
   },
 ];
 
-const heroStats = [
-  "46.2 MW installed",
-  "2,500+ projects delivered",
-  "99.4% fleet uptime",
-  "10+ years operating",
-  "NETCC Approved Seller",
-  "Solar Victoria Approved Retailer",
-  "25-year warranty",
-  "4.9★ Google",
-  "Australian owned",
-];
-
-const heroImage = "/hero-renewable.png";
+const heroImage =
+  "/ChatGPT Image Sep 28, 2026, 04_27_26 PM.png";
 
 const journey = [
   "Enquiry",
@@ -68,7 +65,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="hero" data-surface="base">
+      <section className="hero" data-surface="dark">
         <div className="hero__bg" aria-hidden="true">
           <Image
             src={heroImage}
@@ -79,52 +76,22 @@ export default function HomePage() {
             className="hero__image"
           />
         </div>
-        <div className="hero__scrim" aria-hidden="true" />
-
-        <div className="container-grid hero__inner">
-          <div className="hero__content">
-            <h1 className="hero__title">
-              <span className="hero__line">Engineered</span>
-              <span className="hero__line hero__line--accent">for what&rsquo;s</span>
-              <span className="hero__line hero__line--shift">next.</span>
-            </h1>
-
-            <div className="hero__base">
-              <p className="hero__lead">
-                Solar, storage, EV charging, heat pumps and grid integration — designed as
-                one system by the engineers who commission it, then measured after handover.
-              </p>
-
-              <div className="hero__actions">
-                <ButtonLink href={contactWithContext("home-hero")} size="lg">
-                  {site.consultationCta}
-                </ButtonLink>
-                <ButtonLink href={routes.projects} variant="secondary" size="lg">
-                  View projects
-                </ButtonLink>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero__meta">
-            <span className="hero__eyebrow">Since 2014 · Victoria, Australia</span>
-            <span className="hero__index">01 / Renewable infrastructure</span>
-          </div>
-        </div>
-
-        <div className="hero__rail">
-          {[0, 1].map((copy) => (
-            <ul
-              key={copy}
-              className="hero__marquee"
-              aria-hidden={copy === 1}
-              aria-label={copy === 0 ? "Credentials" : undefined}
-            >
-              {heroStats.map((stat) => (
-                <li key={stat}>{stat}</li>
-              ))}
-            </ul>
-          ))}
+        <div className="relative z-10 flex min-h-svh flex-col items-center px-6 pb-16 pt-[max(140px,23svh)] text-center">
+          <h1 className="max-w-4xl font-display text-[var(--palette-forest)]">
+            <span className="mb-5 block text-[clamp(0.7rem,1vw,0.85rem)] leading-normal font-semibold tracking-[0.28em] uppercase">
+              Cleaner energy.
+            </span>
+            <span className={`${heroFont.className} block text-[clamp(3.5rem,6.5vw,6.5rem)] leading-[1.05] tracking-[-0.035em]`}>
+              Brighter <span className="italic">tomorrows.</span>
+            </span>
+          </h1>
+          <Link
+            href={routes.whatWeDo}
+            className="mt-7 inline-flex min-h-12 items-center gap-5 rounded-full bg-[var(--palette-green)] px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[var(--palette-green-deep)]"
+          >
+            Explore our solutions
+            <span aria-hidden="true">↗</span>
+          </Link>
         </div>
       </section>
 
