@@ -49,13 +49,18 @@ export function MegaMenu({
       headings[next].focus();
     };
 
-    const onScroll = () => onClose();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onResize = () => {
+      if (window.innerWidth < 1280) onClose();
+    };
 
     document.addEventListener("keydown", onKeyDown);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      document.body.style.overflow = previousOverflow;
     };
   }, [open, onClose]);
 
@@ -68,26 +73,35 @@ export function MegaMenu({
       id={panelId}
       data-surface="base"
       hidden={!open}
-      className={`${surfaceStyles} absolute inset-x-0 top-full hidden shadow-menu xl:block transition-[opacity,visibility] duration-400 ease-brand data-[open=true]:visible data-[open=true]:opacity-100 data-[open=false]:invisible data-[open=false]:opacity-0`}
+      className={`${surfaceStyles} absolute inset-x-0 top-full h-[calc(100dvh-var(--nav-height))] overflow-y-auto overscroll-contain hidden shadow-menu xl:block transition-[opacity,visibility] duration-400 ease-brand motion-reduce:transition-none data-[open=true]:visible data-[open=true]:opacity-100 data-[open=false]:invisible data-[open=false]:opacity-0`}
       data-open={open}
     >
-      <div className="[border-top:1px_solid_var(--v-hairline)] border-t">
-        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] py-10">
-          <div className="grid grid-cols-[repeat(4,minmax(0,1fr))_320px] gap-6">
+      <div className="min-h-full flex flex-col border-t border-hairline">
+        <div className="flex flex-1 flex-col w-full mx-auto px-[var(--container-margin)] py-6 2xl:py-8">
+          <div className="mb-6 flex justify-end">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex min-h-11 items-center gap-3 rounded-full border border-hairline px-5 text-base font-medium text-ink transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              Close menu <span aria-hidden="true" className="text-xl">×</span>
+            </button>
+          </div>
+          <div className="grid grid-cols-[repeat(4,minmax(0,1fr))_minmax(240px,0.95fr)] gap-6 2xl:gap-10">
             {model.columns.map((column) => (
               <div key={column.href}>
                 <Link
                   href={column.href}
                   data-column-head
                   onClick={() => linkClick(column.name, null, null)}
-                  className="group block"
+                  className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-accent"
                 >
                   <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted block">{column.index}</span>
-                  <span className="mt-2 block font-display text-[1.375rem] text-ink group-hover:text-accent">
+                  <span className="mt-3 block font-display text-[clamp(1.5rem,1.8vw,2.25rem)] leading-tight text-ink transition-colors group-hover:text-accent group-focus-visible:text-accent">
                     {column.name}
                   </span>
                 </Link>
-                <ul className="mt-5 space-y-1">
+                <ul className="mt-7 space-y-2">
                   {column.solutions.map((solution) => (
                     <li key={solution.href}>
                       {solution.status === "live" ? (
@@ -96,13 +110,14 @@ export function MegaMenu({
                           onClick={() =>
                             linkClick(column.name, solution.name, solution.tier)
                           }
-                          className="flex min-h-11 items-center gap-2 text-body-sm text-body transition-colors hover:text-ink"
+                          className="group flex min-h-14 items-center gap-2 rounded-lg px-3 -mx-3 text-[clamp(1.0625rem,1.15vw,1.375rem)] font-medium leading-snug text-ink transition-[background-color,color,transform] duration-200 hover:bg-accent/10 hover:text-accent hover:translate-x-1 focus-visible:bg-accent/10 focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-accent motion-reduce:transition-none motion-reduce:hover:translate-x-0"
                         >
                           {solution.name}
                           {solution.tier === "P1" ? <TierBadge tier="P1" /> : null}
+                          <span aria-hidden="true" className="ml-auto text-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">↗</span>
                         </Link>
                       ) : (
-                        <span className="flex min-h-11 items-center gap-2 text-body-sm text-muted">
+                        <span className="flex min-h-14 items-center gap-2 text-[1.0625rem] text-muted">
                           {solution.name}
                           <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">soon</span>
                         </span>
@@ -127,9 +142,9 @@ export function MegaMenu({
                           tier: solution.tier,
                         });
                       }}
-                      className="block border border-hairline p-4 transition-colors hover:border-accent"
+                      className="block rounded-xl border border-hairline p-5 transition-[background-color,border-color,transform] duration-200 hover:border-accent hover:bg-accent/10 hover:-translate-y-1 focus-visible:bg-accent/10 focus-visible:outline-2 focus-visible:outline-accent motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                     >
-                      <span className="block text-body-sm text-ink">
+                      <span className="block text-lg font-medium text-ink">
                         {solution.name}
                       </span>
                       {solution.spec ? (
@@ -144,10 +159,10 @@ export function MegaMenu({
                 <Link
                   href={routes.project(model.featured.slug)}
                   onClick={() => linkClick("featured_project", model.featured.slug, null)}
-                  className="mt-6 block border-t border-hairline pt-4"
+                  className="mt-6 block rounded-lg border-t border-hairline pt-5 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
                 >
                   <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">Featured project</span>
-                  <span className="mt-2 block text-body-sm text-ink">
+                  <span className="mt-2 block text-lg font-medium text-ink">
                     {model.featured.name}
                   </span>
                   <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-1 block">
@@ -160,11 +175,11 @@ export function MegaMenu({
             </div>
           </div>
 
-          <div className="mt-10 border-t border-hairline pt-6">
+          <div className="mt-auto pt-10">
             <Link
               href={routes.whatWeDo}
               onClick={() => linkClick("all", null, null)}
-              className="text-body-sm text-accent"
+              className="inline-flex min-h-14 items-center rounded-full border border-accent px-7 text-lg font-medium text-accent transition-colors hover:bg-accent hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               See everything we do →
             </Link>

@@ -21,7 +21,6 @@ export function SiteHeader() {
 
   const [panelOpen, setPanelOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -50,13 +49,6 @@ export function SiteHeader() {
 
   useEffect(() => clearHoverTimer, []);
 
-  useEffect(() => {
-    const updateScroll = () => setScrolled(window.scrollY > 40);
-    updateScroll();
-    window.addEventListener("scroll", updateScroll, { passive: true });
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, []);
-
   return (
     <>
       <a href="#main" className="[color:inherit] no-underline absolute left-4 top-4 z-200 [transform:translateY(-250%)] bg-ink text-bg [padding:10px_16px] text-[length:var(--text-body-sm)] [transition:transform_var(--duration-micro)_var(--ease)] [&:focus-visible]:[transform:translateY(0)]">
@@ -65,12 +57,27 @@ export function SiteHeader() {
 
       <header
         data-surface="base"
+        onPointerOver={(event) => {
+          if (event.pointerType === "mouse" && (event.target as Element).closest("nav a, a[href='/'], a[href='/contact']")) {
+            clearHoverTimer();
+            closePanel();
+          }
+        }}
+        onClick={(event) => {
+          if ((event.target as Element).closest("a")) {
+            clearHoverTimer();
+            closePanel();
+          }
+        }}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) closePanel();
+        }}
         onMouseLeave={() => {
           clearHoverTimer();
           closePanel();
         }}
-        className={`${surfaceStyles} w-full [align-self:center] bg-transparent rounded-[0] [transition:width_450ms_var(--ease),_transform_450ms_var(--ease),_border-radius_450ms_var(--ease),_background-color_450ms_var(--ease),_box-shadow_450ms_var(--ease)] [&[data-scrolled='true']]:w-[calc(100%_-_32px)] [&[data-scrolled='true']]:[transform:translateY(12px)] [&[data-scrolled='true']]:rounded-lg [&[data-scrolled='true']]:bg-bg [&[data-scrolled='true']]:[box-shadow:0_8px_32px_rgb(15_42_22_/_0.12),_inset_0_-2px_0_var(--v-accent)] motion-reduce:[transition:none] sticky top-0 z-100 mb-[calc(-1*var(--nav-height))] shrink-0`}
-        data-scrolled={scrolled}
+        className={`${surfaceStyles} relative z-100 w-full bg-transparent data-[panel-open=true]:bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
+        data-panel-open={panelOpen}
       >
         <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[var(--nav-height)] items-center justify-between gap-6">
           <Link
@@ -97,7 +104,10 @@ export function SiteHeader() {
                       type="button"
                       aria-expanded={panelOpen}
                       aria-controls={panelId}
-                      onClick={() => setPanelOpen((value) => !value)}
+                      onClick={() => {
+                        clearHoverTimer();
+                        setPanelOpen((value) => !value);
+                      }}
                       onPointerEnter={(event) => {
                         if (event.pointerType !== "mouse") return;
                         clearHoverTimer();

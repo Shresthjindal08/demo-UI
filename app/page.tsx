@@ -78,32 +78,29 @@ export default function HomePage() {
           />
         </div>
         <div className="relative z-2 flex flex-col items-center min-h-[100svh] [padding:max(140px,_18svh)_24px_180px] text-center [color:var(--palette-forest)]">
-          <p className="text-pretty text-[0.75rem] font-semibold tracking-[0.28em] uppercase">Powering a cleaner future</p>
-          <span className="w-12 h-0.5 [margin:18px_0_22px] [background:var(--palette-orange)]" aria-hidden="true" />
-          <h1 className={`[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance ${heroFont.className} text-[clamp(3.5rem,_7.2vw,_7.5rem)] font-medium leading-[0.9] tracking-[-0.045em]`}>
-            Energy, designed
-            <br />
-            for <em>tomorrow.</em>
-          </h1>
-          <p className="text-pretty max-w-160 mt-6 text-[clamp(0.95rem,_1.3vw,_1.2rem)] leading-[1.6] [color:var(--palette-slate)]">
-            Smarter solar solutions for homes, businesses and communities.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-6.5">
-            <Link href={routes.whatWeDo} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:var(--palette-green-deep)] [color:white] [&:hover]:[background:var(--palette-green)]">
-              Explore solutions <span aria-hidden="true">→</span>
-            </Link>
-            <Link href={routes.projects} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:rgb(248_250_247_/_0.35)] [color:var(--palette-forest)] [&:hover]:[background:rgb(248_250_247_/_0.8)]">
-              See our projects <span aria-hidden="true">→</span>
-            </Link>
+          <div className="relative isolate flex w-full max-w-240 flex-col items-center">
+            <div aria-hidden="true" className="pointer-events-none absolute -inset-x-6 -top-8 -bottom-8 -z-1 bg-[linear-gradient(to_bottom,transparent_0%,rgb(255_255_255_/_0.65)_35%,white_100%)] blur-2xl" />
+            <p className="text-pretty text-[0.75rem] font-semibold tracking-[0.28em] uppercase">Powering a cleaner future</p>
+            <span className="w-12 h-0.5 [margin:18px_0_22px] [background:var(--palette-orange)]" aria-hidden="true" />
+            <h1 className={`[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance ${heroFont.className} text-black text-[clamp(3.5rem,_7.2vw,_7.5rem)] font-medium leading-[0.9] tracking-[-0.045em]`}>
+              Energy, designed
+              <br />
+              for <em>tomorrow.</em>
+            </h1>
+            <p className="text-pretty max-w-160 mt-6 text-[clamp(0.95rem,_1.3vw,_1.2rem)] leading-[1.6] [color:var(--palette-slate)]">
+              Smarter solar solutions for homes, businesses and communities.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mt-6.5">
+              <Link href={routes.whatWeDo} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:var(--palette-green-deep)] [color:white] [&:hover]:[background:var(--palette-green)]">
+                Explore solutions <span aria-hidden="true">→</span>
+              </Link>
+              <Link href={routes.projects} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:rgb(248_250_247_/_0.35)] [color:var(--palette-forest)] [&:hover]:[background:rgb(248_250_247_/_0.8)]">
+                See our projects <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="absolute z-2 bottom-9 left-[clamp(24px,_3vw,_56px)] flex items-center gap-4.5 [padding:18px_22px] [border:1px_solid_rgb(255_255_255_/_0.3)] rounded-lg [background:rgb(15_42_22_/_0.5)] [backdrop-filter:blur(12px)] [color:var(--palette-mist)] [&_svg]:w-12 [&_svg]:h-12 [&_svg]:[padding:8px] [&_svg]:[border:1px_solid_rgb(255_255_255_/_0.5)] [&_svg]:rounded-sm [&_span]:text-[1.8rem] [&_span]:leading-none [&_p]:mt-2 [&_p]:text-[0.6rem] [&_p]:tracking-[0.18em] [&_p]:uppercase [@media(max-width:_479px)]:[padding:12px] [@media(max-width:_479px)]:gap-2.5 [@media(max-width:_479px)]:left-4 [@media(max-width:_479px)]:bottom-6 [@media(max-width:_479px)]:[&_span]:text-[1.4rem]">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-            <path d="M25 6C11 6 5 11 7 20c9 5 17-1 18-14Z M5 27 23 9 M13 19v-7 M13 19h7" />
-          </svg>
-          <div><span className={heroFont.className}>Renewable energy</span><p className="text-pretty">Built for a brighter future</p></div>
-        </div>
-        <a href="#solutions" className="[color:inherit] no-underline absolute z-2 right-8 bottom-10 grid [place-items:center] w-11 h-11 [border:1px_solid_white] rounded-[50%] [color:white] text-[1.5rem] [@media(max-width:_479px)]:right-4 [@media(max-width:_479px)]:bottom-8" aria-label="Scroll to our solutions">↓</a>
+        <a href="#solutions" className="no-underline absolute z-2 right-8 bottom-10 grid [place-items:center] w-11 h-11 [border:1px_solid_white] rounded-[50%] [color:white] text-[1.5rem] [@media(max-width:_479px)]:right-4 [@media(max-width:_479px)]:bottom-8" aria-label="Scroll to our solutions">↓</a>
       </section>
 
       <section data-surface="light" data-treatment="C" aria-label="Accreditation" className={`${surfaceStyles}`}>
