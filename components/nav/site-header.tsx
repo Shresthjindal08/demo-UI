@@ -1,4 +1,5 @@
 "use client";
+import { surfaceStyles } from "@/lib/styles";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -58,7 +59,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <a href="#main" className="skip-link">
+      <a href="#main" className="[color:inherit] no-underline absolute left-4 top-4 z-200 [transform:translateY(-250%)] bg-ink text-bg [padding:10px_16px] text-[length:var(--text-body-sm)] [transition:transform_var(--duration-micro)_var(--ease)] [&:focus-visible]:[transform:translateY(0)]">
         Skip to content
       </a>
 
@@ -68,10 +69,10 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className="site-nav sticky top-0 z-[100] mb-[calc(-1*var(--nav-height))] shrink-0"
+        className={`${surfaceStyles} w-full [align-self:center] bg-transparent rounded-[0] [transition:width_450ms_var(--ease),_transform_450ms_var(--ease),_border-radius_450ms_var(--ease),_background-color_450ms_var(--ease),_box-shadow_450ms_var(--ease)] [&[data-scrolled='true']]:w-[calc(100%_-_32px)] [&[data-scrolled='true']]:[transform:translateY(12px)] [&[data-scrolled='true']]:rounded-lg [&[data-scrolled='true']]:bg-bg [&[data-scrolled='true']]:[box-shadow:0_8px_32px_rgb(15_42_22_/_0.12),_inset_0_-2px_0_var(--v-accent)] motion-reduce:[transition:none] sticky top-0 z-100 mb-[calc(-1*var(--nav-height))] shrink-0`}
         data-scrolled={scrolled}
       >
-        <div className="container-grid flex h-[var(--nav-height)] items-center justify-between gap-6">
+        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[var(--nav-height)] items-center justify-between gap-6">
           <Link
             href={routes.home}
             className="flex shrink-0 items-center"
@@ -82,12 +83,12 @@ export function SiteHeader() {
               alt={site.name}
               width={153}
               height={47}
-              className="h-auto w-[153px]"
+              className="h-auto w-[9.5625rem]"
             />
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">
-            <ul className="flex h-14 items-center gap-7">
+            <ul className="flex h-14 items-center gap-9">
               {primaryNav.map((item) =>
                 item.hasPanel ? (
                   <li key={item.href}>
@@ -112,17 +113,13 @@ export function SiteHeader() {
                           closePanel(true);
                         }
                       }}
-                      className="flex min-h-11 items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:text-accent"
+                      className="flex min-h-11 items-center gap-1.5 text-[0.95rem] font-medium text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                       <svg
                         viewBox="0 0 16 16"
-                        className="size-3"
+                        className={`size-3 transition-transform duration-150 ease-brand ${panelOpen ? "rotate-180" : "rotate-0"}`}
                         aria-hidden="true"
-                        style={{
-                          transform: panelOpen ? "rotate(180deg)" : "none",
-                          transition: "transform var(--duration-micro) var(--ease)",
-                        }}
                       >
                         <path
                           d="M3 6l5 5 5-5"
@@ -140,7 +137,7 @@ export function SiteHeader() {
                       onClick={() =>
                         track("nav_click", { surface: "header", label: item.label })
                       }
-                      className="flex min-h-11 items-center text-[0.7rem] uppercase tracking-[0.16em] text-ink transition-colors hover:text-accent"
+                      className="flex min-h-11 items-center text-[0.95rem] font-medium text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                     </Link>
@@ -152,25 +149,25 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-6">
             <Link
-              href={routes.shop}
-              className="hidden min-h-11 items-center text-[0.7rem] uppercase tracking-[0.12em] text-ink transition-colors hover:text-accent xl:flex"
-            >
-              Shop ↗
-            </Link>
-            <Link
               href={routes.contact}
               onClick={() =>
                 track("cta_click", {
                   page: pathname,
                   section: "header",
-                  label: site.consultationCta,
+                  label: "Get a quote",
                 })
               }
-              className="group hidden min-h-11 items-center gap-4 rounded-md bg-[var(--v-accent)] px-5 text-[0.75rem] font-medium text-[var(--v-on-accent)] transition-colors hover:bg-[var(--v-accent-hover)] xl:inline-flex"
+              onPointerEnter={(event) => {
+                const button = event.currentTarget;
+                const bounds = button.getBoundingClientRect();
+                button.style.setProperty("--cursor-x", `${event.clientX - bounds.left}px`);
+                button.style.setProperty("--cursor-y", `${event.clientY - bounds.top}px`);
+              }}
+              className="group relative isolate hidden min-h-12 items-center gap-4 overflow-hidden rounded-full border border-[var(--palette-green-deep)] px-7 text-sm font-medium text-[var(--palette-forest)] transition-colors duration-250 hover:text-white focus-visible:text-white before:absolute before:inset-0 before:-z-10 before:bg-[var(--palette-green-deep)] before:[clip-path:circle(0%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] before:transition-[clip-path] before:duration-550 before:ease-[cubic-bezier(0.22,1,0.36,1)] hover:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] focus-visible:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] motion-reduce:transition-none motion-reduce:before:transition-none sm:inline-flex"
             >
-              Start an energy consultation
+              Get a quote
               <span aria-hidden="true" className="text-lg transition-transform group-hover:translate-x-0.5">
-                ↗
+                →
               </span>
             </Link>
 

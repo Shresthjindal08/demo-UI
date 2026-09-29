@@ -30,14 +30,14 @@ export function MediaSlot({
             alt={label}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 800px"
-            className="media-slot__image media-slot__image--light object-cover"
+            className="object-cover"
           />
           <Image
             src={darkSrc}
             alt={label}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 800px"
-            className="media-slot__image media-slot__image--dark object-cover"
+            className="hidden object-cover"
           />
         </>
       ) : (
@@ -52,7 +52,7 @@ export function MediaSlot({
       {children ? (
         <>
           <div
-            className="media-slot__overlay absolute inset-0"
+            className="[background:linear-gradient(_180deg,_rgb(255_255_255_/_0.44)_0%,_rgb(255_255_255_/_0.58)_56%,_rgb(255_255_255_/_0.72)_100%_)] absolute inset-0"
             aria-hidden="true"
           />
           <div className="relative z-10 w-full py-16">{children}</div>

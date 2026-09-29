@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -92,7 +93,7 @@ export default async function SolutionPage({
   };
 
   return (
-    <div data-surface="cream">
+    <div data-surface="cream" className={`${surfaceStyles}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -120,10 +121,10 @@ export default async function SolutionPage({
             <Kicker>
               {solution.category.index} / {solution.category.name}
             </Kicker>
-            <h1 className="mt-6 max-w-[14ch] text-display-2">{solution.outcome}</h1>
+            <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[14ch] text-display-2">{solution.outcome}</h1>
             <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               {specs.map((spec) => (
-                <li key={spec} className="mono-fact">
+                <li key={spec} className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
                   {spec}
                 </li>
               ))}
@@ -142,7 +143,7 @@ export default async function SolutionPage({
       </Section>
 
       <Section surface="cream" data-treatment="D" bleed label="System architecture">
-        <div className="container-grid">
+        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)]">
           <Kicker>System architecture</Kicker>
         </div>
         <MediaSlot
@@ -156,9 +157,9 @@ export default async function SolutionPage({
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
           {keyFeatures.map((feature, index) => (
             <li key={feature.title}>
-              <span className="kicker">{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 text-display-4">{feature.title}</h3>
-              <p className="mt-3 text-body-sm">{feature.body}</p>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{feature.title}</h3>
+              <p className="text-pretty mt-3 text-body-sm">{feature.body}</p>
             </li>
           ))}
         </ul>
@@ -166,11 +167,11 @@ export default async function SolutionPage({
 
       <Section surface="tint" data-treatment="C" label="Installation process">
         <Kicker>Installation</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">Five steps, five weeks.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Five steps, five weeks.</h2>
         <ol className="mt-12 grid gap-px border border-hairline bg-hairline md:grid-cols-2 xl:grid-cols-5">
           {installProcess.map((step) => (
             <li key={step.title} className="bg-bg p-6">
-              <span className="kicker">{step.when}</span>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{step.when}</span>
               <span className="mt-3 block text-body-sm text-ink">{step.title}</span>
             </li>
           ))}
@@ -205,7 +206,7 @@ export default async function SolutionPage({
                         <span className="block font-display text-[1.5rem] text-ink">
                           {metric.value}
                         </span>
-                        <span className="mono-fact">{metric.label}</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{metric.label}</span>
                       </li>
                     ))}
                   </ul>
@@ -219,8 +220,8 @@ export default async function SolutionPage({
       {solution.investment ? (
         <Section surface="cream" data-treatment="F" label="Investment">
           <Kicker>Typical investment, rebates applied</Kicker>
-          <p className="mt-6 font-display text-display-2 text-ink">{solution.investment}</p>
-          <p className="measure mt-6 text-body-sm">
+          <p className="text-pretty mt-6 font-display text-display-2 text-ink">{solution.investment}</p>
+          <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-6 text-body-sm">
             An indicative range, not a quote. The figure depends on your roof, switchboard
             and network conditions — the site assessment resolves all three.
           </p>
@@ -229,7 +230,7 @@ export default async function SolutionPage({
 
       <Section surface="light" data-treatment="C" id="specifications" label="Specifications">
         <Kicker>Specifications</Kicker>
-        <h2 className="mt-6 text-display-3">The full detail.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 text-display-3">The full detail.</h2>
         <ul className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2 xl:grid-cols-3">
           {specs.map((spec) => (
             <li key={spec} className="bg-bg p-6">
@@ -237,14 +238,14 @@ export default async function SolutionPage({
             </li>
           ))}
         </ul>
-        <p className="measure mt-8 text-body-sm text-muted">
+        <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-body-sm text-muted">
           Full component schedules and datasheets are issued with your engineered design.
         </p>
       </Section>
 
       <Section surface="cream" data-treatment="F" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[16ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             An engineer will call you back.
           </h2>
           <ButtonLink href={contactWithContext(solution.slug)} size="lg">

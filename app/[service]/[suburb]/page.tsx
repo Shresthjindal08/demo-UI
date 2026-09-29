@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -65,7 +66,7 @@ export default async function LocalLandingPage({
   };
 
   return (
-    <div data-surface="dark">
+    <div data-surface="dark" className={`${surfaceStyles}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -92,20 +93,20 @@ export default async function LocalLandingPage({
             <Kicker>
               {service.name} · {suburb.name}, {suburb.state} {suburb.postcode}
             </Kicker>
-            <h1 className="mt-8 max-w-[14ch] text-display-2">
+            <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-8 max-w-[14ch] text-display-2">
               {service.name} in {suburb.name}.
             </h1>
-            <p className="measure mt-8 text-lead">
+            <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">
               We have been designing systems in {suburb.name} since {suburb.servingSince}.
               The local housing stock and network conditions shape what we specify here —
               this is not a template page with a suburb name dropped into it.
             </p>
             <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-              <li className="mono-fact">
+              <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
                 {suburb.systemsInstalled} systems in {suburb.name}
               </li>
-              <li className="mono-fact">{suburb.capacityInstalled} installed</li>
-              <li className="mono-fact">Since {suburb.servingSince}</li>
+              <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{suburb.capacityInstalled} installed</li>
+              <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">Since {suburb.servingSince}</li>
             </ul>
             <div className="mt-10">
               <ButtonLink
@@ -131,7 +132,7 @@ export default async function LocalLandingPage({
               <li key={project.slug}>
                 <Link href={routes.project(project.slug)} className="group block">
                   <MediaSlot label={project.name} className="aspect-[4/3]" />
-                  <span className="mono-fact mt-4 block">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-4 block">
                     {project.industry} · {project.suburb} · {project.year}
                   </span>
                   <span className="mt-2 block font-display text-display-4 text-ink group-hover:text-accent">
@@ -148,8 +149,8 @@ export default async function LocalLandingPage({
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <Kicker>Rebates</Kicker>
-            <h2 className="mt-6 text-display-3">What applies in {suburb.state}.</h2>
-            <p className="measure mt-6 text-body-lg">
+            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 text-display-3">What applies in {suburb.state}.</h2>
+            <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-6 text-body-lg">
               Solar Victoria rebates and federal certificates are prepared and lodged by
               us, and applied to your figure rather than claimed back later.
             </p>
@@ -180,7 +181,7 @@ export default async function LocalLandingPage({
         </ul>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[18ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">
             Talk to an engineer who knows {suburb.name}.
           </h2>
           <ButtonLink

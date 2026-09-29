@@ -73,7 +73,7 @@ export default function FaqPage() {
 
       <Section surface="dark" data-treatment="F" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[18ch] text-display-3">Ask us directly.</h2>
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">Ask us directly.</h2>
           <ButtonLink href={contactWithContext("faq")} size="lg">
             {site.consultationCta}
           </ButtonLink>

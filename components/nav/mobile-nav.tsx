@@ -1,4 +1,5 @@
 "use client";
+import { surfaceStyles } from "@/lib/styles";
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -75,9 +76,9 @@ export function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Site menu"
-      className="fixed inset-0 z-[90] overflow-y-auto overscroll-contain xl:hidden"
+      className={`${surfaceStyles} fixed inset-0 z-90 overflow-y-auto overscroll-contain xl:hidden`}
     >
-      <div className="container-grid pt-[calc(var(--nav-height)+24px)] pb-16">
+      <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] pt-[calc(var(--nav-height)+24px)] pb-16">
         <nav aria-label="Primary">
           <ul className="border-t border-hairline">
             {primaryNav
@@ -99,7 +100,7 @@ export function MobileNav({
           </ul>
         </nav>
 
-        <p className="kicker mt-10">What we do</p>
+        <p className="text-pretty font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted mt-10">What we do</p>
         <ul className="mt-4 border-t border-hairline">
           {model.columns.map((column) => {
             const isOpen = expanded === column.href;
@@ -119,7 +120,7 @@ export function MobileNav({
                     }}
                     className="flex min-h-14 flex-1 items-center gap-3 text-body-lg text-ink"
                   >
-                    <span className="kicker">{column.index}</span>
+                    <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{column.index}</span>
                     {column.name}
                   </Link>
                   <button
@@ -134,12 +135,8 @@ export function MobileNav({
                     </span>
                     <svg
                       viewBox="0 0 16 16"
-                      className="size-4"
+                      className={`size-4 transition-transform duration-150 ease-brand ${isOpen ? "rotate-180" : "rotate-0"}`}
                       aria-hidden="true"
-                      style={{
-                        transform: isOpen ? "rotate(180deg)" : "none",
-                        transition: "transform var(--duration-micro) var(--ease)",
-                      }}
                     >
                       <path
                         d="M3 6l5 5 5-5"
@@ -174,7 +171,7 @@ export function MobileNav({
                       ) : (
                         <span className="flex min-h-11 items-center gap-2 text-body-sm text-muted">
                           {solution.name}
-                          <span className="mono-fact">soon</span>
+                          <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">soon</span>
                         </span>
                       )}
                     </li>

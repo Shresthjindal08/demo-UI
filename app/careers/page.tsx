@@ -36,8 +36,8 @@ export default function CareersPage() {
               <div className="flex min-h-20 flex-wrap items-center justify-between gap-4 py-5">
                 <span className="text-display-4 text-ink">{role.title}</span>
                 <span className="flex items-center gap-6">
-                  <span className="mono-fact">{role.location}</span>
-                  <span className="mono-fact">{role.type}</span>
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{role.location}</span>
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{role.type}</span>
                   <ButtonLink href={contactWithContext(`careers-${role.title}`)} variant="secondary">
                     Apply
                   </ButtonLink>
@@ -50,7 +50,7 @@ export default function CareersPage() {
 
       <Section surface="dark" data-treatment="F" label="Speculative applications">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[20ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[20ch] text-display-3">
             Nothing listed that fits? Tell us what you do.
           </h2>
           <ButtonLink href={contactWithContext("careers")} size="lg">

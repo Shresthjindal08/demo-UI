@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
@@ -16,20 +17,20 @@ const onward = [
 
 export default function ThankYouPage() {
   return (
-    <div data-surface="cream">
-      <section className="section pt-[calc(var(--nav-height)+64px)]">
+    <div data-surface="cream" className={`${surfaceStyles}`}>
+      <section className="py-section pt-[calc(var(--nav-height)+64px)]">
         <Container>
           <Kicker>Received</Kicker>
-          <h1 className="mt-8 max-w-[16ch] text-display-2">
+          <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-8 max-w-[16ch] text-display-2">
             An engineer has your details.
           </h1>
-          <p className="measure mt-8 text-lead">
+          <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">
             One of our engineers reviews every enquiry personally and will call you back,
             usually within one business day. Not a salesperson.
           </p>
 
           <div className="mt-16 border-t border-hairline pt-10">
-            <p className="kicker">While you wait</p>
+            <p className="text-pretty font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">While you wait</p>
             <ul className="mt-6 space-y-1">
               {onward.map((item) => (
                 <li key={item.href}>

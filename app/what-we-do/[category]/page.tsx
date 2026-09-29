@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -52,7 +53,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <div data-surface="cream">
+      <div data-surface="cream" className={`${surfaceStyles}`}>
         <Breadcrumbs
           trail={[
             { label: "What we do", href: routes.whatWeDo },
@@ -66,11 +67,11 @@ export default async function CategoryPage({
               <Kicker>
                 {category.index} / {category.name}
               </Kicker>
-              <h1 className="mt-8 max-w-[14ch] text-display-2">{category.promise}</h1>
-              <p className="measure mt-8 text-lead">{category.descriptor}</p>
+              <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-8 max-w-[14ch] text-display-2">{category.promise}</h1>
+              <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">{category.descriptor}</p>
               <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 {category.facts.map((fact) => (
-                  <li key={fact} className="mono-fact">
+                  <li key={fact} className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
                     {fact}
                   </li>
                 ))}
@@ -86,8 +87,8 @@ export default async function CategoryPage({
 
         {isEmpty ? (
           <div className="mt-10 border border-dashed border-hairline p-10">
-            <h2 className="text-display-4">Being engineered now.</h2>
-            <p className="measure mt-4 text-body-sm">
+            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance text-display-4">Being engineered now.</h2>
+            <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-4 text-body-sm">
               This capability is live as a category and will fill out over the coming
               releases. If you need it before then, tell us what you are planning.
             </p>
@@ -115,11 +116,11 @@ export default async function CategoryPage({
                         <TierBadge tier={solution.tier} />
                       </span>
                       {solution.spec ? (
-                        <span className="mono-fact mt-3 block">{solution.spec}</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3 block">{solution.spec}</span>
                       ) : null}
                       <span className="mt-4 block text-body-lg">{solution.outcome}</span>
                       {solution.investment ? (
-                        <span className="mono-fact mt-6 block">
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6 block">
                           Typical investment {solution.investment}
                         </span>
                       ) : null}
@@ -142,7 +143,7 @@ export default async function CategoryPage({
                       <TierBadge tier={solution.tier} />
                     </span>
                     {solution.spec ? (
-                      <span className="mono-fact mt-3 block">{solution.spec}</span>
+                      <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3 block">{solution.spec}</span>
                     ) : null}
                     <span className="mt-4 block text-body-sm">{solution.outcome}</span>
                   </Link>
@@ -163,14 +164,14 @@ export default async function CategoryPage({
                           {solution.name}
                           <TierBadge tier={solution.tier} />
                         </span>
-                        <span className="mono-fact group-hover:text-accent">
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted group-hover:text-accent">
                           {solution.spec ?? "Detail"} →
                         </span>
                       </Link>
                     ) : (
                       <span className="flex min-h-14 items-center gap-3 py-4 text-body-lg text-muted">
                         {solution.name}
-                        <span className="mono-fact">soon</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">soon</span>
                       </span>
                     )}
                   </li>
@@ -181,7 +182,7 @@ export default async function CategoryPage({
         )}
       </Section>
 
-      <section data-surface="dark" data-treatment="E">
+      <section data-surface="dark" data-treatment="E" className={`${surfaceStyles}`}>
         <MediaSlot label={`${category.name} — proof`} className="min-h-[60svh] w-full">
           <Container>
             <ul className="grid gap-10 md:grid-cols-3">
@@ -190,7 +191,7 @@ export default async function CategoryPage({
                   <span className="block font-display text-display-3 text-ink">
                     {fact.split(" ")[0]}
                   </span>
-                  <span className="kicker mt-2 block">
+                  <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted mt-2 block">
                     {fact.split(" ").slice(1).join(" ") || "capability"}
                   </span>
                 </li>
@@ -208,13 +209,13 @@ export default async function CategoryPage({
               <li key={project.slug}>
                 <Link href={routes.project(project.slug)} className="group block">
                   <MediaSlot label={project.name} className="aspect-[4/3]" />
-                  <span className="mono-fact mt-4 block">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-4 block">
                     {project.industry} · {project.suburb}
                   </span>
                   <span className="mt-2 block font-display text-display-4 text-ink group-hover:text-accent">
                     {project.name}
                   </span>
-                  <span className="mono-fact mt-3 block">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3 block">
                     {project.metrics.map((metric) => `${metric.value} ${metric.label}`).join(" · ")}
                   </span>
                 </Link>
@@ -226,15 +227,15 @@ export default async function CategoryPage({
 
       <Section surface="tint" data-treatment="C" label="How we deliver">
         <Kicker>How we deliver</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">
           The same four steps, every system.
         </h2>
         <ol className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {process.map((step) => (
             <li key={step.index}>
-              <span className="kicker">{step.index}</span>
-              <h3 className="mt-4 text-display-4">{step.title}</h3>
-              <p className="mt-3 text-body-sm">{step.body}</p>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{step.index}</span>
+              <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{step.title}</h3>
+              <p className="text-pretty mt-3 text-body-sm">{step.body}</p>
             </li>
           ))}
         </ol>
@@ -242,7 +243,7 @@ export default async function CategoryPage({
 
       <Section surface="light" data-treatment="F" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[16ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             Talk to an engineer about {category.name.toLowerCase()}.
           </h2>
           <ButtonLink href={contactWithContext(category.slug)} size="lg">

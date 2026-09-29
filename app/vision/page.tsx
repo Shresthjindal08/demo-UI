@@ -47,9 +47,9 @@ export default function VisionPage() {
         <ol className="mt-12 grid gap-12 lg:grid-cols-3">
           {principles.map((principle) => (
             <li key={principle.index}>
-              <span className="kicker">{principle.index}</span>
-              <h2 className="mt-4 text-display-4">{principle.title}</h2>
-              <p className="mt-4 text-body-sm">{principle.body}</p>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{principle.index}</span>
+              <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{principle.title}</h2>
+              <p className="text-pretty mt-4 text-body-sm">{principle.body}</p>
             </li>
           ))}
         </ol>
@@ -60,10 +60,10 @@ export default function VisionPage() {
           <MediaSlot label="Engineering practice — real work, real sites" className="aspect-[4/3]" />
           <div>
             <Kicker>Practice</Kicker>
-            <h2 className="mt-6 max-w-[16ch] text-display-3">
+            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">
               The whole system, or none of it.
             </h2>
-            <p className="measure mt-6 text-body-lg">
+            <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-6 text-body-lg">
               Generation, storage, charging and control interact. Designed separately they
               fight each other; designed together they compound. That is the entire
               argument for how this company is organised.
@@ -73,7 +73,7 @@ export default function VisionPage() {
       </Section>
 
       <Section surface="light" data-treatment="F" label="Start a consultation">
-        <p className="mx-auto max-w-[22ch] text-center font-display text-display-2 text-ink">
+        <p className="text-pretty mx-auto max-w-[22ch] text-center font-display text-display-2 text-ink">
           Engineered for what&rsquo;s next.
         </p>
         <div className="mt-12 flex justify-center">

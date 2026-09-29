@@ -10,7 +10,7 @@ export function NewsletterForm() {
 
   if (status === "done") {
     return (
-      <p role="status" className="mt-8 text-body-sm text-ink">
+      <p role="status" className="text-pretty mt-8 text-body-sm text-ink">
         Check your inbox to confirm. We send a short note when something is worth reading.
       </p>
     );
@@ -25,7 +25,7 @@ export function NewsletterForm() {
         setTimeout(() => setStatus("done"), 600);
       }}
     >
-      <label htmlFor={inputId} className="kicker">
+      <label htmlFor={inputId} className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">
         Newsletter
       </label>
       <div className="mt-3 flex flex-wrap gap-3">
@@ -43,11 +43,11 @@ export function NewsletterForm() {
           Subscribe
         </Button>
       </div>
-      <p id={noteId} className="mono-fact mt-3">
+      <p id={noteId} className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3">
         Occasional. Double opt-in. Unsubscribe anytime.
       </p>
       {status === "error" ? (
-        <p role="alert" className="mt-2 text-body-sm text-ink">
+        <p role="alert" className="text-pretty mt-2 text-body-sm text-ink">
           That address did not go through. Please check it and try again.
         </p>
       ) : null}

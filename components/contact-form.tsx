@@ -30,7 +30,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="kicker">
+      <label htmlFor={id} className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">
         {label}
         {required ? " *" : ""}
       </label>
@@ -74,7 +74,7 @@ export function ContactForm() {
       }}
     >
       <fieldset>
-        <legend className="kicker">I am asking about</legend>
+        <legend className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">I am asking about</legend>
         <div className="mt-4 flex flex-wrap gap-2">
           {inquiryTypes.map((type) => (
             <label
@@ -107,7 +107,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-8">
-        <label htmlFor={`${formId}-regarding`} className="kicker">
+        <label htmlFor={`${formId}-regarding`} className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">
           Regarding
         </label>
         <select
@@ -124,14 +124,14 @@ export function ContactForm() {
           ))}
         </select>
         {contextSolution ? (
-          <p className="mono-fact mt-3">
+          <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3">
             Pre-selected from the page you came from.
           </p>
         ) : null}
       </div>
 
       <div className="mt-8">
-        <label htmlFor={`${formId}-message`} className="kicker">
+        <label htmlFor={`${formId}-message`} className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">
           Anything we should know
         </label>
         <textarea
@@ -143,7 +143,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
-        <p className="mono-fact">No obligation · free site assessment</p>
+        <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">No obligation · free site assessment</p>
         <Button type="submit" size="lg" loading={sending}>
           Send
         </Button>

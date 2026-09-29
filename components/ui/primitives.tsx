@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import type { ComponentProps, ReactNode } from "react";
 
 type Surface = "light" | "dark" | "cream" | "tint";
@@ -9,7 +10,7 @@ export function Container({
   children: ReactNode;
   className?: string;
 }) {
-  return <div className={`container-grid ${className}`}>{children}</div>;
+  return <div className={`w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] ${className}`}>{children}</div>;
 }
 
 export function Section({
@@ -35,7 +36,7 @@ export function Section({
       id={id}
       aria-label={label}
       data-surface={surface}
-      className={`${tight ? "section-tight" : "section"} ${className}`}
+      className={`${surfaceStyles} ${tight ? "py-section-tight" : "py-section"} ${className}`}
       {...rest}
     >
       {bleed ? children : <Container>{children}</Container>}
@@ -44,11 +45,11 @@ export function Section({
 }
 
 export function Kicker({ children }: { children: ReactNode }) {
-  return <p className="kicker">{children}</p>;
+  return <p className="text-pretty font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{children}</p>;
 }
 
 export function MonoFact({ children }: { children: ReactNode }) {
-  return <span className="mono-fact">{children}</span>;
+  return <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{children}</span>;
 }
 
 export function TierBadge(_props: { tier: string }) {
@@ -67,11 +68,11 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <header className="section-tight">
+    <header className="py-section-tight">
       <Container>
         <Kicker>{kicker}</Kicker>
-        <h1 className="mt-6 max-w-[16ch] text-display-2">{title}</h1>
-        {lead ? <p className="measure mt-8 text-lead">{lead}</p> : null}
+        <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-2">{title}</h1>
+        {lead ? <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">{lead}</p> : null}
         {children ? <div className="mt-10">{children}</div> : null}
       </Container>
     </header>

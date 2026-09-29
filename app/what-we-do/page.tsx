@@ -69,12 +69,12 @@ export default function WhatWeDoPage() {
                   className="group flex min-h-14 items-center justify-between gap-4 py-4"
                 >
                   <span className="flex items-baseline gap-4">
-                    <span className="kicker">{category.index}</span>
+                    <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{category.index}</span>
                     <span className="font-display text-display-4 text-ink group-hover:text-accent">
                       {category.name}
                     </span>
                   </span>
-                  <span className="mono-fact">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
                     {category.solutions.length}
                   </span>
                 </Link>
@@ -102,8 +102,8 @@ export default function WhatWeDoPage() {
               <Kicker>
                 {category.index} / {category.name}
               </Kicker>
-              <h2 className="mt-6 max-w-[16ch] text-display-3">{category.promise}</h2>
-              <p className="measure mt-6 text-body-lg">{category.descriptor}</p>
+              <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">{category.promise}</h2>
+              <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-6 text-body-lg">{category.descriptor}</p>
               <ul className="mt-8 flex flex-wrap gap-3">
                 {category.solutions.map((solution) => (
                   <li key={solution.slug}>
@@ -118,7 +118,7 @@ export default function WhatWeDoPage() {
                     ) : (
                       <span className="flex min-h-11 items-center gap-2 border border-dashed border-hairline px-4 text-body-sm text-muted">
                         {solution.name}
-                        <span className="mono-fact">soon</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">soon</span>
                       </span>
                     )}
                   </li>
@@ -139,14 +139,14 @@ export default function WhatWeDoPage() {
 
       <Section surface="tint" data-treatment="C" label="Why an integrated system">
         <Kicker>Why integrated</Kicker>
-        <h2 className="mt-6 max-w-[20ch] text-display-3">
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[20ch] text-display-3">
           The benefits are benefits of integration.
         </h2>
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {integrationBenefits.map((benefit) => (
             <li key={benefit.title}>
-              <h3 className="text-display-4">{benefit.title}</h3>
-              <p className="mt-3 text-body-sm">{benefit.body}</p>
+              <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance text-display-4">{benefit.title}</h3>
+              <p className="text-pretty mt-3 text-body-sm">{benefit.body}</p>
             </li>
           ))}
         </ul>
@@ -166,7 +166,7 @@ export default function WhatWeDoPage() {
                   {audience.title}
                 </span>
                 <span className="mt-3 block text-body-sm">{audience.body}</span>
-                <span className="mono-fact mt-auto pt-6 group-hover:text-accent">
+                <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-auto pt-6 group-hover:text-accent">
                   See projects →
                 </span>
               </Link>
@@ -177,7 +177,7 @@ export default function WhatWeDoPage() {
 
       <Section surface="cream" data-treatment="C" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[16ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             Not sure which capability you need?
           </h2>
           <ButtonLink href={contactWithContext("what-we-do")} size="lg">

@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { Container, Kicker } from "@/components/ui/primitives";
@@ -11,14 +12,14 @@ const recovery = [
 
 export default function NotFound() {
   return (
-    <div data-surface="dark">
-      <section className="section pt-[calc(var(--nav-height)+64px)]">
+    <div data-surface="dark" className={`${surfaceStyles}`}>
+      <section className="py-section pt-[calc(var(--nav-height)+64px)]">
         <Container>
           <Kicker>404</Kicker>
-          <h1 className="mt-8 max-w-[16ch] text-display-2">
+          <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-8 max-w-[16ch] text-display-2">
             This page is not where it was.
           </h1>
-          <p className="measure mt-8 text-lead">
+          <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">
             The address is either out of date or slightly wrong. These four routes cover
             almost everything people are looking for.
           </p>

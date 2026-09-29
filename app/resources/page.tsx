@@ -43,9 +43,9 @@ export default function ResourcesPage() {
             <li key={item.title}>
               <article className="flex h-full flex-col border border-hairline p-6">
                 <MediaSlot label={`Video — ${item.title}`} className="aspect-video" />
-                <h2 className="mt-6 text-display-4">{item.title}</h2>
-                <p className="mt-3 text-body-sm">{item.body}</p>
-                <p className="mono-fact mt-auto pt-6">Filming scheduled</p>
+                <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 text-display-4">{item.title}</h2>
+                <p className="text-pretty mt-3 text-body-sm">{item.body}</p>
+                <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-auto pt-6">Filming scheduled</p>
               </article>
             </li>
           ))}
@@ -54,13 +54,13 @@ export default function ResourcesPage() {
 
       <Section surface="light" data-treatment="C" label="Specifier documents">
         <Kicker>For specifiers</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">Ungated, always.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Ungated, always.</h2>
         <ul className="mt-10 border-t border-hairline">
           {documents.map((document) => (
             <li key={document.title} className="border-b border-hairline">
               <span className="flex min-h-14 flex-wrap items-center justify-between gap-4 py-4">
                 <span className="text-body-lg text-ink">{document.title}</span>
-                <span className="mono-fact">{document.note}</span>
+                <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{document.note}</span>
               </span>
             </li>
           ))}
@@ -69,7 +69,7 @@ export default function ResourcesPage() {
 
       <Section surface="dark" data-treatment="F" label="FAQ">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[18ch] text-display-3">Still have a question?</h2>
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">Still have a question?</h2>
           <Link href={routes.faq} className="text-body-lg text-accent">
             Read the FAQ →
           </Link>

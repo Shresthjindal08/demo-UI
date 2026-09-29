@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -55,7 +56,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   };
 
   return (
-    <div data-surface="dark">
+    <div data-surface="dark" className={`${surfaceStyles}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -72,37 +73,37 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         <Kicker>
           {project.industry} · {project.suburb} · {project.year}
         </Kicker>
-        <h1 className="mt-8 max-w-[16ch] text-display-2">{project.name}</h1>
+        <h1 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-8 max-w-[16ch] text-display-2">{project.name}</h1>
         <ul className="mt-12 flex flex-wrap gap-12 border-t border-hairline pt-8">
           {project.metrics.map((metric) => (
             <li key={metric.label}>
               <span className="block font-display text-display-3 text-ink">
                 {metric.value}
               </span>
-              <span className="kicker mt-2 block">{metric.label}</span>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted mt-2 block">{metric.label}</span>
             </li>
           ))}
         </ul>
       </Section>
 
-      <section data-surface="dark" data-treatment="A">
-        <MediaSlot label={`${project.name} — full-bleed`} className="aspect-[21/9] w-full" />
+      <section data-surface="dark" data-treatment="A" className={`${surfaceStyles}`}>
+        <MediaSlot label={`${project.name} — w-[100vw] [margin-inline:calc(50%_-_50vw)]`} className="aspect-[21/9] w-full" />
       </section>
 
       {project.hasBeforeAfter ? (
         <Section surface="light" data-treatment="D" label="Before and after">
           <Kicker>Before / after</Kicker>
-          <h2 className="mt-6 max-w-[18ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">
             The same position, twelve months apart.
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <figure>
               <MediaSlot label="Before" className="aspect-[4/3]" />
-              <figcaption className="mono-fact mt-3">Before</figcaption>
+              <figcaption className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3">Before</figcaption>
             </figure>
             <figure>
               <MediaSlot label="After" className="aspect-[4/3]" />
-              <figcaption className="mono-fact mt-3">After</figcaption>
+              <figcaption className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-3">After</figcaption>
             </figure>
           </div>
         </Section>
@@ -118,7 +119,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
                 className="group flex min-h-14 flex-wrap items-center justify-between gap-4 py-4"
               >
                 <span className="text-body-lg text-ink">{solution.name}</span>
-                <span className="mono-fact group-hover:text-accent">
+                <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted group-hover:text-accent">
                   {solution.spec ?? "Detail"} →
                 </span>
               </Link>
@@ -129,7 +130,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
 
       <Section surface="dark" data-treatment="F" label="Discuss a similar project">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[18ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">
             Discuss a similar project.
           </h2>
           <div className="flex flex-wrap gap-4">

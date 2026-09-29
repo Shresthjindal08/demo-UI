@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { site } from "@/lib/content/site";
@@ -24,7 +25,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div data-surface="cream">
+    <div data-surface="cream" className={`${surfaceStyles}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -38,13 +39,13 @@ export default function ContactPage() {
         imageLabel="Customer story"
       >
         <ul className="flex flex-wrap gap-x-8 gap-y-3">
-          <li className="mono-fact">No obligation</li>
-          <li className="mono-fact">Free site assessment</li>
-          <li className="mono-fact">NETCC Approved Seller</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">No obligation</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">Free site assessment</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">NETCC Approved Seller</li>
         </ul>
       </PageMasthead>
 
-      <section className="section">
+      <section className="py-section">
         <Container>
           <Suspense fallback={<div className="min-h-96" />}>
             <ContactForm />

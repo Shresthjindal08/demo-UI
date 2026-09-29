@@ -12,9 +12,9 @@ export interface NavItem {
 export const primaryNav: NavItem[] = [
   { label: "Solutions", href: routes.whatWeDo, hasPanel: true },
   { label: "Projects", href: routes.projects },
-  { label: "Vision", href: routes.vision },
+  { label: "Our approach", href: routes.vision },
   { label: "About", href: routes.about },
-  { label: "Resources", href: routes.resources },
+  { label: "Insights", href: routes.resources },
 ];
 
 export function megaMenuModel() {
@@ -53,10 +53,10 @@ export function footerModel() {
     ],
     company: [
       { label: "About", href: routes.about },
-      { label: "Vision", href: routes.vision },
+      { label: "Our approach", href: routes.vision },
       { label: "Projects", href: routes.projects },
       { label: "Careers", href: routes.careers },
-      { label: "Resources", href: routes.resources },
+      { label: "Insights", href: routes.resources },
       { label: "FAQ", href: routes.faq },
       { label: "Contact", href: routes.contact },
       { label: "Shop", href: routes.shop, external: true },

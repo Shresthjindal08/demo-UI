@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import Image from "next/image";
 import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
@@ -65,41 +66,51 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="hero" data-surface="dark">
-        <div className="hero__bg" aria-hidden="true">
+      <section className={`${surfaceStyles} relative flex flex-col min-h-[100svh] overflow-hidden isolate bg-bg`} data-surface="dark">
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
             src={heroImage}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="hero__image"
+            className="object-cover [object-position:center_45%] [transform:scale(1.06)] animate-hero-drift"
           />
         </div>
-        <div className="relative z-10 flex min-h-svh flex-col items-center px-6 pb-16 pt-[max(140px,23svh)] text-center">
-          <h1 className="max-w-4xl font-display text-[var(--palette-forest)]">
-            <span className="mb-5 block text-[clamp(0.7rem,1vw,0.85rem)] leading-normal font-semibold tracking-[0.28em] uppercase">
-              Cleaner energy.
-            </span>
-            <span className={`${heroFont.className} block text-[clamp(3.5rem,6.5vw,6.5rem)] leading-[1.05] tracking-[-0.035em]`}>
-              Brighter <span className="italic">tomorrows.</span>
-            </span>
+        <div className="relative z-2 flex flex-col items-center min-h-[100svh] [padding:max(140px,_18svh)_24px_180px] text-center [color:var(--palette-forest)]">
+          <p className="text-pretty text-[0.75rem] font-semibold tracking-[0.28em] uppercase">Powering a cleaner future</p>
+          <span className="w-12 h-0.5 [margin:18px_0_22px] [background:var(--palette-orange)]" aria-hidden="true" />
+          <h1 className={`[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance ${heroFont.className} text-[clamp(3.5rem,_7.2vw,_7.5rem)] font-medium leading-[0.9] tracking-[-0.045em]`}>
+            Energy, designed
+            <br />
+            for <em>tomorrow.</em>
           </h1>
-          <Link
-            href={routes.whatWeDo}
-            className="mt-7 inline-flex min-h-12 items-center gap-5 rounded-full bg-[var(--palette-green)] px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[var(--palette-green-deep)]"
-          >
-            Explore our solutions
-            <span aria-hidden="true">↗</span>
-          </Link>
+          <p className="text-pretty max-w-160 mt-6 text-[clamp(0.95rem,_1.3vw,_1.2rem)] leading-[1.6] [color:var(--palette-slate)]">
+            Smarter solar solutions for homes, businesses and communities.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-6.5">
+            <Link href={routes.whatWeDo} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:var(--palette-green-deep)] [color:white] [&:hover]:[background:var(--palette-green)]">
+              Explore solutions <span aria-hidden="true">→</span>
+            </Link>
+            <Link href={routes.projects} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:rgb(248_250_247_/_0.35)] [color:var(--palette-forest)] [&:hover]:[background:rgb(248_250_247_/_0.8)]">
+              See our projects <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
+        <div className="absolute z-2 bottom-9 left-[clamp(24px,_3vw,_56px)] flex items-center gap-4.5 [padding:18px_22px] [border:1px_solid_rgb(255_255_255_/_0.3)] rounded-lg [background:rgb(15_42_22_/_0.5)] [backdrop-filter:blur(12px)] [color:var(--palette-mist)] [&_svg]:w-12 [&_svg]:h-12 [&_svg]:[padding:8px] [&_svg]:[border:1px_solid_rgb(255_255_255_/_0.5)] [&_svg]:rounded-sm [&_span]:text-[1.8rem] [&_span]:leading-none [&_p]:mt-2 [&_p]:text-[0.6rem] [&_p]:tracking-[0.18em] [&_p]:uppercase [@media(max-width:_479px)]:[padding:12px] [@media(max-width:_479px)]:gap-2.5 [@media(max-width:_479px)]:left-4 [@media(max-width:_479px)]:bottom-6 [@media(max-width:_479px)]:[&_span]:text-[1.4rem]">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <path d="M25 6C11 6 5 11 7 20c9 5 17-1 18-14Z M5 27 23 9 M13 19v-7 M13 19h7" />
+          </svg>
+          <div><span className={heroFont.className}>Renewable energy</span><p className="text-pretty">Built for a brighter future</p></div>
+        </div>
+        <a href="#solutions" className="[color:inherit] no-underline absolute z-2 right-8 bottom-10 grid [place-items:center] w-11 h-11 [border:1px_solid_white] rounded-[50%] [color:white] text-[1.5rem] [@media(max-width:_479px)]:right-4 [@media(max-width:_479px)]:bottom-8" aria-label="Scroll to our solutions">↓</a>
       </section>
 
-      <section data-surface="light" data-treatment="C" aria-label="Accreditation">
+      <section data-surface="light" data-treatment="C" aria-label="Accreditation" className={`${surfaceStyles}`}>
         <Container>
           <ul className="flex gap-8 overflow-x-auto border-t border-hairline py-6 lg:justify-between">
             {site.trustBar.map((item) => (
-              <li key={item} className="mono-fact whitespace-nowrap">
+              <li key={item} className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted whitespace-nowrap">
                 {item}
               </li>
             ))}
@@ -107,10 +118,10 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Section surface="tint" data-treatment="A" label="What we do" className="what-we-do">
-        <div className="what-we-do__header">
+      <Section id="solutions" surface="tint" data-treatment="A" label="What we do" className="relative z-6 mt-[clamp(-5rem,_-7vw,_-2.5rem)] pt-[clamp(2.5rem,_4vw,_4rem)] pb-12 [@media(max-width:_900px)]:mt-[0] [@media(max-width:_900px)]:pt-4">
+        <div className="mb-[2.8rem]">
           <Kicker>What we do</Kicker>
-          <h2>
+          <h2 className="mt-4 max-w-[10ch] font-display text-[clamp(2.75rem,_4.5vw,_7rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-balance text-ink normal-case">
             Four capabilities,
             <br />
             engineered as
@@ -119,23 +130,24 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <ul className="capability-rows" aria-label="Service capabilities">
+        <ul className="flex flex-col gap-[clamp(3.5rem,_7vw,_7rem)] [margin:clamp(1.5rem,_3vw,_3rem)_0_0] p-0 list-none [@media(max-width:_900px)]:gap-[clamp(2.75rem,_8vw,_4rem)]" aria-label="Service capabilities">
           {launchCategories.map((category) => (
-            <li key={category.slug} className="capability-row">
-              <Link href={routes.category(category.slug)} className="capability-row__link">
-                <div className="capability-row__media">
-                  <span className="capability-row__blob" aria-hidden="true" />
-                  <span
-                    className="capability-row__image"
-                    style={{ backgroundImage: `url(${dummyImage(category.name)})` }}
-                  />
+            <li key={category.slug} className="group/capability-row [--blob:color-mix(in_srgb,_var(--palette-green-soft)_26%,_var(--v-surface))] [--blob-deep:color-mix(in_srgb,_var(--palette-green)_32%,_var(--v-surface))] [&:nth-child(2)]:[--blob:color-mix(in_srgb,_var(--palette-yellow)_26%,_var(--v-surface))] [&:nth-child(2)]:[--blob-deep:color-mix(in_srgb,_var(--palette-yellow)_42%,_var(--v-surface))] [&:nth-child(3)]:[--blob:color-mix(in_srgb,_var(--palette-green-bright)_24%,_var(--v-surface))] [&:nth-child(3)]:[--blob-deep:color-mix(in_srgb,_var(--palette-green-bright)_36%,_var(--v-surface))] [&:nth-child(4)]:[--blob:color-mix(in_srgb,_var(--palette-orange)_24%,_var(--v-surface))] [&:nth-child(4)]:[--blob-deep:color-mix(in_srgb,_var(--palette-orange)_36%,_var(--v-surface))] [&:nth-child(5)]:[--blob:color-mix(in_srgb,_var(--palette-green-deep)_28%,_var(--v-surface))] [&:nth-child(5)]:[--blob-deep:color-mix(in_srgb,_var(--palette-green-deep)_42%,_var(--v-surface))]">
+              <Link href={routes.category(category.slug)} className="group/capability-row-link grid grid-cols-[1fr_1fr] items-center gap-[clamp(1.5rem,_5vw,_6rem)] [&:focus-visible]:[outline:2px_solid_var(--v-accent)] [&:focus-visible]:[outline-offset:10px] [&:focus-visible]:rounded-md [@media(max-width:_1200px)]:gap-[clamp(1.25rem,_3.5vw,_3rem)] [@media(max-width:_900px)]:grid-cols-[1fr] [@media(max-width:_900px)]:gap-[clamp(1.25rem,_4vw,_1.75rem)] [@media(max-width:_900px)]:group-even/capability-row:grid-cols-[1fr] [@media(max-width:_900px)]:group-even/capability-row:gap-[clamp(1.25rem,_4vw,_1.75rem)]">
+                <div className="col-start-2 row-start-1 relative aspect-[5_/_4] group-even/capability-row:col-start-1 [@media(max-width:_900px)]:col-start-1 [@media(max-width:_900px)]:row-start-1 [@media(max-width:_900px)]:aspect-[16_/_11] [@media(max-width:_900px)]:group-even/capability-row:col-start-1 [@media(max-width:_900px)]:group-even/capability-row:row-start-1 [@media(max-width:_900px)]:group-even/capability-row:aspect-[16_/_11]">
+                  <span className="absolute inset-0 [background:var(--blob)] rounded-[clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)] [box-shadow:0_42px_80px_-46px_var(--blob-deep)] group-even/capability-row:rounded-[var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)]" aria-hidden="true" />
+                  <div
+                    className="overflow-hidden absolute [inset:clamp(1rem,_2.6vw,_2.25rem)] bg-center bg-cover rounded-[clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)] [box-shadow:0_30px_60px_-34px_rgb(0_0_0_/_0.4)] [transition:transform_640ms_var(--ease)] group-even/capability-row:rounded-[var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)] group-hover/capability-row-link:scale-103 [@media(max-width:_640px)]:[inset:clamp(0.75rem,_3.5vw,_1.25rem)]"
+                  >
+                    <Image src={dummyImage(category.name)} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" className="object-cover" />
+                  </div>
                 </div>
 
-                <div className="capability-row__text">
-                  <span className="capability-row__index">{category.index}</span>
-                  <h3 className="capability-row__name">{category.name}</h3>
-                  <p className="capability-row__descriptor">{category.descriptor}</p>
-                  <span className="capability-row__cta">
+                <div className="col-start-1 row-start-1 flex flex-col items-start gap-[clamp(0.9rem,_1.5vw,_1.35rem)] group-even/capability-row:col-start-2 [@media(max-width:_900px)]:col-start-1 [@media(max-width:_900px)]:row-start-2 [@media(max-width:_900px)]:group-even/capability-row:col-start-1 [@media(max-width:_900px)]:group-even/capability-row:row-start-2">
+                  <span className="font-mono text-[0.72rem] tracking-[0.28em] uppercase text-accent">{category.index}</span>
+                  <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[12ch] text-ink font-display text-[clamp(2rem,_3.4vw,_3.75rem)] leading-[0.98] tracking-[-0.045em] [transition:color_var(--duration-base)_var(--ease)] group-hover/capability-row-link:text-accent [@media(max-width:_1200px)]:text-[clamp(1.9rem,_3.6vw,_2.75rem)] [@media(max-width:_640px)]:text-[clamp(1.85rem,_8vw,_2.5rem)]">{category.name}</h3>
+                  <p className="text-pretty max-w-[40ch] text-body text-[clamp(1rem,_1.15vw,_1.15rem)] leading-[1.6]">{category.descriptor}</p>
+                  <span className="inline-flex items-center gap-2 mt-[0.4rem] pb-[0.3rem] text-highlight font-mono text-[0.75rem] tracking-[0.16em] uppercase [border-bottom:1px_solid_color-mix(in_srgb,_var(--v-highlight)_40%,_transparent)] [transition:border-color_var(--duration-base)_var(--ease)] group-hover/capability-row-link:[border-color:var(--v-highlight)]">
                     {category.solutions.length} solutions →
                   </span>
                 </div>
@@ -149,7 +161,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Kicker>Most requested</Kicker>
-            <h2 className="mt-6 max-w-[16ch] text-display-3">
+            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">
               The three systems people ask for first.
             </h2>
           </div>
@@ -157,18 +169,18 @@ export default function HomePage() {
             See all solutions →
           </Link>
         </div>
-        <ul className="requested">
+        <ul className="grid grid-cols-[repeat(3,_minmax(0,_1fr))] [margin:clamp(2.5rem,_4vw,_4rem)_0_0] p-0 list-none [border-top:1px_solid_var(--v-hairline-strong)] [@media(max-width:_1024px)]:grid-cols-[1fr]">
           {popular.map((solution, index) => (
-            <li key={solution.slug} className="requested__item">
+            <li key={solution.slug} className="[&+li]:[border-left:1px_solid_var(--v-hairline)] [@media(max-width:_1024px)]:[&+li]:[border-left:0] [@media(max-width:_1024px)]:[&+li]:[border-top:1px_solid_var(--v-hairline)]">
               <Link
                 href={routes.solution(solution.category.slug, solution.slug)}
-                className="requested__link"
+                className="group/requested-link relative flex flex-col h-full [padding:clamp(1.5rem,_2vw,_2.25rem)] [&::before]:[content:''] [&::before]:absolute [&::before]:top-[-1px] [&::before]:left-[0] [&::before]:right-[0] [&::before]:h-0.5 [&::before]:bg-highlight [&::before]:scale-x-0 [&::before]:origin-left [&::before]:[transition:transform_var(--duration-base)_var(--ease)] [&:hover::before]:scale-x-100 [&:focus-visible::before]:scale-x-100"
               >
-                <span className="requested__index">
+                <span className="font-mono text-[0.7rem] tracking-[0.24em] text-muted [transition:color_var(--duration-micro)_var(--ease)] group-hover/requested-link:text-accent">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="requested__media">
+                <span className="relative block h-[clamp(11rem,_17vw,_15rem)] mt-5 rounded-lg overflow-hidden bg-surface [&_img]:object-cover [&_img]:[transition:transform_620ms_var(--ease)] group-hover/requested-link:[&_img]:scale-107">
                   <Image
                     src={dummyImage(solution.name)}
                     alt=""
@@ -177,18 +189,18 @@ export default function HomePage() {
                   />
                 </span>
 
-                <span className="requested__head">
-                  <span className="requested__name">{solution.name}</span>
+                <span className="flex items-center gap-3 mt-6">
+                  <span className="font-display text-[clamp(1.5rem,_1.9vw,_2.1rem)] leading-[1.05] tracking-[-0.03em] text-ink [transition:color_var(--duration-micro)_var(--ease)] group-hover/requested-link:text-accent">{solution.name}</span>
                   <TierBadge tier={solution.tier} />
                 </span>
 
                 {solution.spec ? (
-                  <span className="requested__spec">{solution.spec}</span>
+                  <span className="mt-[0.7rem] font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{solution.spec}</span>
                 ) : null}
-                <span className="requested__outcome">{solution.outcome}</span>
+                <span className="mt-4 text-[length:var(--text-body-sm)] leading-[1.55] text-body">{solution.outcome}</span>
 
                 {solution.investment ? (
-                  <span className="requested__price">
+                  <span className="flex items-baseline gap-[0.55rem] mt-[auto] pt-7 font-display text-[clamp(1.5rem,_1.8vw,_2rem)] tracking-[-0.03em] text-ink [&_em]:font-mono [&_em]:not-italic [&_em]:text-[0.68rem] [&_em]:tracking-[0.2em] [&_em]:uppercase [&_em]:text-muted">
                     <em>From</em>
                     {solution.investment.split("–")[0].trim()}
                   </span>
@@ -201,13 +213,13 @@ export default function HomePage() {
 
       <Section surface="tint" data-treatment="C" label="How we work">
         <Kicker>How we work</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">Method, not salesmanship.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Method, not salesmanship.</h2>
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {howWeWork.map((item) => (
             <li key={item.index}>
-              <span className="kicker">{item.index}</span>
-              <h3 className="mt-4 text-display-4">{item.title}</h3>
-              <p className="mt-3 text-body-sm">{item.body}</p>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{item.index}</span>
+              <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{item.title}</h3>
+              <p className="text-pretty mt-3 text-body-sm">{item.body}</p>
             </li>
           ))}
         </ul>
@@ -217,7 +229,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Kicker>Selected work</Kicker>
-            <h2 className="mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
+            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
           </div>
           <Link href={routes.projects} className="text-body-sm text-accent">
             All projects →
@@ -236,7 +248,7 @@ export default function HomePage() {
                     label={project.name}
                     className={lead ? "aspect-[4/3]" : "aspect-[4/5]"}
                   />
-                  <span className="mono-fact mt-6 block">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6 block">
                     {project.industry} · {project.suburb} · {project.year}
                   </span>
                   <span
@@ -252,7 +264,7 @@ export default function HomePage() {
                         <span className="block font-display text-[1.75rem] text-ink">
                           {metric.value}
                         </span>
-                        <span className="mono-fact">{metric.label}</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{metric.label}</span>
                       </li>
                     ))}
                   </ul>
@@ -263,7 +275,7 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <section data-surface="light" data-treatment="E" className="relative">
+      <section data-surface="light" data-treatment="E" className={`${surfaceStyles} relative`}>
         <MediaSlot
           label="Rooftop solar array at golden hour — Victoria"
           src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2000&q=80"
@@ -281,7 +293,7 @@ export default function HomePage() {
                   <span className="block font-display text-display-2 text-ink">
                     {stat.value}
                   </span>
-                  <span className="kicker mt-2 block">{stat.label}</span>
+                  <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted mt-2 block">{stat.label}</span>
                 </li>
               ))}
             </ul>
@@ -291,13 +303,13 @@ export default function HomePage() {
 
       <Section surface="light" data-treatment="D" label="Customer journey">
         <Kicker>The journey</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">
           Six steps, one team, no handovers.
         </h2>
         <ol className="mt-12 grid gap-px border border-hairline bg-hairline md:grid-cols-2 xl:grid-cols-6">
           {journey.map((step, index) => (
             <li key={step} className="bg-bg p-6">
-              <span className="kicker">{String(index + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{String(index + 1).padStart(2, "0")}</span>
               <span className="mt-3 block text-body-sm text-ink">{step}</span>
             </li>
           ))}
@@ -310,11 +322,11 @@ export default function HomePage() {
           <div>
             <Kicker>Customer story</Kicker>
             <blockquote className="mt-6">
-              <p className="text-display-4">
+              <p className="text-pretty text-display-4">
                 “They sized it to the house, not to a price list. Three years on it still
                 does what they said it would.”
               </p>
-              <footer className="mono-fact mt-6">
+              <footer className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6">
                 <cite className="not-italic">Homeowner · Brighton</cite>
               </footer>
             </blockquote>
@@ -323,14 +335,14 @@ export default function HomePage() {
       </Section>
 
       <Section surface="cream" data-treatment="F" label="Engineering statement">
-        <p className="mx-auto max-w-[20ch] text-center font-display text-display-2 text-ink">
+        <p className="text-pretty mx-auto max-w-[20ch] text-center font-display text-display-2 text-ink">
           Engineered for what&rsquo;s next.
         </p>
       </Section>
 
       <Section surface="light" data-treatment="C" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[16ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             An engineer will call you back.
           </h2>
           <div className="flex flex-wrap gap-4">

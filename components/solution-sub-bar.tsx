@@ -1,4 +1,5 @@
 "use client";
+import { surfaceStyles } from "@/lib/styles";
 
 import { useEffect, useState } from "react";
 import { site } from "@/lib/content/site";
@@ -24,17 +25,10 @@ export function SolutionSubBar({
     <div
       data-surface="cream"
       aria-hidden={!visible}
-      className="fixed inset-x-0 bottom-0 z-[80] border-t border-hairline md:top-[var(--nav-height-scrolled)] md:bottom-auto md:border-t-0 md:border-b"
-      style={{
-        transform: visible ? "none" : "translateY(100%)",
-        transition: "transform var(--duration-base) var(--ease)",
-        backgroundColor: "var(--v-nav-fill)",
-        backdropFilter: "saturate(180%) blur(20px)",
-        WebkitBackdropFilter: "saturate(180%) blur(20px)",
-        pointerEvents: visible ? "auto" : "none",
-      }}
+      className={`${surfaceStyles} transition-transform duration-400 ease-brand bg-[var(--v-nav-fill)] backdrop-saturate-180 backdrop-blur-[20px] data-[visible=true]:translate-y-0 data-[visible=true]:pointer-events-auto data-[visible=false]:translate-y-full data-[visible=false]:pointer-events-none fixed inset-x-0 bottom-0 z-80 border-t border-hairline md:top-[var(--nav-height-scrolled)] md:bottom-auto md:border-t-0 md:border-b`}
+      data-visible={visible}
     >
-      <div className="container-grid flex min-h-14 flex-wrap items-center justify-between gap-4 py-2">
+      <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex min-h-14 flex-wrap items-center justify-between gap-4 py-2">
         <span className="hidden text-body-sm text-ink md:block">{name}</span>
         <div className="flex flex-1 flex-wrap gap-3 md:flex-none">
           <ButtonLink

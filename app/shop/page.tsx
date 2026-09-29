@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import type { Metadata } from "next";
 import { site } from "@/lib/content/site";
 import { PageMasthead } from "@/components/ui/page-masthead";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ShopPage() {
   return (
-    <div data-surface="dark">
+    <div data-surface="dark" className={`${surfaceStyles}`}>
       <PageMasthead
         kicker="Shop"
         title="You are leaving vagus.energy."

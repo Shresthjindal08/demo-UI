@@ -49,7 +49,7 @@ export function ShopRedirect({ url }: { url: string }) {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-4">
-        <p role="status" aria-live="polite" className="mono-fact">
+        <p role="status" aria-live="polite" className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
           {paused
             ? "Auto-continue paused"
             : `Auto-continue in ${remaining}s`}
@@ -58,7 +58,7 @@ export function ShopRedirect({ url }: { url: string }) {
           type="button"
           variant="text"
           onClick={() => setPaused((value) => !value)}
-          className="mono-fact underline"
+          className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted underline"
         >
           {paused ? "Resume" : "Pause"}
         </Button>

@@ -1,4 +1,5 @@
 "use client";
+import { surfaceStyles } from "@/lib/styles";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -67,15 +68,11 @@ export function MegaMenu({
       id={panelId}
       data-surface="base"
       hidden={!open}
-      className="absolute inset-x-0 top-full hidden shadow-menu xl:block"
-      style={{
-        opacity: open ? 1 : 0,
-        visibility: open ? "visible" : "hidden",
-        transition: `opacity var(--duration-base) var(--ease), visibility var(--duration-base)`,
-      }}
+      className={`${surfaceStyles} absolute inset-x-0 top-full hidden shadow-menu xl:block transition-[opacity,visibility] duration-400 ease-brand data-[open=true]:visible data-[open=true]:opacity-100 data-[open=false]:invisible data-[open=false]:opacity-0`}
+      data-open={open}
     >
-      <div className="hairline-t border-t">
-        <div className="container-grid py-10">
+      <div className="[border-top:1px_solid_var(--v-hairline)] border-t">
+        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] py-10">
           <div className="grid grid-cols-[repeat(4,minmax(0,1fr))_320px] gap-6">
             {model.columns.map((column) => (
               <div key={column.href}>
@@ -85,7 +82,7 @@ export function MegaMenu({
                   onClick={() => linkClick(column.name, null, null)}
                   className="group block"
                 >
-                  <span className="kicker block">{column.index}</span>
+                  <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted block">{column.index}</span>
                   <span className="mt-2 block font-display text-[1.375rem] text-ink group-hover:text-accent">
                     {column.name}
                   </span>
@@ -107,7 +104,7 @@ export function MegaMenu({
                       ) : (
                         <span className="flex min-h-11 items-center gap-2 text-body-sm text-muted">
                           {solution.name}
-                          <span className="mono-fact">soon</span>
+                          <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">soon</span>
                         </span>
                       )}
                     </li>
@@ -117,7 +114,7 @@ export function MegaMenu({
             ))}
 
             <div className="border-l border-hairline pl-6">
-              <p className="kicker">Most requested</p>
+              <p className="text-pretty font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">Most requested</p>
               <ul className="mt-5 space-y-3">
                 {model.pinned.map((solution) => (
                   <li key={solution.href}>
@@ -136,7 +133,7 @@ export function MegaMenu({
                         {solution.name}
                       </span>
                       {solution.spec ? (
-                        <span className="mono-fact mt-1 block">{solution.spec}</span>
+                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-1 block">{solution.spec}</span>
                       ) : null}
                     </Link>
                   </li>
@@ -149,11 +146,11 @@ export function MegaMenu({
                   onClick={() => linkClick("featured_project", model.featured.slug, null)}
                   className="mt-6 block border-t border-hairline pt-4"
                 >
-                  <span className="kicker">Featured project</span>
+                  <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">Featured project</span>
                   <span className="mt-2 block text-body-sm text-ink">
                     {model.featured.name}
                   </span>
-                  <span className="mono-fact mt-1 block">
+                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-1 block">
                     {model.featured.metrics
                       .map((metric) => `${metric.value} ${metric.label}`)
                       .join(" · ")}

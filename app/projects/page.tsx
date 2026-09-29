@@ -1,3 +1,4 @@
+import { surfaceStyles } from "@/lib/styles";
 import type { Metadata } from "next";
 import { projects, projectFilters } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
@@ -28,7 +29,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div data-surface="dark">
+    <div data-surface="dark" className={`${surfaceStyles}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -41,10 +42,10 @@ export default function ProjectsPage() {
         imageLabel="Norwood Manufacturing — full-bleed"
       >
         <ul className="flex flex-wrap gap-x-8 gap-y-3">
-          <li className="mono-fact">{projects.length} projects</li>
-          <li className="mono-fact">46.2 MW installed</li>
-          <li className="mono-fact">2014—2026</li>
-          <li className="mono-fact">{filters.locations.length} suburbs</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{projects.length} projects</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">46.2 MW installed</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">2014—2026</li>
+          <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{filters.locations.length} suburbs</li>
         </ul>
       </PageMasthead>
 
@@ -52,7 +53,7 @@ export default function ProjectsPage() {
 
       <Section surface="dark" data-treatment="C" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[18ch] text-display-3">
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">
             Discuss a project at your scale.
           </h2>
           <div className="flex flex-wrap gap-4">

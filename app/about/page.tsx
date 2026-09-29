@@ -53,11 +53,11 @@ export default function AboutPage() {
           <div>
             <Kicker>From the founder</Kicker>
             <blockquote className="mt-6">
-              <p className="text-display-4">
+              <p className="text-pretty text-display-4">
                 “We started because too many systems were being sold before they were
                 designed. That order is the whole problem.”
               </p>
-              <footer className="mono-fact mt-6">
+              <footer className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6">
                 <cite className="not-italic">Founder, Vagus Energy</cite>
               </footer>
             </blockquote>
@@ -67,13 +67,13 @@ export default function AboutPage() {
 
       <Section surface="tint" data-treatment="C" label="Accreditation">
         <Kicker>Accreditation</Kicker>
-        <h2 className="mt-6 max-w-[18ch] text-display-3">Current, verifiable, listed.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Current, verifiable, listed.</h2>
         <ul className="mt-12 grid gap-8 md:grid-cols-3">
           {site.accreditations.map((item) => (
             <li key={item.label} className="border-t border-hairline pt-6">
               <span className="block text-body-lg text-ink">{item.label}</span>
               {item.number ? (
-                <span className="mono-fact mt-2 block">{item.number}</span>
+                <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-2 block">{item.number}</span>
               ) : null}
             </li>
           ))}
@@ -88,7 +88,7 @@ export default function AboutPage() {
               key={entry.year}
               className="flex flex-wrap gap-x-12 gap-y-2 border-b border-hairline py-6"
             >
-              <span className="mono-fact w-16 shrink-0">{entry.year}</span>
+              <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted w-16 shrink-0">{entry.year}</span>
               <span className="text-body-lg text-ink">{entry.event}</span>
             </li>
           ))}
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
       <Section surface="dark" data-treatment="F" label="Start a consultation">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="max-w-[16ch] text-display-3">Work with our engineers.</h2>
+          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">Work with our engineers.</h2>
           <div className="flex flex-wrap gap-4">
             <ButtonLink href={contactWithContext("about")} size="lg">
               {site.consultationCta}
