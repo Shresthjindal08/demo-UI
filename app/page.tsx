@@ -3,14 +3,13 @@ import Image from "next/image";
 import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { mostRequested } from "@/lib/content/categories";
 import { featuredProjects } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
-import { dummyImage } from "@/lib/content/media";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
-import { Container, Kicker, Section, TierBadge } from "@/components/ui/primitives";
+import { Container, Kicker, Section } from "@/components/ui/primitives";
 import { MediaSlot } from "@/components/ui/media-slot";
+import { HomeMostRequested } from "@/components/home-most-requested";
 import { HomeCapabilities } from "@/components/home-capabilities";
 
 const heroFont = Cormorant_Garamond({
@@ -62,7 +61,6 @@ const journey = [
 ];
 
 export default function HomePage() {
-  const popular = mostRequested();
   const featured = featuredProjects();
 
   return (
@@ -118,59 +116,7 @@ export default function HomePage() {
 
       <HomeCapabilities displayFont={heroFont.className} />
 
-      <Section surface="light" data-treatment="B" label="Most requested">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <Kicker>Most requested</Kicker>
-            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">
-              The three systems people ask for first.
-            </h2>
-          </div>
-          <Link href={routes.whatWeDo} className="text-body-sm text-accent">
-            See all solutions →
-          </Link>
-        </div>
-        <ul className="grid grid-cols-[repeat(3,_minmax(0,_1fr))] [margin:clamp(2.5rem,_4vw,_4rem)_0_0] p-0 list-none [border-top:1px_solid_var(--v-hairline-strong)] [@media(max-width:_1024px)]:grid-cols-[1fr]">
-          {popular.map((solution, index) => (
-            <li key={solution.slug} className="[&+li]:[border-left:1px_solid_var(--v-hairline)] [@media(max-width:_1024px)]:[&+li]:[border-left:0] [@media(max-width:_1024px)]:[&+li]:[border-top:1px_solid_var(--v-hairline)]">
-              <Link
-                href={routes.solution(solution.category.slug, solution.slug)}
-                className="group/requested-link relative flex flex-col h-full [padding:clamp(1.5rem,_2vw,_2.25rem)] [&::before]:[content:''] [&::before]:absolute [&::before]:top-[-1px] [&::before]:left-[0] [&::before]:right-[0] [&::before]:h-0.5 [&::before]:bg-highlight [&::before]:scale-x-0 [&::before]:origin-left [&::before]:[transition:transform_var(--duration-base)_var(--ease)] [&:hover::before]:scale-x-100 [&:focus-visible::before]:scale-x-100"
-              >
-                <span className="font-mono text-[0.7rem] tracking-[0.24em] text-muted [transition:color_var(--duration-micro)_var(--ease)] group-hover/requested-link:text-accent">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <span className="relative block h-[clamp(11rem,_17vw,_15rem)] mt-5 rounded-lg overflow-hidden bg-surface [&_img]:object-cover [&_img]:[transition:transform_620ms_var(--ease)] group-hover/requested-link:[&_img]:scale-107">
-                  <Image
-                    src={dummyImage(solution.name)}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                </span>
-
-                <span className="flex items-center gap-3 mt-6">
-                  <span className="font-display text-[clamp(1.5rem,_1.9vw,_2.1rem)] leading-[1.05] tracking-[-0.03em] text-ink [transition:color_var(--duration-micro)_var(--ease)] group-hover/requested-link:text-accent">{solution.name}</span>
-                  <TierBadge tier={solution.tier} />
-                </span>
-
-                {solution.spec ? (
-                  <span className="mt-[0.7rem] font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{solution.spec}</span>
-                ) : null}
-                <span className="mt-4 text-[length:var(--text-body-sm)] leading-[1.55] text-body">{solution.outcome}</span>
-
-                {solution.investment ? (
-                  <span className="flex items-baseline gap-[0.55rem] mt-[auto] pt-7 font-display text-[clamp(1.5rem,_1.8vw,_2rem)] tracking-[-0.03em] text-ink [&_em]:font-mono [&_em]:not-italic [&_em]:text-[0.68rem] [&_em]:tracking-[0.2em] [&_em]:uppercase [&_em]:text-muted">
-                    <em>From</em>
-                    {solution.investment.split("–")[0].trim()}
-                  </span>
-                ) : null}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <HomeMostRequested displayFont={heroFont.className} />
 
       <Section surface="tint" data-treatment="C" label="How we work">
         <Kicker>How we work</Kicker>
