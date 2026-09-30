@@ -1,3 +1,4 @@
+import { HomeImpact } from "@/components/home-impact";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
 import { surfaceStyles } from "@/lib/styles";
 import Image from "next/image";
@@ -99,31 +100,7 @@ export default function HomePage() {
 
       <HomeProjects displayFont={heroFont.className} />
 
-      <section data-surface="light" data-treatment="E" className={`${surfaceStyles} relative`}>
-        <MediaSlot
-          label="Rooftop solar array at golden hour — Victoria"
-          src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2000&q=80"
-          className="min-h-[60svh] w-full"
-        >
-          <Container>
-            <ul className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
-              {[
-                { value: "46.2", label: "MW installed" },
-                { value: "2,500+", label: "Projects delivered" },
-                { value: "99.4%", label: "Fleet uptime" },
-                { value: "10+", label: "Years operating" },
-              ].map((stat) => (
-                <li key={stat.label}>
-                  <span className="block font-display text-display-2 text-ink">
-                    {stat.value}
-                  </span>
-                  <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted mt-2 block">{stat.label}</span>
-                </li>
-              ))}
-            </ul>
-          </Container>
-        </MediaSlot>
-      </section>
+      <HomeImpact displayFont={heroFont.className} />
 
       <Section surface="light" data-treatment="D" label="Customer journey">
         <Kicker>The journey</Kicker>

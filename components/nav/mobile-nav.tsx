@@ -56,10 +56,15 @@ export function MobileNav({
       }
     };
 
+    const onResize = () => {
+      if (window.innerWidth >= 1280) onClose();
+    };
+    window.addEventListener("resize", onResize);
     document.addEventListener("keydown", onKeyDown);
     sheetRef.current?.querySelector<HTMLElement>("a, button")?.focus();
 
     return () => {
+      window.removeEventListener("resize", onResize);
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = overflow;
       previouslyFocused?.focus();

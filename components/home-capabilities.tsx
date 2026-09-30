@@ -32,15 +32,15 @@ export function HomeCapabilities({ displayFont }: { displayFont: string }) {
         </div>
       </div>
 
-      <ul className="grid gap-5 md:grid-cols-2" aria-label="Service capabilities">
+      <ul className="grid gap-5 lg:grid-cols-2" aria-label="Service capabilities">
         {launchCategories.map((category, index) => (
           <li key={category.slug}>
             <Link href={routes.category(category.slug)} className="group relative isolate flex min-h-72 h-full overflow-hidden rounded-lg border border-hairline bg-white transition-colors duration-[var(--duration-base)] hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:min-h-80">
-              <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[60%]">
+              <div className="pointer-events-none absolute bottom-0 right-0 -z-10 h-52 w-full sm:inset-y-0 sm:h-auto sm:w-[60%]">
                 <Image src={`/capabilities/${category.slug}.png`} alt="" fill sizes="(max-width: 767px) 65vw, 35vw" className="object-contain object-right-bottom transition-transform duration-[var(--duration-base)] ease-brand group-hover:scale-105 motion-reduce:transform-none" />
                 <div className="absolute inset-0 bg-linear-to-r from-white via-white/10 to-transparent" />
               </div>
-              <div className="relative flex w-[52%] flex-col items-start py-6 pl-5 pr-2 sm:pl-7 lg:py-8 lg:pl-8">
+              <div className="relative flex w-full flex-col items-start pt-6 pb-56 pl-5 pr-5 sm:w-[52%] sm:py-6 sm:pr-2 sm:pl-7 lg:py-8 lg:pl-8">
                 <span className="mb-4 font-mono text-caption text-accent after:mt-1 after:block after:h-px after:w-4 after:bg-accent">{category.index}</span>
                 <h3 className={`${displayFont} text-[clamp(1.875rem,2.8vw,2.75rem)] font-medium leading-[0.98] tracking-[var(--tracking-display)] text-ink`}>{category.name}</h3>
                 <p className="mt-4 max-w-[23ch] text-body-sm leading-[1.45] text-body">{category.descriptor}</p>

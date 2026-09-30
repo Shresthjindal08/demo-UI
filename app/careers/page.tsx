@@ -35,7 +35,7 @@ export default function CareersPage() {
             <li key={role.title} className="border-b border-hairline">
               <div className="flex min-h-20 flex-wrap items-center justify-between gap-4 py-5">
                 <span className="text-display-4 text-ink">{role.title}</span>
-                <span className="flex items-center gap-6">
+                <span className="flex flex-wrap items-center gap-4 sm:gap-6">
                   <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{role.location}</span>
                   <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{role.type}</span>
                   <ButtonLink href={contactWithContext(`careers-${role.title}`)} variant="secondary">

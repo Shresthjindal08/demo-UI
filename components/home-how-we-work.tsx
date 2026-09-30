@@ -29,7 +29,7 @@ export function HomeHowWeWork({ displayFont }: { displayFont: string }) {
           <p className="flex items-center gap-4 font-mono text-kicker uppercase tracking-[var(--tracking-kicker)] text-accent"><span aria-hidden="true" className="h-px w-12 bg-accent/40" />How we work</p>
           <h2 className={`${displayFont} mt-6 text-display-2 font-medium leading-[1.04] tracking-[var(--tracking-display)] text-ink`}>Method,<br /><em className="text-accent">not salesmanship.</em></h2>
         </div>
-        <div className="flex items-start gap-6 lg:pb-3">
+        <div className="flex flex-wrap items-start gap-6 lg:pb-3">
           <p className="max-w-xs text-body text-body-sm">A clear, structured process from assessment to long-term support — built around real outcomes, not pushy promises.</p>
           <div className="flex shrink-0 gap-3 xl:hidden">
             <button type="button" aria-label="Previous stage" aria-controls="work-stages" disabled={position.start} onClick={() => scrollStages(-1)} className="grid size-11 place-items-center rounded-pill border border-accent bg-tint text-accent transition-colors hover:bg-accent hover:text-on-accent disabled:cursor-default disabled:border-hairline disabled:bg-white disabled:text-muted disabled:opacity-40">←</button>

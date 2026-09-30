@@ -25,7 +25,7 @@ export function HomeMostRequested({ displayFont }: { displayFont: string }) {
           <h2 className={`${displayFont} mt-5 text-display-2 font-medium leading-[1.04] tracking-[var(--tracking-display)] text-ink`}>The three systems<br /><em className="text-accent">people ask for first.</em></h2>
         </div>
         <div className="flex flex-wrap items-center gap-6 lg:pb-3">
-          <p className="max-w-xs flex-1 text-body-sm text-body">From generating clean power to storing it and keeping you on the move — these are the solutions our customers choose most.</p>
+          <p className="basis-56 grow text-body-sm text-body">From generating clean power to storing it and keeping you on the move — these are the solutions our customers choose most.</p>
           <Link href={routes.whatWeDo} className="inline-flex min-h-11 shrink-0 items-center gap-5 rounded-pill border border-accent px-5 py-3 text-body-sm text-accent transition-colors hover:bg-accent hover:text-on-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">See all solutions <span aria-hidden="true">→</span></Link>
         </div>
       </div>
@@ -59,7 +59,7 @@ export function HomeMostRequested({ displayFont }: { displayFont: string }) {
                 <div className="relative mr-5 aspect-[1.9] overflow-hidden rounded-t-[50%_85%] rounded-b-md bg-tint sm:mr-10">
                   <Image src={`/most-requested/${solution.slug}.png`} alt="" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover transition-transform duration-[var(--duration-base)] ease-brand group-hover:scale-105 motion-reduce:transform-none" />
                 </div>
-                <div className={`absolute bottom-5 flex w-40 items-start gap-3 rounded-lg border border-hairline bg-white/95 p-4 text-body-sm text-body sm:bottom-8 sm:w-48 ${index % 2 ? "left-0 lg:-left-5" : "right-0"}`}>
+                <div className={`relative mt-3 flex w-full items-start gap-3 sm:absolute sm:mt-0 rounded-lg border border-hairline bg-white/95 p-4 text-body-sm text-body sm:bottom-8 sm:w-48 ${index % 2 ? "left-0 lg:-left-5" : "right-0"}`}>
                   <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-7 shrink-0 rounded-pill bg-tint p-1 text-accent">{symbols[index]}</svg>
                   <div>{detail.callout}<span aria-hidden="true" className="ml-auto mt-2 grid size-7 place-items-center rounded-pill border border-hairline text-accent">→</span></div>
                 </div>
