@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { launchCategories, mostRequested } from "@/lib/content/categories";
+import { mostRequested } from "@/lib/content/categories";
 import { featuredProjects } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
 import { dummyImage } from "@/lib/content/media";
@@ -11,6 +11,7 @@ import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
 import { Container, Kicker, Section, TierBadge } from "@/components/ui/primitives";
 import { MediaSlot } from "@/components/ui/media-slot";
+import { HomeCapabilities } from "@/components/home-capabilities";
 
 const heroFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -115,44 +116,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Section id="solutions" surface="tint" data-treatment="A" label="What we do" className="relative z-6 mt-[clamp(-5rem,_-7vw,_-2.5rem)] pt-[clamp(2.5rem,_4vw,_4rem)] pb-12 [@media(max-width:_900px)]:mt-[0] [@media(max-width:_900px)]:pt-4">
-        <div className="mb-[2.8rem]">
-          <Kicker>What we do</Kicker>
-          <h2 className="mt-4 max-w-[10ch] font-display text-[clamp(2.75rem,_4.5vw,_7rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-balance text-ink normal-case">
-            Four capabilities,
-            <br />
-            engineered as
-            <br />
-            one system.
-          </h2>
-        </div>
-
-        <ul className="flex flex-col gap-[clamp(3.5rem,_7vw,_7rem)] [margin:clamp(1.5rem,_3vw,_3rem)_0_0] p-0 list-none [@media(max-width:_900px)]:gap-[clamp(2.75rem,_8vw,_4rem)]" aria-label="Service capabilities">
-          {launchCategories.map((category) => (
-            <li key={category.slug} className="group/capability-row [--blob:color-mix(in_srgb,_var(--palette-green-soft)_26%,_var(--v-surface))] [--blob-deep:color-mix(in_srgb,_var(--palette-green)_32%,_var(--v-surface))] [&:nth-child(2)]:[--blob:color-mix(in_srgb,_var(--palette-yellow)_26%,_var(--v-surface))] [&:nth-child(2)]:[--blob-deep:color-mix(in_srgb,_var(--palette-yellow)_42%,_var(--v-surface))] [&:nth-child(3)]:[--blob:color-mix(in_srgb,_var(--palette-green-bright)_24%,_var(--v-surface))] [&:nth-child(3)]:[--blob-deep:color-mix(in_srgb,_var(--palette-green-bright)_36%,_var(--v-surface))] [&:nth-child(4)]:[--blob:color-mix(in_srgb,_var(--palette-orange)_24%,_var(--v-surface))] [&:nth-child(4)]:[--blob-deep:color-mix(in_srgb,_var(--palette-orange)_36%,_var(--v-surface))] [&:nth-child(5)]:[--blob:color-mix(in_srgb,_var(--palette-green-deep)_28%,_var(--v-surface))] [&:nth-child(5)]:[--blob-deep:color-mix(in_srgb,_var(--palette-green-deep)_42%,_var(--v-surface))]">
-              <Link href={routes.category(category.slug)} className="group/capability-row-link grid grid-cols-[1fr_1fr] items-center gap-[clamp(1.5rem,_5vw,_6rem)] [&:focus-visible]:[outline:2px_solid_var(--v-accent)] [&:focus-visible]:[outline-offset:10px] [&:focus-visible]:rounded-md [@media(max-width:_1200px)]:gap-[clamp(1.25rem,_3.5vw,_3rem)] [@media(max-width:_900px)]:grid-cols-[1fr] [@media(max-width:_900px)]:gap-[clamp(1.25rem,_4vw,_1.75rem)] [@media(max-width:_900px)]:group-even/capability-row:grid-cols-[1fr] [@media(max-width:_900px)]:group-even/capability-row:gap-[clamp(1.25rem,_4vw,_1.75rem)]">
-                <div className="col-start-2 row-start-1 relative aspect-[5_/_4] group-even/capability-row:col-start-1 [@media(max-width:_900px)]:col-start-1 [@media(max-width:_900px)]:row-start-1 [@media(max-width:_900px)]:aspect-[16_/_11] [@media(max-width:_900px)]:group-even/capability-row:col-start-1 [@media(max-width:_900px)]:group-even/capability-row:row-start-1 [@media(max-width:_900px)]:group-even/capability-row:aspect-[16_/_11]">
-                  <span className="absolute inset-0 [background:var(--blob)] rounded-[clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)] [box-shadow:0_42px_80px_-46px_var(--blob-deep)] group-even/capability-row:rounded-[var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)_var(--radius-lg)_clamp(2.5rem,_7vw,_6.5rem)]" aria-hidden="true" />
-                  <div
-                    className="overflow-hidden absolute [inset:clamp(1rem,_2.6vw,_2.25rem)] bg-center bg-cover rounded-[clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)] [box-shadow:0_30px_60px_-34px_rgb(0_0_0_/_0.4)] [transition:transform_640ms_var(--ease)] group-even/capability-row:rounded-[var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)_var(--radius-md)_clamp(1.75rem,_5vw,_4.5rem)] group-hover/capability-row-link:scale-103 [@media(max-width:_640px)]:[inset:clamp(0.75rem,_3.5vw,_1.25rem)]"
-                  >
-                    <Image src={dummyImage(category.name)} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" className="object-cover" />
-                  </div>
-                </div>
-
-                <div className="col-start-1 row-start-1 flex flex-col items-start gap-[clamp(0.9rem,_1.5vw,_1.35rem)] group-even/capability-row:col-start-2 [@media(max-width:_900px)]:col-start-1 [@media(max-width:_900px)]:row-start-2 [@media(max-width:_900px)]:group-even/capability-row:col-start-1 [@media(max-width:_900px)]:group-even/capability-row:row-start-2">
-                  <span className="font-mono text-[0.72rem] tracking-[0.28em] uppercase text-accent">{category.index}</span>
-                  <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[12ch] text-ink font-display text-[clamp(2rem,_3.4vw,_3.75rem)] leading-[0.98] tracking-[-0.045em] [transition:color_var(--duration-base)_var(--ease)] group-hover/capability-row-link:text-accent [@media(max-width:_1200px)]:text-[clamp(1.9rem,_3.6vw,_2.75rem)] [@media(max-width:_640px)]:text-[clamp(1.85rem,_8vw,_2.5rem)]">{category.name}</h3>
-                  <p className="text-pretty max-w-[40ch] text-body text-[clamp(1rem,_1.15vw,_1.15rem)] leading-[1.6]">{category.descriptor}</p>
-                  <span className="inline-flex items-center gap-2 mt-[0.4rem] pb-[0.3rem] text-highlight font-mono text-[0.75rem] tracking-[0.16em] uppercase [border-bottom:1px_solid_color-mix(in_srgb,_var(--v-highlight)_40%,_transparent)] [transition:border-color_var(--duration-base)_var(--ease)] group-hover/capability-row-link:[border-color:var(--v-highlight)]">
-                    {category.solutions.length} solutions →
-                  </span>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <HomeCapabilities displayFont={heroFont.className} />
 
       <Section surface="light" data-treatment="B" label="Most requested">
         <div className="flex flex-wrap items-end justify-between gap-6">
