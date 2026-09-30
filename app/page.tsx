@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { featuredProjects } from "@/lib/content/projects";
+import { HomeProjects } from "@/components/home-projects";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button";
@@ -39,7 +39,6 @@ const journey = [
 ];
 
 export default function HomePage() {
-  const featured = featuredProjects();
 
   return (
     <>
@@ -98,55 +97,7 @@ export default function HomePage() {
 
       <HomeHowWeWork displayFont={heroFont.className} />
 
-      <Section surface="light" data-treatment="A" label="Featured projects">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <Kicker>Selected work</Kicker>
-            <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[16ch] text-display-3">Systems already running.</h2>
-          </div>
-          <Link href={routes.projects} className="text-body-sm text-accent">
-            All projects →
-          </Link>
-        </div>
-        <ul className="mt-16 grid gap-x-8 gap-y-16 lg:grid-cols-12">
-          {featured.map((project, index) => {
-            const lead = index % 2 === 0;
-            return (
-              <li
-                key={project.slug}
-                className={lead ? "lg:col-span-7" : "lg:col-span-5 lg:col-start-8 lg:mt-32"}
-              >
-                <Link href={routes.project(project.slug)} className="group block">
-                  <MediaSlot
-                    label={project.name}
-                    className={lead ? "aspect-[4/3]" : "aspect-[4/5]"}
-                  />
-                  <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6 block">
-                    {project.industry} · {project.suburb} · {project.year}
-                  </span>
-                  <span
-                    className={`mt-3 block font-display text-ink group-hover:text-accent ${
-                      lead ? "text-display-3" : "text-display-4"
-                    }`}
-                  >
-                    {project.name}
-                  </span>
-                  <ul className="mt-6 flex flex-wrap gap-8 border-t border-hairline pt-6">
-                    {project.metrics.map((metric) => (
-                      <li key={metric.label}>
-                        <span className="block font-display text-[1.75rem] text-ink">
-                          {metric.value}
-                        </span>
-                        <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">{metric.label}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </Section>
+      <HomeProjects displayFont={heroFont.className} />
 
       <section data-surface="light" data-treatment="E" className={`${surfaceStyles} relative`}>
         <MediaSlot
