@@ -1,3 +1,4 @@
+import { HomeHowWeWork } from "@/components/home-how-we-work";
 import { surfaceStyles } from "@/lib/styles";
 import Image from "next/image";
 import { Cormorant_Garamond } from "next/font/google";
@@ -24,29 +25,6 @@ export const metadata: Metadata = {
   description:
     "Vagus Energy designs complete energy systems — solar, storage, EV charging, heat pumps and grid integration — as one instrument.",
 };
-
-const howWeWork = [
-  {
-    index: "01",
-    title: "Engineering-led design",
-    body: "Every system is drawn to the building and its load profile.",
-  },
-  {
-    index: "02",
-    title: "One team, end to end",
-    body: "The engineer who designs it stays with it through commissioning.",
-  },
-  {
-    index: "03",
-    title: "Measured after handover",
-    body: "Performance is monitored and tuned, not assumed.",
-  },
-  {
-    index: "04",
-    title: "Built to be added to",
-    body: "Systems are sized so storage or charging can follow later.",
-  },
-];
 
 const heroImage =
   "/ChatGPT Image Sep 28, 2026, 04_27_26 PM.png";
@@ -118,19 +96,7 @@ export default function HomePage() {
 
       <HomeMostRequested displayFont={heroFont.className} />
 
-      <Section surface="tint" data-treatment="C" label="How we work">
-        <Kicker>How we work</Kicker>
-        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Method, not salesmanship.</h2>
-        <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
-          {howWeWork.map((item) => (
-            <li key={item.index}>
-              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{item.index}</span>
-              <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{item.title}</h3>
-              <p className="text-pretty mt-3 text-body-sm">{item.body}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <HomeHowWeWork displayFont={heroFont.className} />
 
       <Section surface="light" data-treatment="A" label="Featured projects">
         <div className="flex flex-wrap items-end justify-between gap-6">
