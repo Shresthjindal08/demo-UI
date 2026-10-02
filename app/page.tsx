@@ -1,3 +1,4 @@
+import { HomeJourney } from "@/components/home-journey";
 import { HomeImpact } from "@/components/home-impact";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
 import { surfaceStyles } from "@/lib/styles";
@@ -8,9 +9,7 @@ import type { Metadata } from "next";
 import { HomeProjects } from "@/components/home-projects";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
-import { ButtonLink } from "@/components/ui/button";
-import { Container, Kicker, Section } from "@/components/ui/primitives";
-import { MediaSlot } from "@/components/ui/media-slot";
+import { Container } from "@/components/ui/primitives";
 import { HomeMostRequested } from "@/components/home-most-requested";
 import { HomeCapabilities } from "@/components/home-capabilities";
 
@@ -28,56 +27,34 @@ export const metadata: Metadata = {
 };
 
 const heroImage =
-  "/ChatGPT Image Sep 28, 2026, 04_27_26 PM.png";
-
-const journey = [
-  "Enquiry",
-  "Site assessment",
-  "Engineered design",
-  "Approvals",
-  "Installation",
-  "Switch-on and monitoring",
-];
+  "/hero-solar-homes.png";
 
 export default function HomePage() {
 
   return (
     <>
-      <section className={`${surfaceStyles} relative flex flex-col min-h-[100svh] overflow-hidden isolate bg-bg`} data-surface="dark">
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <Image
-            src={heroImage}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover [object-position:center_45%] [transform:scale(1.06)] animate-hero-drift"
-          />
+      <section className="solar-hero" aria-labelledby="hero-title">
+        <div className="solar-hero__image" aria-hidden="true">
+          <Image src={heroImage} alt="" fill preload sizes="100vw" className="object-cover object-right" />
         </div>
-        <div className="relative z-2 flex flex-col items-center min-h-[100svh] [padding:max(140px,_18svh)_24px_180px] text-center [color:var(--palette-forest)]">
-          <div className="relative isolate flex w-full max-w-240 flex-col items-center">
-            <div aria-hidden="true" className="pointer-events-none absolute -inset-x-6 -top-8 -bottom-8 -z-1 bg-[linear-gradient(to_bottom,transparent_0%,rgb(255_255_255_/_0.65)_35%,white_100%)] blur-2xl" />
-            <p className="text-pretty text-[0.75rem] font-semibold tracking-[0.28em] uppercase">Powering a cleaner future</p>
-            <span className="w-12 h-0.5 [margin:18px_0_22px] [background:var(--palette-orange)]" aria-hidden="true" />
-            <h1 className={`[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-bold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance ${heroFont.className} text-black text-[clamp(3.5rem,_7.2vw,_7.5rem)] font-medium leading-[0.9] tracking-[-0.045em]`}>
-              Energy, designed
-              <br />
-              for <em>tomorrow.</em>
-            </h1>
-            <p className="text-pretty max-w-160 mt-6 text-[clamp(0.95rem,_1.3vw,_1.2rem)] leading-[1.6] [color:var(--palette-slate)]">
-              Smarter solar solutions for homes, businesses and communities.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mt-6.5">
-              <Link href={routes.whatWeDo} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:var(--palette-green-deep)] [color:white] [&:hover]:[background:var(--palette-green)]">
-                Explore solutions <span aria-hidden="true">→</span>
-              </Link>
-              <Link href={routes.projects} className="inline-flex items-center justify-center gap-5 min-h-12.5 [padding:12px_28px] [border:1px_solid_var(--palette-green-deep)] rounded-pill text-[0.9rem] font-medium [transition:background-color_200ms] [background:rgb(248_250_247_/_0.35)] [color:var(--palette-forest)] [&:hover]:[background:rgb(248_250_247_/_0.8)]">
-                See our projects <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+        <svg className="solar-hero__curve" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0H1440V88C1220 95 1060 112 974 222C918 294 910 340 754 375C590 412 570 500 516 628C498 671 487 674 416 686C272 710 152 757 0 797Z" fill="#fafbf7" />
+        </svg>
+        <div className="solar-hero__content">
+          <p className="solar-hero__eyebrow"><span aria-hidden="true" />Clean energy<br />for a brighter tomorrow</p>
+          <h1 id="hero-title" className={`${heroFont.className} solar-hero__title`}>
+            <span>Energy,</span>
+            <span>designed for</span>
+            <em>tomorrow.</em>
+          </h1>
+          <p className="solar-hero__lead">
+            Smarter solar solutions for homes, businesses<br className="hidden sm:block" /> and communities across India and Australia.
+          </p>
+          <div className="solar-hero__actions">
+            <Link href={routes.whatWeDo}>Explore solutions <span aria-hidden="true">→</span></Link>
+            <Link href={routes.projects}>See our projects <span aria-hidden="true">→</span></Link>
           </div>
         </div>
-        <a href="#solutions" className="no-underline absolute z-2 right-8 bottom-10 grid [place-items:center] w-11 h-11 [border:1px_solid_white] rounded-[50%] [color:white] text-[1.5rem] [@media(max-width:_479px)]:right-4 [@media(max-width:_479px)]:bottom-8" aria-label="Scroll to our solutions">↓</a>
       </section>
 
       <section data-surface="light" data-treatment="C" aria-label="Accreditation" className={`${surfaceStyles}`}>
@@ -102,60 +79,46 @@ export default function HomePage() {
 
       <HomeImpact displayFont={heroFont.className} />
 
-      <Section surface="light" data-treatment="D" label="Customer journey">
-        <Kicker>The journey</Kicker>
-        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">
-          Six steps, one team, no handovers.
-        </h2>
-        <ol className="mt-12 grid gap-px border border-hairline bg-hairline md:grid-cols-2 xl:grid-cols-6">
-          {journey.map((step, index) => (
-            <li key={step} className="bg-bg p-6">
-              <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{String(index + 1).padStart(2, "0")}</span>
-              <span className="mt-3 block text-body-sm text-ink">{step}</span>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      <HomeJourney displayFont={heroFont.className} />
 
-      <Section surface="cream" data-treatment="B" label="Customer story">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <MediaSlot label="Customer story video — 60–90s, captioned" className="aspect-video" />
-          <div>
-            <Kicker>Customer story</Kicker>
-            <blockquote className="mt-6">
-              <p className="text-pretty text-display-4">
-                “They sized it to the house, not to a price list. Three years on it still
-                does what they said it would.”
-              </p>
-              <footer className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6">
-                <cite className="not-italic">Homeowner · Brighton</cite>
-              </footer>
-            </blockquote>
-          </div>
+      <section className="customer-story" aria-label="Customer story">
+        <div className="customer-story__image">
+          <Image src="/customer-story-consultation.png" alt="An energy consultant discussing a solar home design with a couple on a garden terrace" fill sizes="(max-width: 767px) 100vw, 55vw" className="object-cover" />
         </div>
-      </Section>
-
-      <Section surface="cream" data-treatment="F" label="Engineering statement">
-        <p className="text-pretty mx-auto max-w-[20ch] text-center font-display text-display-2 text-ink">
-          Engineered for what&rsquo;s next.
-        </p>
-      </Section>
-
-      <Section surface="light" data-treatment="C" label="Start a consultation">
-        <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
-            An engineer will call you back.
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            <ButtonLink href={contactWithContext("home")} size="lg">
-              {site.consultationCta}
-            </ButtonLink>
-            <ButtonLink href={routes.projects} variant="secondary" size="lg">
-              View projects
-            </ButtonLink>
-          </div>
+        <div className="customer-story__content">
+          <p className="customer-story__kicker">Customer story</p>
+          <blockquote>
+            <p className={heroFont.className}>
+              “They sized it to the house, not to a price list. Three years on it <em>still does what they said it would.</em>”
+            </p>
+            <footer>
+              <div className="customer-story__avatar"><Image src="/most-requested/residential-solar.png" alt="" fill sizes="64px" className="object-cover" /></div>
+              <cite>Homeowner <span>· Brighton</span></cite>
+              <Link href={routes.projects} aria-label="Explore our customer projects" className="customer-story__next">→</Link>
+            </footer>
+          </blockquote>
         </div>
-      </Section>
+      </section>
+
+      <section className="home-closing" aria-labelledby="closing-title">
+        <svg className="home-closing__decoration" viewBox="0 0 1440 650" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <circle cx="40" cy="235" r="210" fill="#edf0e3" fillOpacity="0.6" />
+          <path d="M-80 245C140 240 225 325 280 530M1190 525C1210 350 1360 190 1490 140" stroke="#d8ded4" strokeWidth="1.3" />
+          <circle cx="194" cy="351" r="4" fill="#285c40" />
+          <circle cx="1299" cy="294" r="28" fill="#edf0e3" fillOpacity="0.6" />
+          <circle cx="1299" cy="294" r="5" fill="#285c40" />
+        </svg>
+        <div className="home-closing__statement">
+          <p className="home-closing__kicker">Built for a brighter tomorrow</p>
+          <h2 id="closing-title" className={heroFont.className}>Engineered<br />for <em>what’s next.</em></h2>
+          <p className="home-closing__lead">Reliable solar solutions designed for homes, businesses<br className="hidden md:block" /> and communities — today and for the generations ahead.</p>
+          <div className="solar-hero__actions justify-center">
+              <Link href={contactWithContext("home")}>{site.consultationCta}<span aria-hidden="true">→</span></Link>
+              <Link href={routes.projects}>View projects<span aria-hidden="true">→</span></Link>
+            </div>
+        </div>
+
+      </section>
     </>
   );
 }
