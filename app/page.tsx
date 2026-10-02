@@ -33,7 +33,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="solar-hero" aria-labelledby="hero-title">
+      <section className="solar-hero h-svh w-full" aria-labelledby="hero-title">
         <div className="solar-hero__image" aria-hidden="true">
           <Image src={heroImage} alt="" fill preload sizes="100vw" className="object-cover object-right" />
         </div>
