@@ -27,7 +27,7 @@ const documents = [
 
 export default function ResourcesPage() {
   return (
-    <>
+    <div className="interior-page">
       <PageMasthead
         kicker="Resources & learn"
         title="Answers, not email gates."
@@ -36,7 +36,7 @@ export default function ResourcesPage() {
         imageLabel="Full-bleed engineering diagram"
       />
 
-      <Section surface="tint" data-treatment="A" label="Learn">
+      <Section surface="tint" data-treatment="A" label="Learn" className="resources-library">
         <Kicker>Learn</Kicker>
         <ul className="mt-12 grid gap-8 md:grid-cols-2">
           {learn.map((item) => (
@@ -67,7 +67,7 @@ export default function ResourcesPage() {
         </ul>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="FAQ">
+      <Section surface="dark" data-treatment="F" label="FAQ" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">Still have a question?</h2>
           <Link href={routes.faq} className="text-body-lg text-accent">
@@ -75,6 +75,6 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

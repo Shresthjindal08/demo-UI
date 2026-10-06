@@ -41,7 +41,7 @@ export default function WhatWeDoPage() {
   };
 
   return (
-    <>
+    <div className="interior-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -49,8 +49,8 @@ export default function WhatWeDoPage() {
 
       <PageMasthead
         kicker="What we do"
-        title="Four capabilities. One instrument."
-        lead="These are the four things Vagus does. The services you buy sit inside them — so you can see the whole business before you choose a part of it."
+        title="Better energy. Designed together."
+        lead="Solar, storage, electric mobility and smarter energy use. Explore what we do, and find the right solution for your home, business or community."
         index="01 / Capabilities"
         imageLabel="Renewable Energy"
       />
@@ -58,7 +58,7 @@ export default function WhatWeDoPage() {
       <Section surface="tint" data-treatment="D" label="Ecosystem">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <MediaSlot
-            label="Interactive SVG — how the four categories interconnect"
+            label="Engineering an integrated energy system"
             className="aspect-[4/3]"
           />
           <ol className="border-t border-hairline">
@@ -140,7 +140,7 @@ export default function WhatWeDoPage() {
       <Section surface="tint" data-treatment="C" label="Why an integrated system">
         <Kicker>Why integrated</Kicker>
         <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[20ch] text-display-3">
-          The benefits are benefits of integration.
+          One system. More possibilities.
         </h2>
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {integrationBenefits.map((benefit) => (
@@ -175,7 +175,7 @@ export default function WhatWeDoPage() {
         </ul>
       </Section>
 
-      <Section surface="cream" data-treatment="C" label="Start a consultation">
+      <Section surface="cream" data-treatment="C" label="Start a consultation" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             Not sure which capability you need?
@@ -185,6 +185,6 @@ export default function WhatWeDoPage() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

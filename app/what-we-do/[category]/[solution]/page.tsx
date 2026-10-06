@@ -10,6 +10,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Kicker, Section } from "@/components/ui/primitives";
 import { MediaSlot } from "@/components/ui/media-slot";
 import { Breadcrumbs } from "@/components/nav/breadcrumbs";
+import { EnergySystem } from "@/components/energy-system";
 import { SolutionSubBar } from "@/components/solution-sub-bar";
 
 export function generateStaticParams() {
@@ -93,7 +94,7 @@ export default async function SolutionPage({
   };
 
   return (
-    <div data-surface="cream" className={`${surfaceStyles}`}>
+    <div data-surface="cream" className={`${surfaceStyles} interior-page`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -142,14 +143,8 @@ export default async function SolutionPage({
         </div>
       </Section>
 
-      <Section surface="cream" data-treatment="D" bleed label="System architecture">
-        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)]">
-          <Kicker>System architecture</Kicker>
-        </div>
-        <MediaSlot
-          label="Full-bleed engineering diagram — labelled nodes, hover reveals each component's role"
-          className="mt-8 aspect-[21/9] w-full"
-        />
+      <Section surface="cream" data-treatment="D" label="System architecture">
+        <EnergySystem />
       </Section>
 
       <Section surface="light" data-treatment="A" label="Key features">
@@ -228,7 +223,7 @@ export default async function SolutionPage({
         </Section>
       ) : null}
 
-      <Section surface="light" data-treatment="C" id="specifications" label="Specifications">
+      <Section surface="light" data-treatment="C" id="specifications" label="Specifications" className="specification-section">
         <Kicker>Specifications</Kicker>
         <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 text-display-3">The full detail.</h2>
         <ul className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2 xl:grid-cols-3">
@@ -243,7 +238,7 @@ export default async function SolutionPage({
         </p>
       </Section>
 
-      <Section surface="cream" data-treatment="F" label="Start a consultation">
+      <Section surface="cream" data-treatment="F" label="Start a consultation" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             An engineer will call you back.

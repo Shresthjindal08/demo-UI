@@ -17,7 +17,7 @@ const onward = [
 
 export default function ThankYouPage() {
   return (
-    <div data-surface="cream" className={`${surfaceStyles}`}>
+    <div data-surface="cream" className={`${surfaceStyles} interior-page`}>
       <section className="py-section pt-[calc(var(--nav-height)+64px)]">
         <Container>
           <Kicker>Received</Kicker>

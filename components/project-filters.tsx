@@ -7,7 +7,7 @@ import { routes } from "@/lib/routes";
 import { track } from "@/lib/analytics";
 import { MediaSlot } from "./ui/media-slot";
 
-type View = "grid" | "map";
+type View = "grid" | "locations";
 
 interface Filters {
   industries: string[];
@@ -49,7 +49,7 @@ export function ProjectFilters({
   };
 
   return (
-    <section className="py-section-tight" aria-label="Project archive">
+    <section className="project-archive py-section-tight" aria-label="Project archive">
       <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)]">
         <div className="flex flex-wrap items-center justify-between gap-6 border-y border-hairline py-5">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by industry">
@@ -71,7 +71,7 @@ export function ProjectFilters({
           </div>
 
           <div className="flex items-center gap-1" role="group" aria-label="View">
-            {(["grid", "map"] as View[]).map((value) => (
+            {(["grid", "locations"] as View[]).map((value) => (
               <button
                 key={value}
                 type="button"
@@ -112,22 +112,20 @@ export function ProjectFilters({
           {visible.length} of {projects.length} projects
         </p>
 
-        {view === "map" ? (
-          <MediaSlot
-            label="Styled map tiles with clustered pins — the grid below is the accessible equivalent"
-            className="aspect-[16/9] w-full"
-          />
-        ) : null}
 
         {visible.length === 0 ? (
           <p className="text-pretty py-16 text-body-lg text-ink">
             No projects match those filters yet. Clear one to widen the search.
           </p>
+        ) : view === "locations" ? (
+          <ul className="project-locations">
+            {visible.map((project) => <li key={project.slug}><Link href={routes.project(project.slug)}><span className="project-locations__place">{project.suburb}<small>Victoria · {project.year}</small></span><span>{project.name}<small>{project.industry}</small></span><span aria-hidden="true">↗</span></Link></li>)}
+          </ul>
         ) : (
-          <ul className="grid gap-10 pt-6 md:grid-cols-2 xl:grid-cols-3">
+          <ul className="project-archive__grid grid gap-10 pt-6 md:grid-cols-2">
             {visible.map((project) => (
               <li key={project.slug}>
-                <Link href={routes.project(project.slug)} className="group block">
+                <Link href={routes.project(project.slug)} className="project-archive__card group block">
                   <MediaSlot label={project.name} className="aspect-[4/3]" />
                   <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-4 block">
                     {project.industry} · {project.suburb} · {project.year}

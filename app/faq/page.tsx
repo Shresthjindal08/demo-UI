@@ -53,7 +53,7 @@ export default function FaqPage() {
   };
 
   return (
-    <>
+    <div className="interior-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -64,14 +64,14 @@ export default function FaqPage() {
         title="The questions we are actually asked."
         lead="If yours is not here, an engineer will answer it directly."
         index="07 / Answers"
-        imageLabel="Customer story"
+
       />
 
       <Section surface="tint" data-treatment="C" label="Questions">
-        <FaqList faqs={faqs} />
+        <div className="faq-layout"><div><p className="section-kicker">Good questions. Clear answers.</p><h2>Before you<br />get started.</h2><p>From the first site visit to life after installation.</p></div><FaqList faqs={faqs} /></div>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="Start a consultation">
+      <Section surface="dark" data-treatment="F" label="Start a consultation" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">Ask us directly.</h2>
           <ButtonLink href={contactWithContext("faq")} size="lg">
@@ -79,6 +79,6 @@ export default function FaqPage() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

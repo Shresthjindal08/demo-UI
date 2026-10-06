@@ -66,7 +66,7 @@ export default async function LocalLandingPage({
   };
 
   return (
-    <div data-surface="dark" className={`${surfaceStyles}`}>
+    <div data-surface="dark" className={`${surfaceStyles} interior-page`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -98,8 +98,8 @@ export default async function LocalLandingPage({
             </h1>
             <p className="text-pretty max-w-[min(var(--measure),_var(--measure-px))] mt-8 text-lead">
               We have been designing systems in {suburb.name} since {suburb.servingSince}.
-              The local housing stock and network conditions shape what we specify here —
-              this is not a template page with a suburb name dropped into it.
+              Our designs account for local buildings, energy use and network conditions,
+              with a site assessment to find the right fit for your property.
             </p>
             <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">
@@ -157,15 +157,17 @@ export default async function LocalLandingPage({
           </div>
           <div>
             <Kicker>Service area</Kicker>
-            <MediaSlot
-              label={`Service area — ${suburb.name} + 5km`}
-              className="mt-6 aspect-[4/3]"
-            />
+            <div className="local-service-area">
+              <span>{suburb.postcode}</span>
+              <h3>{suburb.name}, {suburb.state}</h3>
+              <p>Local site assessments, engineered systems and installation support.</p>
+              <Link href={contactWithContext(`${service.slug}-${suburb.slug}`)}>Arrange a site visit <span aria-hidden="true">↗</span></Link>
+            </div>
           </div>
         </div>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="Nearby suburbs">
+      <Section surface="dark" data-treatment="F" label="Nearby suburbs" className="interior-cta">
         <Kicker>Also serving</Kicker>
         <ul className="mt-6 flex flex-wrap gap-3">
           {nearby.map((entry) => (

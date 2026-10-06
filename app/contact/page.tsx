@@ -25,7 +25,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div data-surface="cream" className={`${surfaceStyles}`}>
+    <div data-surface="cream" className={`${surfaceStyles} interior-page`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -36,7 +36,7 @@ export default function ContactPage() {
         title="An engineer will call you back."
         lead="Not a salesperson. Usually within one business day."
         index="09 / Contact"
-        imageLabel="Customer story"
+
       >
         <ul className="flex flex-wrap gap-x-8 gap-y-3">
           <li className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">No obligation</li>
@@ -45,8 +45,16 @@ export default function ContactPage() {
         </ul>
       </PageMasthead>
 
-      <section className="py-section">
-        <Container>
+      <section className="contact-layout">
+        <Container className="contact-layout__grid">
+          <aside className="contact-details">
+            <p className="section-kicker">Let’s talk energy</p>
+            <h2>A good system starts with a conversation.</h2>
+            <p>Tell us about your property and what you want to achieve. Our team will help you work out the next step.</p>
+            <a href="tel:1300698248">1300 698 248 <span aria-hidden="true">↗</span></a>
+            <a href="mailto:hello@vagus.energy">hello@vagus.energy <span aria-hidden="true">↗</span></a>
+            <address>139 Cardigan Street<br />Carlton VIC 3053<br />Melbourne, Australia</address>
+          </aside>
           <Suspense fallback={<div className="min-h-96" />}>
             <ContactForm />
           </Suspense>

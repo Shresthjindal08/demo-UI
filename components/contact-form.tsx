@@ -60,7 +60,7 @@ export function ContactForm() {
 
   return (
     <form
-      className="border border-hairline p-6 lg:p-10"
+      className="contact-form border border-hairline p-6 lg:p-10"
       onFocus={() => {
         if (started) return;
         setStarted(true);

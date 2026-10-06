@@ -33,7 +33,7 @@ export function FaqList({
   );
 
   return (
-    <ul className="border-t border-hairline">
+    <ul className="faq-accordion border-t border-hairline">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const panelId = `${baseId}-panel-${index}`;

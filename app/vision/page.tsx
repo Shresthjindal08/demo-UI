@@ -33,7 +33,7 @@ const principles = [
 
 export default function VisionPage() {
   return (
-    <>
+    <div className="interior-page">
       <PageMasthead
         kicker="Vision"
         title="Infrastructure, not appliances."
@@ -72,7 +72,7 @@ export default function VisionPage() {
         </div>
       </Section>
 
-      <Section surface="light" data-treatment="F" label="Start a consultation">
+      <Section surface="light" data-treatment="F" label="Start a consultation" className="interior-cta">
         <p className="text-pretty mx-auto max-w-[22ch] text-center font-display text-display-2 text-ink">
           Engineered for what&rsquo;s next.
         </p>
@@ -82,6 +82,6 @@ export default function VisionPage() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

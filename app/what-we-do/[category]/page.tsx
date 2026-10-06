@@ -52,7 +52,7 @@ export default async function CategoryPage({
   const isEmpty = category.solutions.every((solution) => solution.status !== "live");
 
   return (
-    <>
+    <div className="interior-page">
       <div data-surface="cream" className={`${surfaceStyles}`}>
         <Breadcrumbs
           trail={[
@@ -241,7 +241,7 @@ export default async function CategoryPage({
         </ol>
       </Section>
 
-      <Section surface="light" data-treatment="F" label="Start a consultation">
+      <Section surface="light" data-treatment="F" label="Start a consultation" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">
             Talk to an engineer about {category.name.toLowerCase()}.
@@ -251,6 +251,6 @@ export default async function CategoryPage({
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

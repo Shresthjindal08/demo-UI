@@ -29,7 +29,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div data-surface="dark" className={`${surfaceStyles}`}>
+    <div data-surface="light" className={`${surfaceStyles} interior-page`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
 
       <ProjectFilters filters={filters} projects={projects} />
 
-      <Section surface="dark" data-treatment="C" label="Start a consultation">
+      <Section surface="dark" data-treatment="C" label="Start a consultation" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">
             Discuss a project at your scale.

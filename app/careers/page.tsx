@@ -19,7 +19,7 @@ const roles = [
 
 export default function CareersPage() {
   return (
-    <>
+    <div className="interior-page">
       <PageMasthead
         kicker="Careers"
         title="Real problems, measured outcomes."
@@ -28,7 +28,7 @@ export default function CareersPage() {
         imageLabel="Engineering Consulting"
       />
 
-      <Section surface="tint" data-treatment="A" label="Open roles">
+      <Section surface="tint" data-treatment="A" label="Open roles" className="careers-list">
         <Kicker>Open roles</Kicker>
         <ul className="mt-10 border-t border-hairline">
           {roles.map((role) => (
@@ -48,7 +48,7 @@ export default function CareersPage() {
         </ul>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="Speculative applications">
+      <Section surface="dark" data-treatment="F" label="Speculative applications" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[20ch] text-display-3">
             Nothing listed that fits? Tell us what you do.
@@ -58,6 +58,6 @@ export default function CareersPage() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

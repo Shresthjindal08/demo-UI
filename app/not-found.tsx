@@ -12,7 +12,7 @@ const recovery = [
 
 export default function NotFound() {
   return (
-    <div data-surface="dark" className={`${surfaceStyles}`}>
+    <div data-surface="dark" className={`${surfaceStyles} interior-page`}>
       <section className="py-section pt-[calc(var(--nav-height)+64px)]">
         <Container>
           <Kicker>404</Kicker>

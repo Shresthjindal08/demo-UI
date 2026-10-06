@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   };
 
   return (
-    <div data-surface="dark" className={`${surfaceStyles}`}>
+    <div data-surface="dark" className={`${surfaceStyles} interior-page`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -128,7 +128,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </ul>
       </Section>
 
-      <Section surface="dark" data-treatment="F" label="Discuss a similar project">
+      <Section surface="dark" data-treatment="F" label="Discuss a similar project" className="interior-cta">
         <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
           <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[18ch] text-display-3">
             Discuss a similar project.

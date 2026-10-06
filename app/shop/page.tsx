@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ShopPage() {
   return (
-    <div data-surface="dark" className={`${surfaceStyles}`}>
+    <div data-surface="dark" className={`${surfaceStyles} interior-page`}>
       <PageMasthead
         kicker="Shop"
         title="You are leaving vagus.energy."

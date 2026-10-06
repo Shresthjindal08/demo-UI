@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "text";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex max-w-full items-center justify-center gap-2 text-center font-sans font-medium tracking-tight " +
+  "site-button inline-flex max-w-full items-center justify-center gap-2 text-center font-sans font-medium tracking-tight " +
   "min-h-[var(--hit-target)] rounded-pill transition-colors duration-[var(--duration-micro)] " +
   "ease-brand disabled:pointer-events-none disabled:opacity-40";
 
@@ -24,7 +24,7 @@ const sizes: Record<Size, string> = {
 
 function classesFor(variant: Variant, size: Size, className?: string) {
   const sizing = variant === "text" ? "" : sizes[size];
-  return [base, variants[variant], sizing, className].filter(Boolean).join(" ");
+  return [base, `site-button--${variant}`, variants[variant], sizing, className].filter(Boolean).join(" ");
 }
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, "className"> {

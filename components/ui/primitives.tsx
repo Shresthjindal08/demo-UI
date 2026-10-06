@@ -36,7 +36,7 @@ export function Section({
       id={id}
       aria-label={label}
       data-surface={surface}
-      className={`${surfaceStyles} ${tight ? "py-section-tight" : "py-section"} ${className}`}
+      className={`content-section ${surfaceStyles} ${tight ? "py-section-tight" : "py-section"} ${className}`}
       {...rest}
     >
       {bleed ? children : <Container>{children}</Container>}
@@ -45,7 +45,7 @@ export function Section({
 }
 
 export function Kicker({ children }: { children: ReactNode }) {
-  return <p className="text-pretty font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{children}</p>;
+  return <p className="section-kicker">{children}</p>;
 }
 
 export function MonoFact({ children }: { children: ReactNode }) {

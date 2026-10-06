@@ -80,6 +80,12 @@ const themes: [RegExp, keyof typeof pools][] = [
 
 export function dummyImage(label: string): string {
   const key = label.toLowerCase();
+  if (/brighton residence|\bhomes\b/.test(key)) return photo.modernHouseDusk;
+  if (/kew heritage|heat pump/.test(key)) return photo.insulationRetrofit;
+  if (/norwood manufacturing|\bbusinesses\b/.test(key)) return photo.solarFarm;
+  if (/bendigo community/.test(key)) return photo.electricianSwitchboard;
+  if (/geelong fleet|ballarat public/.test(key)) return photo.evChargerCarpark;
+  if (/residential solar/.test(key)) return photo.roofInstallHands;
   const theme = themes.find(([pattern]) => pattern.test(key))?.[1] ?? "hero";
   const pool = pools[theme];
 
