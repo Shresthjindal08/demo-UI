@@ -1,8 +1,14 @@
 import Image from "next/image";
-import { dummyImage } from "@/lib/content/media";
 import Link from "next/link";
 import { launchCategories } from "@/lib/content/categories";
 import { routes } from "@/lib/routes";
+
+const images: Record<string, string> = {
+  "renewable-energy": "residential-solar-cutout.png",
+  "electric-mobility": "home-ev-charging-cutout.png",
+  "energy-efficiency": "energy-efficiency-cutout.png",
+  "community-energy": "community-energy-cutout.png",
+};
 
 export function HomeCapabilities() {
   return (
@@ -27,7 +33,7 @@ export function HomeCapabilities() {
                 </ul>
               </div>
               <div className="capabilities__image">
-                <Image src={dummyImage(category.name)} alt="" fill sizes="(max-width: 767px) 70vw, 28vw" className="object-contain" />
+                <Image src={`/vagus%20images/${images[category.slug]}`} alt="" fill sizes="(max-width: 767px) 90vw, 45vw" className="object-contain" />
               </div>
               <div className="capabilities__card-footer">
                 <p>{category.descriptor}</p>

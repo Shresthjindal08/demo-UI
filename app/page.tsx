@@ -1,21 +1,16 @@
+import { HomeCompanies } from "@/components/home-companies";
+import { HomeWhyChooseUs } from "@/components/home-why-choose-us";
+import { HomeLocation } from "@/components/home-location";
 import { HomeJourney } from "@/components/home-journey";
 import { HomeImpact } from "@/components/home-impact";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
 import Image from "next/image";
-import { Cormorant_Garamond } from "next/font/google";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HomeProjects } from "@/components/home-projects";
 import { routes, contactWithContext } from "@/lib/routes";
 import { HomeMostRequested } from "@/components/home-most-requested";
 import { HomeCapabilities } from "@/components/home-capabilities";
-
-const heroFont = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: "500",
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Renewable infrastructure engineering — Victoria",
@@ -57,34 +52,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="home-intro" aria-labelledby="intro-title">
+        <h2 id="intro-title"><span aria-hidden="true" />Introduction</h2>
+        <p>Vagus brings solar, storage and smarter energy together. <span>Engineered as one system,</span> built around the way you live and work — today and into the future.</p>
+      </section>
+
+      <HomeCompanies />
+
       <HomeCapabilities />
 
-      <HomeMostRequested displayFont={heroFont.className} />
+      <HomeMostRequested />
 
-      <HomeHowWeWork displayFont={heroFont.className} />
+      <HomeHowWeWork />
 
-      <HomeProjects displayFont={heroFont.className} />
+      <HomeWhyChooseUs />
 
-      <HomeImpact displayFont={heroFont.className} />
+      <HomeProjects />
 
-      <HomeJourney displayFont={heroFont.className} />
+      <HomeImpact />
 
-      <section className="customer-story" aria-label="Customer story">
-        <div className="customer-story__image">
-          <Image src="/vagus%20images/pexels-seljansalim-34955548%201.jpg" alt="A couple outdoors in the evening" fill sizes="(max-width: 767px) 100vw, 55vw" className="object-cover" />
-        </div>
-        <div className="customer-story__content">
-          <p className="customer-story__kicker">Customer story</p>
+      <HomeJourney />
+
+      <section className="testimonial" aria-labelledby="testimonial-title">
+        <div className="testimonial__content">
+          <h2 id="testimonial-title">Customer story</h2>
+          <span className="testimonial__quote" aria-hidden="true">“</span>
           <blockquote>
-            <p className={heroFont.className}>
-              “They sized it to the house, not to a price list. Three years on it <em>still does what they said it would.</em>”
-            </p>
-            <footer>
-              <div className="customer-story__avatar"><Image src="/vagus%20images/pexels-andersen-ev-1587213396-27355838.jpg" alt="" fill sizes="64px" className="object-cover" /></div>
-              <cite>Homeowner <span>· Brighton</span></cite>
-              <Link href={routes.projects} aria-label="Explore our customer projects" className="customer-story__next">→</Link>
-            </footer>
+            <p>They sized it to the house, not to a price list. Three years on it <span>still does what they said it would.</span></p>
+            <footer><cite>Homeowner<span>Brighton, Victoria</span></cite><Link href={routes.projects}>Explore our projects <span aria-hidden="true">↗</span></Link></footer>
           </blockquote>
+        </div>
+        <div className="testimonial__image">
+          <Image src="/vagus%20images/pexels-seljansalim-34955548%201.jpg" alt="A couple outdoors in the evening" fill sizes="(max-width: 767px) 100vw, 40vw" className="object-cover" />
         </div>
       </section>
 
@@ -106,6 +105,8 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      <HomeLocation />
     </>
   );
 }
