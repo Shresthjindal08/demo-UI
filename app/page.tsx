@@ -88,21 +88,23 @@ export default function HomePage() {
       </section>
 
       <section className="energy-cta" aria-labelledby="closing-title">
-        <Image src={heroImage} alt="" fill sizes="100vw" className="energy-cta__image" />
         <div className="energy-cta__content">
-          <p className="energy-cta__label">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m14 1-11 13h8l-1 9L22 9h-9z" /></svg>
-            Get in touch
-          </p>
-          <h2 id="closing-title">Let’s power a brighter tomorrow</h2>
-          <p className="energy-cta__lead">
-            Our team is ready to help with your solar, storage,<br className="hidden md:block" />
-            EV charging and home energy needs.<br className="hidden md:block" />
-            Expert advice. One connected solution.
-          </p>
-          <Link className="energy-hero__cta" href={contactWithContext("home")}>
-            Request a quote <span aria-hidden="true">↗</span>
-          </Link>
+          <div className="energy-cta__intro">
+            <p className="energy-cta__label">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m14 1-11 13h8l-1 9L22 9h-9z" /></svg>
+              Get in touch
+            </p>
+            <h2 id="closing-title">Let’s power a brighter tomorrow</h2>
+          </div>
+          <div className="energy-cta__action">
+            <p className="energy-cta__lead">
+              Solar, storage, EV charging or a smarter home. Let’s find the right energy solution for you.
+            </p>
+            <Link className="energy-cta__button" href={contactWithContext("home")}>
+              Request a quote <span aria-hidden="true">↗</span>
+            </Link>
+            <p className="energy-cta__note">Expert advice. One connected solution.</p>
+          </div>
         </div>
       </section>
 

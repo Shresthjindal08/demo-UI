@@ -41,7 +41,7 @@ const pin = project(office.longitude, office.latitude);
 
 export function HomeLocation() {
   return (
-    <section className={`${surfaceStyles} location`} data-surface="dark" aria-labelledby="location-title">
+    <section className={`${surfaceStyles} location`} data-surface="light" aria-labelledby="location-title">
       <div className="location__heading">
         <p className="location__eyebrow"><span />Local expertise. Connected thinking.</p>
         <h2 id="location-title">Where we operate</h2>
