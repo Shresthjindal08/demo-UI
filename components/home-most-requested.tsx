@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { dummyImage } from "@/lib/content/media";
 import Link from "next/link";
 import { mostRequested } from "@/lib/content/categories";
 import { routes } from "@/lib/routes";
@@ -57,7 +58,7 @@ export function HomeMostRequested({ displayFont }: { displayFont: string }) {
               </div>
               <Link href={routes.solution(solution.category.slug, solution.slug)} aria-label={`Explore ${solution.name}`} className={`group relative block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${index % 2 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
                 <div className="relative mr-5 aspect-[1.9] overflow-hidden rounded-t-[50%_85%] rounded-b-md bg-tint sm:mr-10">
-                  <Image src={`/most-requested/${solution.slug}.png`} alt="" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover transition-transform duration-[var(--duration-base)] ease-brand group-hover:scale-105 motion-reduce:transform-none" />
+                  <Image src={dummyImage(solution.name)} alt="" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover transition-transform duration-[var(--duration-base)] ease-brand group-hover:scale-105 motion-reduce:transform-none" />
                 </div>
                 <div className={`relative mt-3 flex w-full items-start gap-3 sm:absolute sm:mt-0 rounded-lg border border-hairline bg-white/95 p-4 text-body-sm text-body sm:bottom-8 sm:w-48 ${index % 2 ? "left-0 lg:-left-5" : "right-0"}`}>
                   <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-7 shrink-0 rounded-pill bg-tint p-1 text-accent">{symbols[index]}</svg>

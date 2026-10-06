@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const steps = [
-  { title: "Enquiry", body: "Tell us about your energy needs and goals.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80", icon: "M21 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 17-5ZM8 10h8M8 14h5" },
-  { title: "Site assessment", body: "We evaluate your site for maximum potential.", image: "/hero-solar-homes.png", icon: "M19 9c0 5-7 12-7 12S5 14 5 9a7 7 0 1 1 14 0ZM9 9a3 3 0 1 0 6 0 3 3 0 0 0-6 0" },
-  { title: "Engineered design", body: "Custom designs for optimal performance and savings.", image: "/most-requested/residential-solar.png", icon: "m9 3 1-2h4l1 2 3 2 2 1-1 4v4l1 4-2 1-3 2-1 2h-4l-1-2-3-2-2-1 1-4v-4L4 6l2-1 3-2ZM8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0" },
-  { title: "Approvals", body: "We manage all regulatory approvals for you.", image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=400&q=80", icon: "M5 2h10l4 4v16H5V2ZM14 2v5h5M8 11h8M8 15h8M8 19h5" },
-  { title: "Installation", body: "Professional, efficient and on-time installation.", image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?auto=format&fit=crop&w=400&q=80", icon: "M14 6a6 6 0 0 0-7 8L2 19a2 2 0 0 0 3 3l6-6a6 6 0 0 0 8-7l-4 4-4-4 3-3Z" },
+  { title: "Enquiry", body: "Tell us about your energy needs and goals.", image: "/vagus%20images/pexels-seljansalim-34955548.jpg", icon: "M21 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 17-5ZM8 10h8M8 14h5" },
+  { title: "Site assessment", body: "We evaluate your site for maximum potential.", image: "/vagus%20images/pexels-andersen-ev-1587213396-27355838.jpg", icon: "M19 9c0 5-7 12-7 12S5 14 5 9a7 7 0 1 1 14 0ZM9 9a3 3 0 1 0 6 0 3 3 0 0 0-6 0" },
+  { title: "Engineered design", body: "Custom designs for optimal performance and savings.", image: "/vagus%20images/pexels-andersen-ev-1587213396-27355838.jpg", icon: "m9 3 1-2h4l1 2 3 2 2 1-1 4v4l1 4-2 1-3 2-1 2h-4l-1-2-3-2-2-1 1-4v-4L4 6l2-1 3-2ZM8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0" },
+  { title: "Approvals", body: "We manage all regulatory approvals for you.", image: "/vagus%20images/pexels-bulat843-1243575272-34054464.jpg", icon: "M5 2h10l4 4v16H5V2ZM14 2v5h5M8 11h8M8 15h8M8 19h5" },
+  { title: "Installation", body: "Professional, efficient and on-time installation.", image: "/vagus%20images/pexels-cristian-rojas-8853536.jpg", icon: "M14 6a6 6 0 0 0-7 8L2 19a2 2 0 0 0 3 3l6-6a6 6 0 0 0 8-7l-4 4-4-4 3-3Z" },
   { title: "Switch-on and monitoring", body: "We get you live and keep your system performing.", image: null, icon: "M3 12h4v10H3V12ZM10 3h4v19h-4V3ZM17 8h4v14h-4V8Z" },
 ];
 

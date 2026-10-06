@@ -5,8 +5,8 @@ import { routes } from "@/lib/routes";
 import { Section } from "@/components/ui/primitives";
 
 const presentations = [
-  { image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1600&q=85", description: "Rooftop solar, battery storage and energy optimisation working together to reduce reliance on grid power.", note: "Clean energy powering operations" },
-  { image: "/most-requested/residential-solar.png", description: "Solar, battery storage and home EV charging, brought together for greater energy independence.", note: "Powering homes, brighter tomorrows" },
+  { image: "/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg", description: "Rooftop solar, battery storage and energy optimisation working together to reduce reliance on grid power.", note: "Clean energy powering operations" },
+  { image: "/vagus%20images/pexels-andersen-ev-1587213396-27355838.jpg", description: "Solar, battery storage and home EV charging, brought together for greater energy independence.", note: "Powering homes, brighter tomorrows" },
 ];
 
 export function HomeProjects({ displayFont }: { displayFont: string }) {

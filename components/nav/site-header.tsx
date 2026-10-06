@@ -2,7 +2,6 @@
 import { surfaceStyles } from "@/lib/styles";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { primaryNav } from "@/lib/content/navigation";
@@ -57,6 +56,7 @@ export function SiteHeader() {
 
       <header
         data-surface="base"
+        data-home={pathname === routes.home}
         onPointerOver={(event) => {
           if (event.pointerType === "mouse" && (event.target as Element).closest("nav a, a[href='/'], a[href='/contact']")) {
             clearHoverTimer();
@@ -76,7 +76,7 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className={`${surfaceStyles} relative z-100 w-full bg-transparent data-[panel-open=true]:bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
+        className={`site-header ${surfaceStyles} relative z-100 w-full bg-transparent data-[panel-open=true]:bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
         data-panel-open={panelOpen}
       >
         <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[var(--nav-height)] items-center justify-between gap-6">
@@ -85,13 +85,7 @@ export function SiteHeader() {
             className="flex shrink-0 items-center"
             onClick={() => track("nav_click", { surface: "header", label: "wordmark" })}
           >
-            <Image
-              src="/logo-text-transparent.png"
-              alt={site.name}
-              width={153}
-              height={47}
-              className="h-auto w-[9.5625rem]"
-            />
+            <span className={`font-display text-[2.5rem] font-semibold leading-none tracking-[-0.06em] ${pathname === routes.home && !panelOpen ? "text-white" : "text-accent"}`}>{site.name}</span>
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">

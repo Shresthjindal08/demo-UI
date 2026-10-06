@@ -3,7 +3,8 @@ import { legacySolutionRedirects } from "./lib/routes";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
+    localPatterns: [{ pathname: "/vagus%20images/**", search: "" }],
+    remotePatterns: [],
   },
   async redirects() {
     return [

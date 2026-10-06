@@ -37,7 +37,7 @@ export function NewsletterForm() {
           autoComplete="email"
           placeholder="Email address"
           aria-describedby={noteId}
-          className="min-h-11 flex-1 border-b border-hairline-strong bg-transparent px-1 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus-visible:border-accent"
+          className="min-h-11 min-w-0 basis-48 flex-1 border-b border-hairline-strong bg-transparent px-1 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus-visible:border-accent"
         />
         <Button type="submit" variant="secondary" loading={status === "sending"}>
           Subscribe

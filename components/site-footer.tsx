@@ -4,7 +4,7 @@ import { site } from "@/lib/content/site";
 import { routes } from "@/lib/routes";
 
 const model = footerModel();
-const letterImages = ["/hero-renewable.png", "/most-requested/residential-solar.png", "/most-requested/home-ev-charging.png", "/capabilities/renewable-energy.png", "/most-requested/battery-storage.png"];
+const letterImages = ["/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg", "/vagus%20images/pexels-andersen-ev-1587213396-27355838.jpg", "/vagus%20images/pexels-04iraq-1272398525-35736783.jpg", "/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg", "/vagus%20images/pexels-elite-power-group-661996115-39057093.jpg"];
 
 export function SiteFooter() {
   return (

@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "text";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-sans font-medium tracking-tight " +
+  "inline-flex max-w-full items-center justify-center gap-2 text-center font-sans font-medium tracking-tight " +
   "min-h-[var(--hit-target)] rounded-pill transition-colors duration-[var(--duration-micro)] " +
   "ease-brand disabled:pointer-events-none disabled:opacity-40";
 

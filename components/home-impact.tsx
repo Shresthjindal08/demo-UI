@@ -38,7 +38,7 @@ export function HomeImpact({ displayFont }: { displayFont: string }) {
       <div className="relative mt-8 lg:-mt-28">
         <svg aria-hidden="true" viewBox="0 0 300 200" fill="none" className="pointer-events-none absolute right-0 bottom-0 hidden w-[20%] text-accent/30 lg:block"><path d="M5 100C100-40 235 0 295 190" stroke="currentColor" /><circle cx="220" cy="63" r="4" fill="currentColor" /></svg>
         <div className="relative h-64 overflow-hidden rounded-lg bg-tint lg:h-[clamp(22rem,30vw,32rem)] lg:rounded-none lg:[clip-path:url(#impact-landscape)]">
-          <Image src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2400&q=85" alt="Solar panels across a rooftop at sunset" fill sizes="100vw" className="object-cover object-center" />
+          <Image src="/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg" alt="Solar panels and wind turbines at sunset" fill sizes="100vw" className="object-cover object-center" />
         </div>
       </div>
     </Section>
