@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/content/site";
 import { routes, contactWithContext } from "@/lib/routes";
-import { ButtonLink } from "@/components/ui/button";
-import { Kicker, Section } from "@/components/ui/primitives";
-import { PageMasthead } from "@/components/ui/page-masthead";
-import { MediaSlot } from "@/components/ui/media-slot";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -39,75 +37,84 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <PageMasthead
-        kicker="About"
-        title="An engineering company that installs."
-        lead="Vagus Energy has designed and delivered renewable infrastructure across Victoria since 2014. We employ our own engineers and our own crews."
-        index="02 / The practice"
-        imageLabel="Consultation meeting with our engineers"
-      />
-
-      <Section surface="dark" data-treatment="B" label="Founder message">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <MediaSlot label="Founder message — video, captioned" className="aspect-video" />
-          <div>
-            <Kicker>From the founder</Kicker>
-            <blockquote className="mt-6">
-              <p className="text-pretty text-display-4">
-                “We started because too many systems were being sold before they were
-                designed. That order is the whole problem.”
-              </p>
-              <footer className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-6">
-                <cite className="not-italic">Founder, Vagus Energy</cite>
-              </footer>
-            </blockquote>
+      <div className="about-page">
+        <section className="about-intro" aria-labelledby="about-title">
+          <div className="about-intro__rule" />
+          <p className="about-eyebrow">About Vagus Energy</p>
+          <h1 id="about-title">An engineering company<br className="hidden md:block" /> that installs.</h1>
+          <div className="about-intro__details">
+            <div>
+              <p>Vagus Energy has designed and delivered renewable infrastructure across Victoria since 2014. From the first conversation to the final connection, we see the whole system.</p>
+              <Link className="about-link" href={contactWithContext("about")}>Start a project <span aria-hidden="true">↗</span></Link>
+            </div>
+            <p>We employ our own engineers and our own crews. Solar, storage, EV charging and grid integration — connected by one team, with engineering at the centre.</p>
           </div>
-        </div>
-      </Section>
+          <div className="about-intro__footer"><span>Based in Victoria. Built for the long term.</span><a href="#about-practice">Get to know us <span aria-hidden="true">↓</span></a></div>
+        </section>
 
-      <Section surface="tint" data-treatment="C" label="Accreditation">
-        <Kicker>Accreditation</Kicker>
-        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Current, verifiable, listed.</h2>
-        <ul className="mt-12 grid gap-8 md:grid-cols-3">
-          {site.accreditations.map((item) => (
-            <li key={item.label} className="border-t border-hairline pt-6">
-              <span className="block text-body-lg text-ink">{item.label}</span>
-              {item.number ? (
-                <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted mt-2 block">{item.number}</span>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section surface="light" data-treatment="A" label="Timeline">
-        <Kicker>Timeline</Kicker>
-        <ol className="mt-12 border-t border-hairline">
-          {timeline.map((entry) => (
-            <li
-              key={entry.year}
-              className="flex flex-wrap gap-x-12 gap-y-2 border-b border-hairline py-6"
-            >
-              <span className="font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted w-16 shrink-0">{entry.year}</span>
-              <span className="text-body-lg text-ink">{entry.event}</span>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section surface="dark" data-treatment="F" label="Start a consultation">
-        <div className="flex flex-col items-start justify-between gap-8 border-t border-hairline pt-12 lg:flex-row lg:items-end">
-          <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance max-w-[16ch] text-display-3">Work with our engineers.</h2>
-          <div className="flex flex-wrap gap-4">
-            <ButtonLink href={contactWithContext("about")} size="lg">
-              {site.consultationCta}
-            </ButtonLink>
-            <ButtonLink href={routes.careers} variant="secondary" size="lg">
-              Careers
-            </ButtonLink>
+        <section className="about-practice" id="about-practice" aria-labelledby="practice-title">
+          <Image src="/vagus%20images/pexels-trinh-tr-n-191284110-11645013.jpg" alt="" fill sizes="100vw" className="about-practice__background" />
+          <div className="about-practice__heading">
+            <p className="about-eyebrow">The way we work</p>
+            <h2 id="practice-title">Good energy starts<br />with good people.</h2>
           </div>
-        </div>
-      </Section>
+          <div className="about-practice__cards">
+            <article className="about-card">
+              <div className="about-card__copy">
+                <span className="about-card__number">01 / PEOPLE</span>
+                <h3>Our people</h3>
+                <p>Our own engineers. Our own installation crews. A team that stays connected from design through delivery.</p>
+                <Link href={routes.careers}>Meet your next opportunity <span aria-hidden="true">↗</span></Link>
+              </div>
+              <div className="about-card__image"><Image src="/vagus%20images/pexels-cristian-rojas-8853536.jpg" alt="Solar installers working together on a rooftop" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
+            </article>
+            <article className="about-card">
+              <div className="about-card__copy">
+                <span className="about-card__number">02 / PROJECTS</span>
+                <h3>Our projects</h3>
+                <p>From homes to commercial rooftops, we design energy systems around the places and people they serve.</p>
+                <Link href={routes.projects}>Explore our projects <span aria-hidden="true">↗</span></Link>
+              </div>
+              <div className="about-card__image"><Image src="/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg" alt="Solar panels and wind turbines at sunset" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
+            </article>
+            <article className="about-card">
+              <div className="about-card__copy">
+                <span className="about-card__number">03 / THINKING</span>
+                <h3>Our approach</h3>
+                <p>Design first. Connect the whole system. Bring generation, storage and energy use together with purpose.</p>
+                <Link href={routes.vision}>See how we think <span aria-hidden="true">↗</span></Link>
+              </div>
+              <div className="about-card__image"><Image src="/vagus%20images/pexels-elite-power-group-661996115-39057093.jpg" alt="An electrician working on an energy installation" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
+            </article>
+          </div>
+          <p className="about-practice__caption">Illustrative imagery</p>
+        </section>
+
+        <section className="about-founder" aria-labelledby="founder-title">
+          <div><p className="about-eyebrow" id="founder-title">From the founder</p><span className="about-founder__mark" aria-hidden="true">“</span></div>
+          <blockquote>
+            <p>We started because too many systems were being sold before they were designed. <span>That order is the whole problem.</span></p>
+            <footer>Founder, Vagus Energy</footer>
+          </blockquote>
+        </section>
+
+        <section className="about-credentials" aria-labelledby="credentials-title">
+          <div className="about-section-heading"><p className="about-eyebrow">Accreditation</p><h2 id="credentials-title">Standards behind<br />every system.</h2></div>
+          <ul>
+            {site.accreditations.map((item, index) => <li key={item.label}><span className="about-card__number">0{index + 1}</span><h3>{item.label}</h3></li>)}
+          </ul>
+        </section>
+
+        <section className="about-history" aria-labelledby="history-title">
+          <div className="about-section-heading"><p className="about-eyebrow">Our journey</p><h2 id="history-title">Built on experience.<br />Looking ahead.</h2></div>
+          <ol>{timeline.map((entry) => <li key={entry.year}><span>{entry.year}</span><p>{entry.event}</p></li>)}</ol>
+        </section>
+
+        <section className="about-contact" aria-labelledby="about-contact-title">
+          <div><p className="about-eyebrow">Your next step</p><h2 id="about-contact-title">Let’s build something<br />that lasts.</h2></div>
+          <div className="about-contact__actions"><Link className="about-link" href={contactWithContext("about")}>Work with our engineers <span aria-hidden="true">↗</span></Link><Link href={routes.careers}>Looking to join the team? Explore careers <span aria-hidden="true">↗</span></Link></div>
+        </section>
+      </div>
     </>
   );
 }
