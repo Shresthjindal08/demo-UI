@@ -2,6 +2,7 @@
 import { surfaceStyles } from "@/lib/styles";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { primaryNav } from "@/lib/content/navigation";
@@ -85,7 +86,14 @@ export function SiteHeader() {
             className="flex shrink-0 items-center"
             onClick={() => track("nav_click", { surface: "header", label: "wordmark" })}
           >
-            <span className={`font-display text-[2.5rem] font-semibold leading-none tracking-[-0.06em] ${pathname === routes.home && !panelOpen ? "text-white" : "text-accent"}`}>{site.name}</span>
+            <Image
+              src="/logo-text-transparent.png"
+              alt={site.name}
+              width={153}
+              height={47}
+              loading="eager"
+              className="h-auto w-[153px]"
+            />
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">

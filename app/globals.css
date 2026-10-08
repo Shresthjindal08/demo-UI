@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-league-spartan), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-league-spartan), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-league-spartan), ui-sans-serif, system-ui, sans-serif;
 
   --text-display-1: clamp(2.75rem, 7vw, 8.75rem);
   --text-display-1--line-height: 1.02;
