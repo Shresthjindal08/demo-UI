@@ -4,6 +4,7 @@ import { legacySolutionRedirects } from "./lib/routes";
 const nextConfig: NextConfig = {
   images: {
     localPatterns: [
+      { pathname: "/brands/**", search: "" },
       { pathname: "/vagus%20images/**", search: "" },
       { pathname: "/logo-text-light.png", search: "" },
       { pathname: "/logo-text-transparent.png", search: "" },

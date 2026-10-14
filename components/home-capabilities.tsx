@@ -27,7 +27,8 @@ export function HomeCapabilities() {
           <li key={category.slug}>
             <Link href={routes.category(category.slug)} className="capabilities__card">
               <div className="capabilities__card-header">
-                <h3>{category.name}</h3>
+                <span className="capabilities__index">{category.index} / {category.name}</span>
+                <h3>{category.promise}</h3>
                 <ul className="capabilities__facts">
                   {category.facts.slice(0, 2).map((fact, index) => <li key={fact}><span>{index === 0 ? "Solutions:" : "Scope:"}</span> {index === 0 ? fact.replace(" solutions", "") : fact}</li>)}
                 </ul>
@@ -37,7 +38,7 @@ export function HomeCapabilities() {
               </div>
               <div className="capabilities__card-footer">
                 <p>{category.descriptor}</p>
-                <span className="capabilities__arrow" aria-hidden="true">↗</span>
+                <span className="capabilities__explore">Explore capability <span className="capabilities__arrow" aria-hidden="true">↗</span></span>
               </div>
             </Link>
           </li>

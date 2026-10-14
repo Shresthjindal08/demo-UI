@@ -77,7 +77,7 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className={`site-header ${surfaceStyles} relative z-100 w-full bg-transparent data-[panel-open=true]:bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
+        className={`site-header ${surfaceStyles} relative z-100 w-full bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
         data-panel-open={panelOpen}
       >
         <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[var(--nav-height)] items-center justify-between gap-6">
