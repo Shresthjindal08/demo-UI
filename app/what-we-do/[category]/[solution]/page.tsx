@@ -73,6 +73,33 @@ const keyFeatures = [
   },
 ];
 
+const batteryFeatures = [
+  {
+    title: "Usable capacity and reserve",
+    body: "Define the usable kWh, reserve level and expected household or business loads in the proposed design.",
+  },
+  {
+    title: "Inverter compatibility",
+    body: "Check the proposed battery against the existing or planned inverter and the AC- or DC-coupled architecture.",
+  },
+  {
+    title: "Essential-circuit backup",
+    body: "Identify essential circuits, changeover equipment and backup limitations before choosing a system. Backup is included only where specified in the design.",
+  },
+  {
+    title: "Charge and discharge power",
+    body: "Match the proposed power rating to peak demand and the appliances expected to run together, alongside the storage capacity.",
+  },
+  {
+    title: "Placement and access",
+    body: "Confirm the installation location, access, clearances and manufacturer siting requirements during the site assessment.",
+  },
+  {
+    title: "Commissioning and monitoring",
+    body: "Include charge and discharge checks, backup testing where specified, monitoring setup and operating guidance in the handover plan.",
+  },
+];
+
 export default async function SolutionPage({
   params,
 }: PageProps<"/what-we-do/[category]/[solution]">) {
@@ -150,7 +177,7 @@ export default async function SolutionPage({
       <Section surface="light" data-treatment="A" label="Key features">
         <Kicker>Key features</Kicker>
         <ul className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
-          {keyFeatures.map((feature, index) => (
+          {(solution.slug === "battery-storage" ? batteryFeatures : keyFeatures).map((feature, index) => (
             <li key={feature.title}>
               <span className="font-mono text-[length:var(--text-kicker)] leading-[1.2] tracking-[var(--tracking-kicker)] uppercase text-muted">{String(index + 1).padStart(2, "0")}</span>
               <h3 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-4 text-display-4">{feature.title}</h3>
