@@ -135,7 +135,7 @@ export default async function SolutionPage({
                 {site.consultationCta}
               </ButtonLink>
               <ButtonLink href="#specifications" variant="secondary" size="lg">
-                Spec sheet
+                View specifications
               </ButtonLink>
             </div>
           </div>
@@ -162,7 +162,8 @@ export default async function SolutionPage({
 
       <Section surface="tint" data-treatment="C" label="Installation process">
         <Kicker>Installation</Kicker>
-        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Five steps, five weeks.</h2>
+        <h2 className="[:where(&)]:text-ink [:where(&)]:font-display [:where(&)]:font-semibold [:where(&)]:tracking-[var(--tracking-display)] [:where(&)]:leading-[var(--leading-heading)] [:where(&)]:text-balance mt-6 max-w-[18ch] text-display-3">Five steps to switch-on.</h2>
+        <p className="mt-6 max-w-prose text-body-sm text-muted">Illustrative five-week schedule, subject to site assessment, network approvals and equipment availability. Timing is confirmed for each project.</p>
         <ol className="mt-12 grid gap-px border border-hairline bg-hairline md:grid-cols-2 xl:grid-cols-5">
           {installProcess.map((step) => (
             <li key={step.title} className="bg-bg p-6">

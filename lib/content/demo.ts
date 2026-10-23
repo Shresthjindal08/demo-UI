@@ -2,6 +2,13 @@ export const demo = {
   title: "About this website demo",
   description:
     "This Vagus Energy website is a client-facing UI prototype for reviewing the proposed design, content structure and customer journeys. It is not a production service.",
+  reviewChecklist: [
+    "Brand direction: does the visual identity feel right for Vagus Energy?",
+    "Service presentation: are the categories and example offerings easy to understand?",
+    "Navigation: can you find a relevant service and return to the homepage easily?",
+    "Mobile layouts: are the text, images and controls comfortable to use on your device?",
+    "Customer journey: can you explore a service and complete the simulated enquiry flow?",
+  ],
   sections: [
     {
       title: "Purpose and scope",

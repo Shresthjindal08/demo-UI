@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 import { allSolutions } from "@/lib/content/categories";
 import { routes } from "@/lib/routes";
@@ -46,11 +46,9 @@ function Field({
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ context }: { context: string | null }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const formId = useId();
-  const context = searchParams.get("context");
 
   const [inquiry, setInquiry] = useState(inquiryTypes[0].value);
   const [started, setStarted] = useState(false);
@@ -143,7 +141,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
-        <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">No obligation · free site assessment</p>
+        <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">Demo only · no enquiry is sent</p>
         <Button type="submit" size="lg" loading={sending}>
           Send
         </Button>

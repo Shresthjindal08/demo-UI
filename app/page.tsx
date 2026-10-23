@@ -30,14 +30,19 @@ export default function HomePage() {
         <Image src={heroImage} alt="" fill loading="eager" fetchPriority="high" sizes="100vw" className="energy-hero__image" />
         <div className="energy-hero__content">
           <div>
-            <h1 id="hero-title">Smart solutions for<br />power, homes &amp; tomorrow</h1>
+            <h1 id="hero-title">Solar, storage &amp; charging.<br />Engineered together.</h1>
             <p className="energy-hero__lead">
-              Smarter energy for homes, businesses and communities.<br className="hidden sm:block" />
-              Solar, storage and EV charging — designed to work together.
+              Connected energy systems for homes, businesses and communities.{" "}<br className="hidden sm:block" />
+              Based in Melbourne. Serving Victoria.
             </p>
-            <Link className="energy-hero__cta" href={contactWithContext("home")}>
-              Request a quote <span aria-hidden="true">↗</span>
-            </Link>
+            <div className="mt-[34px] flex flex-wrap items-center gap-4 sm:gap-6">
+              <Link className="energy-hero__cta" href={contactWithContext("home")}>
+                Request a quote <span aria-hidden="true">↗</span>
+              </Link>
+              <Link href={routes.whatWeDo} className="inline-flex min-h-11 items-center gap-2 text-base text-white underline underline-offset-4">
+                Explore our solutions <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="energy-hero__services" aria-label="Energy services">

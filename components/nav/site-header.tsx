@@ -166,7 +166,7 @@ export function SiteHeader() {
                 track("cta_click", {
                   page: pathname,
                   section: "header",
-                  label: "Get a quote",
+                  label: "Request a quote",
                 })
               }
               onPointerEnter={(event) => {
@@ -177,7 +177,7 @@ export function SiteHeader() {
               }}
               className="group relative isolate hidden min-h-12 items-center gap-4 overflow-hidden rounded-full border border-[var(--palette-green-deep)] px-7 text-sm font-medium text-[var(--palette-forest)] transition-colors duration-250 hover:text-white focus-visible:text-white before:absolute before:inset-0 before:-z-10 before:bg-[var(--palette-green-deep)] before:[clip-path:circle(0%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] before:transition-[clip-path] before:duration-550 before:ease-[cubic-bezier(0.22,1,0.36,1)] hover:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] focus-visible:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] motion-reduce:transition-none motion-reduce:before:transition-none sm:inline-flex"
             >
-              Get a quote
+              Request a quote
               <span aria-hidden="true" className="text-lg transition-transform group-hover:translate-x-0.5">
                 →
               </span>

@@ -1,6 +1,5 @@
 import { surfaceStyles } from "@/lib/styles";
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { site } from "@/lib/content/site";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/ui/primitives";
@@ -14,7 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: routes.contact },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
+  const query = await searchParams;
+  const context = typeof query.context === "string" ? query.context : null;
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -55,9 +56,7 @@ export default function ContactPage() {
             <a href="mailto:hello@vagus.energy">hello@vagus.energy <span aria-hidden="true">↗</span></a>
             <address>139 Cardigan Street<br />Carlton VIC 3053<br />Melbourne, Australia</address>
           </aside>
-          <Suspense fallback={<div className="min-h-96" />}>
-            <ContactForm />
-          </Suspense>
+          <ContactForm context={context} />
         </Container>
       </section>
     </div>

@@ -12,8 +12,8 @@ export function HomeHowWeWork() {
   return (
     <section className="method" aria-labelledby="method-title">
       <div className="method__header">
-        <div><p className="capabilities__eyebrow">How we work</p><h2 id="method-title">Engineering first.<br />At every stage.</h2></div>
-        <p>A clear, structured process from assessment to long-term support — built around real outcomes, not pushy promises.</p>
+        <div><p className="capabilities__eyebrow">Our engineering principles</p><h2 id="method-title">Engineering first.<br />At every stage.</h2></div>
+        <p>Four principles behind every system: considered design, accountable delivery, measured performance and room to grow.</p>
       </div>
       <ol className="method__cards">
         {stages.map((stage, index) => (
@@ -25,7 +25,7 @@ export function HomeHowWeWork() {
           </li>
         ))}
       </ol>
-      <Link className="method__link" href={routes.contact}>Talk to our engineers <span aria-hidden="true">↗</span></Link>
+      <Link className="method__link" href={routes.contact}>Request a quote <span aria-hidden="true">↗</span></Link>
     </section>
   );
 }

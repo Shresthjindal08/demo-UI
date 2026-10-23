@@ -14,10 +14,10 @@ export function HomeJourney() {
   return (
     <section className="journey" aria-labelledby="journey-title">
       <div className="journey__intro">
-        <p className="capabilities__eyebrow">The journey</p>
+        <p className="capabilities__eyebrow">What happens after you enquire</p>
         <h2 id="journey-title">Six steps.<br />One team.</h2>
         <p>From your first enquiry to long-term monitoring, we handle every step in-house — ensuring a reliable and transparent experience.</p>
-        <Link href={routes.contact} className="capabilities__cta">Start your project <span aria-hidden="true">↗</span></Link>
+        <Link href={routes.contact} className="capabilities__cta">Request a quote <span aria-hidden="true">↗</span></Link>
       </div>
       <ol className="journey__steps">
         {steps.map((step, index) => (

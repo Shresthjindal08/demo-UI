@@ -7,7 +7,7 @@ export const site = {
 
   positioning: "Renewable infrastructure engineered as one system, from generation to charge.",
 
-  consultationCta: "Start an energy consultation",
+  consultationCta: "Request a quote",
 
   accreditations: [
     { label: "NETCC Approved Seller", number: "[NETCC NO.]" },
