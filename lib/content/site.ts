@@ -1,7 +1,9 @@
 export const site = {
   name: "Vagus Energy",
   wordmark: "VAGUS",
-  url: "https://vagus.energy",
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://demo-ui-lyart.vercel.app"
+  ).replace(/\/+$/, ""),
 
   positioning: "Renewable infrastructure engineered as one system, from generation to charge.",
 

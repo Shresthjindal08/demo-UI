@@ -14,6 +14,7 @@ import { HomeCapabilities } from "@/components/home-capabilities";
 
 export const metadata: Metadata = {
   title: "Renewable infrastructure engineering — Victoria",
+  alternates: { canonical: routes.home },
   description:
     "Vagus Energy designs complete energy systems — solar, storage, EV charging, heat pumps and grid integration — as one instrument.",
 };
