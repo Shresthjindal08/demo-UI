@@ -858,9 +858,10 @@
   isolation: isolate;
   display: flex;
   flex-direction: column;
-  min-height: 560px;
+  min-height: max(560px, calc(100svh - 64px));
   overflow: hidden;
   padding: clamp(28px, 4vw, 64px);
+  border-radius: var(--radius-lg);
   background: radial-gradient(ellipse at 85% 90%, #835023 0%, #25382d 35%, #101b16 75%);
   color: #fff;
 }
@@ -980,7 +981,7 @@
   }
 
   .capabilities__card {
-    min-height: 0;
+    min-height: calc(100svh - 32px);
     padding: 28px 24px;
   }
 
@@ -1076,7 +1077,22 @@
   display: block;
   width: 100%;
   height: auto;
-  margin-bottom: -12%;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.location__globe:active {
+  cursor: grabbing;
+}
+
+.location__globe:focus {
+  outline: none;
+}
+
+.location__globe[data-keyboard-focus="true"]:focus {
+  outline: 2px solid var(--v-accent);
+  outline-offset: -4px;
+  border-radius: 50%;
 }
 
 .location__map-label {
@@ -1111,6 +1127,7 @@
 }
 
 .location address,
+.location__coordinates,
 .location__card-detail {
   font-size: var(--text-body-sm);
   font-style: normal;
@@ -1144,14 +1161,12 @@
   }
 
   .location__globe {
-    width: 140%;
-    max-width: none;
-    margin-left: -20%;
-    margin-bottom: -20%;
+    width: 100%;
   }
 
   .location__card {
     position: relative;
+    top: auto;
     left: auto;
     width: auto;
     max-width: 380px;

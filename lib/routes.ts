@@ -16,6 +16,7 @@ export const routes = {
   careers: "/careers",
   resources: "/resources",
   faq: "/faq",
+  demoInfo: "/demo-info",
   shop: "/shop",
   thankYou: "/contact/thank-you",
   local: (service: string, suburb: string) => `/${service}/${suburb}`,
@@ -52,6 +53,7 @@ export function indexableRoutes(): { path: string; priority: number }[] {
     { path: routes.careers, priority: 0.5 },
     { path: routes.resources, priority: 0.6 },
     { path: routes.faq, priority: 0.5 },
+    { path: routes.demoInfo, priority: 0.3 },
     ...localPages().map(({ service, suburb }) => ({
       path: routes.local(service, suburb),
       priority: 0.6,

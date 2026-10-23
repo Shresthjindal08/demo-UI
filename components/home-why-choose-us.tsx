@@ -11,7 +11,7 @@ const reasons = [
 export function HomeWhyChooseUs() {
   return (
     <section className="why-vagus" aria-labelledby="why-vagus-title">
-      <Image src="/vagus%20images/pexels-cristian-rojas-8853536.jpg" alt="" fill sizes="100vw" className="object-cover" />
+      <Image src="/vagus%20images/pexels-cristian-rojas-8853536.jpg" alt="" fill loading="eager" sizes="100vw" className="object-cover" />
       <div className="why-vagus__header">
         <div><p>Why choose Vagus</p><h2 id="why-vagus-title">Built for performance.<br />Designed around you.</h2></div>
         <Link href={routes.contact}>Work with us <span aria-hidden="true">↗</span></Link>

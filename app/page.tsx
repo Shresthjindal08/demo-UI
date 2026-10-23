@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <>
       <section className="energy-hero" aria-labelledby="hero-title">
-        <Image src={heroImage} alt="" fill preload sizes="100vw" className="energy-hero__image" />
+        <Image src={heroImage} alt="" fill loading="eager" fetchPriority="high" sizes="100vw" className="energy-hero__image" />
         <div className="energy-hero__content">
           <div>
             <h1 id="hero-title">Smart solutions for<br />power, homes &amp; tomorrow</h1>

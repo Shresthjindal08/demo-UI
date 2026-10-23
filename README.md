@@ -31,6 +31,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
+The client preview scope is documented at `/demo-info` and `/llms.txt`. The demo information page is included in the sitemap; existing navigation and page designs are unchanged. Forms are intentionally simulated and do not deliver submissions.
+
 Canonical URLs, structured data, robots.txt, and the sitemap default to `https://demo-ui-lyart.vercel.app`. To use a different public domain, set `NEXT_PUBLIC_SITE_URL` in Vercel before building and redeploy. Switch to `https://vagus.energy` only after that domain serves this deployment.
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
