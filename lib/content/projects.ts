@@ -154,7 +154,9 @@ export function projectsInSuburb(suburb: string): Project[] {
 export function projectFilters() {
   return {
     industries: [...new Set(projects.map((project) => project.industry))].sort(),
-    categories: categories.map(({ slug, name }) => ({ slug, name })),
+    categories: categories
+      .filter((category) => projects.some((project) => project.categorySlugs.includes(category.slug)))
+      .map(({ slug, name }) => ({ slug, name })),
     locations: [...new Set(projects.map((project) => project.suburb))].sort(),
     years: [...new Set(projects.map((project) => project.year))].sort((a, b) => b - a),
   };

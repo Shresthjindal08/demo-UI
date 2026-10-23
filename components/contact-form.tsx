@@ -58,6 +58,8 @@ export function ContactForm({ context }: { context: string | null }) {
 
   return (
     <form
+      aria-label="Contact enquiry"
+      aria-describedby={`${formId}-demo-note`}
       className="contact-form border border-hairline p-6 lg:p-10"
       onFocus={() => {
         if (started) return;
@@ -141,7 +143,7 @@ export function ContactForm({ context }: { context: string | null }) {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
-        <p className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">Demo only · no enquiry is sent</p>
+        <p id={`${formId}-demo-note`} className="text-pretty font-mono text-[length:var(--text-caption)] tracking-[0.04em] text-muted">Demo only · no enquiry is sent</p>
         <Button type="submit" size="lg" loading={sending}>
           Send
         </Button>

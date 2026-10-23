@@ -8,9 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HomeProjects } from "@/components/home-projects";
-import { routes, contactWithContext } from "@/lib/routes";
+import { routes } from "@/lib/routes";
 import { HomeMostRequested } from "@/components/home-most-requested";
 import { HomeCapabilities } from "@/components/home-capabilities";
+import { ContactForm } from "@/components/contact-form";
+import { Container } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
   title: "Renewable infrastructure engineering — Victoria",
@@ -36,7 +38,7 @@ export default function HomePage() {
               Based in Melbourne. Serving Victoria.
             </p>
             <div className="mt-[34px] flex flex-wrap items-center gap-4 sm:gap-6">
-              <Link className="energy-hero__cta" href={contactWithContext("home")}>
+              <Link className="energy-hero__cta" href="#contact-us">
                 Request a quote <span aria-hidden="true">↗</span>
               </Link>
               <Link href={routes.whatWeDo} className="inline-flex min-h-11 items-center gap-2 text-base text-white underline underline-offset-4">
@@ -106,12 +108,25 @@ export default function HomePage() {
             <p className="energy-cta__lead">
               Solar, storage, EV charging or a smarter home. Let’s find the right energy solution for you.
             </p>
-            <Link className="energy-cta__button" href={contactWithContext("home")}>
+            <Link className="energy-cta__button" href="#contact-us">
               Request a quote <span aria-hidden="true">↗</span>
             </Link>
             <p className="energy-cta__note">Expert advice. One connected solution.</p>
           </div>
         </div>
+      </section>
+
+      <section id="contact-us" className="home-contact scroll-mt-8" aria-labelledby="home-contact-title">
+        <Container className="contact-layout__grid">
+          <div className="contact-details">
+            <p className="section-kicker">Contact us</p>
+            <h2 id="home-contact-title" className="mt-6 font-display text-display-3 text-ink">Let’s talk about your energy.</h2>
+            <p>Tell us what you have in mind: solar, storage, EV charging or a more connected energy system.</p>
+            <p>This is a demo form. Use sample details to preview the enquiry journey; nothing is sent or saved.</p>
+            <Link href={routes.contact}>Visit the contact page <span aria-hidden="true">↗</span></Link>
+          </div>
+          <ContactForm context="home" />
+        </Container>
       </section>
 
       <HomeLocation />

@@ -15,6 +15,7 @@ export const primaryNav: NavItem[] = [
   { label: "Our approach", href: routes.vision },
   { label: "About", href: routes.about },
   { label: "Insights", href: routes.resources },
+  { label: "Contact us", href: routes.contact },
 ];
 
 export function megaMenuModel() {

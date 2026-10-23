@@ -15,7 +15,7 @@ const countries = feature(topology, topology.objects.countries).features;
 const continents = feature(topology, topology.objects.land);
 const borders = mesh(topology, topology.objects.countries, (a, b) => a !== b);
 const grid = geoGraticule10();
-const initialRotation: [number, number] = [-135, 25];
+const initialRotation: [number, number] = [-120, 65];
 const office = { latitude: -37.80368, longitude: 144.966, address: "139 Cardigan Street, Carlton VIC 3053, Australia" };
 const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(office.address)}`;
 
@@ -93,7 +93,7 @@ export function HomeLocation() {
       <div className="location__visual">
         <svg
           className="location__globe"
-          viewBox="0 0 1100 1000"
+          viewBox="0 0 1100 560"
           role="group"
           tabIndex={0}
           aria-label="Interactive world globe"
@@ -109,7 +109,7 @@ export function HomeLocation() {
               setRotation(([longitude, latitude]) => [longitude + (event.key === "ArrowLeft" ? -10 : event.key === "ArrowRight" ? 10 : 0), Math.max(-80, Math.min(80, latitude + (event.key === "ArrowUp" ? 10 : event.key === "ArrowDown" ? -10 : 0)))]);
             } else if (event.key === "Enter") {
               event.preventDefault();
-              selectPoint([550, 505]);
+              selectPoint([550, 280]);
             } else if (event.key === " ") {
               event.preventDefault();
               setManualMotion(true);

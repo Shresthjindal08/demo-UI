@@ -1103,9 +1103,9 @@
 
 .location__card {
   position: absolute;
-  top: 43%;
-  left: 65%;
-  width: min(30%, 320px);
+  top: 22%;
+  left: 75%;
+  width: min(25%, 320px);
   padding: 28px;
   border: 1px solid var(--v-hairline);
   border-radius: var(--radius-md);
@@ -1154,7 +1154,7 @@
   color: var(--v-accent-hover);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .location__visual {
     padding-bottom: 40px;
   }
@@ -1172,6 +1172,11 @@
     margin: 0 var(--container-margin);
     padding: 24px;
   }
+}
+
+.home-contact {
+  padding-block: clamp(64px, 7vw, 112px);
+  background: var(--palette-white);
 }
 
 .requested__cards {
