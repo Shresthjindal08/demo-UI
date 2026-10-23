@@ -37,7 +37,7 @@ export function HomeProjects() {
       <ol id="featured-projects-track" ref={trackRef} className="featured-projects__track" aria-label="Featured projects">
         {featuredProjects().map((project, index) => (
           <li key={project.slug} className="featured-projects__card">
-            <Link href={routes.project(project.slug)} className="featured-projects__link" aria-label={`View ${project.name}`}>
+            <Link href={routes.project(project.slug)} className="featured-projects__link">
               <Image src={presentations[index].image} alt="" fill sizes="(max-width: 767px) 90vw, 85vw" className="object-cover" />
               <div className="featured-projects__overlay">
                 <div className="featured-projects__title">

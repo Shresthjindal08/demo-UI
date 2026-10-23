@@ -1,6 +1,6 @@
 import { HomeCompanies } from "@/components/home-companies";
 import { HomeWhyChooseUs } from "@/components/home-why-choose-us";
-import { HomeLocation } from "@/components/home-location";
+import { DeferredHomeLocation } from "@/components/deferred-home-location";
 import { HomeJourney } from "@/components/home-journey";
 import { HomeImpact } from "@/components/home-impact";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
@@ -129,7 +129,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <HomeLocation />
+      <DeferredHomeLocation />
     </>
   );
 }

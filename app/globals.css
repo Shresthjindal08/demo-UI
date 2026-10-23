@@ -1179,6 +1179,28 @@
   background: var(--palette-white);
 }
 
+.home-contact .site-button--primary {
+  color: var(--palette-ink);
+}
+
+.location__placeholder {
+  position: relative;
+  aspect-ratio: 1100 / 560;
+  overflow: hidden;
+}
+
+.location__placeholder::before {
+  position: absolute;
+  top: 5.36%;
+  left: 6.82%;
+  width: 86.36%;
+  aspect-ratio: 1;
+  border: 1px solid var(--v-hairline);
+  border-radius: 50%;
+  background: radial-gradient(circle at 65% 25%, var(--v-tint), var(--v-bg));
+  content: "";
+}
+
 .requested__cards {
   margin: 0;
   padding: 0;
