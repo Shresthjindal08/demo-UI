@@ -13,7 +13,7 @@ export const demo = {
     },
     {
       title: "Content and business claims need approval",
-      body: "Service descriptions, prices, project examples, testimonials, statistics, accreditations, warranties and contact details are presentation content pending client verification and approval. Their presence in the demo is not evidence of a verified business claim or a binding offer.",
+      body: "All website copy, including headlines, headings, taglines, calls to action and body text, is dummy content used to demonstrate the proposed UI, typography, layout and content hierarchy. Service descriptions, prices, project examples, testimonials, statistics, accreditations, warranties and contact details are also illustrative placeholders pending client verification, replacement and approval. None of this demo copy should be treated as final brand messaging, a verified business claim or a binding offer.",
     },
     {
       title: "Images and resources",
