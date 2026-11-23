@@ -89,10 +89,10 @@ export function SiteHeader() {
             <Image
               src="/logo-text-transparent.png"
               alt={site.name}
-              width={153}
-              height={47}
+              width={190}
+              height={58}
               loading="eager"
-              className="h-auto w-[153px]"
+              className="h-auto w-[180px] 2xl:w-[190px]"
             />
           </Link>
 
@@ -125,7 +125,7 @@ export function SiteHeader() {
                           closePanel(true);
                         }
                       }}
-                      className="flex min-h-11 items-center gap-1.5 text-[0.95rem] font-medium text-ink transition-colors hover:text-accent"
+                      className="flex min-h-11 items-center gap-1.5 text-[1.1rem] font-medium text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                       <svg
@@ -149,7 +149,7 @@ export function SiteHeader() {
                       onClick={() =>
                         track("nav_click", { surface: "header", label: item.label })
                       }
-                      className="flex min-h-11 items-center text-[0.95rem] font-medium text-ink transition-colors hover:text-accent"
+                      className="flex min-h-11 items-center text-[1.1rem] font-medium text-ink transition-colors hover:text-accent"
                     >
                       {item.label}
                     </Link>

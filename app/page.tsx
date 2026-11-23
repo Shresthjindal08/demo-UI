@@ -2,7 +2,6 @@ import { HomeCompanies } from "@/components/home-companies";
 import { HomeWhyChooseUs } from "@/components/home-why-choose-us";
 import { DeferredHomeLocation } from "@/components/deferred-home-location";
 import { HomeJourney } from "@/components/home-journey";
-import { HomeImpact } from "@/components/home-impact";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
 import Image from "next/image";
 import Link from "next/link";
@@ -77,7 +76,7 @@ export default function HomePage() {
 
       <HomeProjects />
 
-      <HomeImpact />
+      {/* <HomeImpact /> */}
 
       <HomeJourney />
 

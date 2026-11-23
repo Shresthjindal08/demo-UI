@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 const brands = [
   { name: "GoodWe", slug: "goodwe" },
@@ -17,13 +16,8 @@ const brands = [
 ];
 
 export function HomeCompanies() {
-  const [paused, setPaused] = useState(false);
   return (
-    <section className="companies" aria-labelledby="companies-title" data-paused={paused}>
-      <div className="companies__header">
-        <h2 id="companies-title">Solar inverter &amp; energy brands</h2>
-        <button type="button" onClick={() => setPaused(!paused)} aria-pressed={paused} aria-label={paused ? "Resume brand scrolling" : "Pause brand scrolling"}>{paused ? "Play" : "Pause"}</button>
-      </div>
+    <section className="companies" aria-label="Solar inverter and energy brands">
       <div className="companies__window">
         <div className="companies__track">
           {[0, 1].map((copy) => (
@@ -37,7 +31,6 @@ export function HomeCompanies() {
           ))}
         </div>
       </div>
-      <div className="companies__ruler" aria-hidden="true"><span>▲</span></div>
     </section>
   );
 }
