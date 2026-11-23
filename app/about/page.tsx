@@ -36,85 +36,67 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <main className="about-page">
+        <section className="about-hero" aria-labelledby="about-title">
+          <Image
+            src="/hero-renewable.png"
+            alt="Renewable energy infrastructure across a mountain landscape"
+            fill
+            priority
+            sizes="100vw"
+            className="about-hero__image"
+          />
+          <div className="about-hero__shade" />
+          <p className="about-hero__breadcrumb"><span />About</p>
+          <h1 id="about-title">About Us</h1>
+        </section>
 
-      <div className="about-page">
-        <section className="about-intro" aria-labelledby="about-title">
-          <div className="about-intro__rule" />
+        <section className="about-intro" aria-labelledby="about-statement">
           <p className="about-eyebrow">About Vagus Energy</p>
-          <h1 id="about-title">An engineering company<br className="hidden md:block" /> that installs.</h1>
+          <h2 id="about-statement">Renewable energy, built by the people who deliver it.</h2>
           <div className="about-intro__details">
-            <div>
-              <p>Vagus Energy has designed and delivered renewable infrastructure across Victoria since 2014. From the first conversation to the final connection, we see the whole system.</p>
-              <Link className="about-link" href={contactWithContext("about")}>Start a project <span aria-hidden="true">↗</span></Link>
+            <p>Since 2014, we’ve designed and delivered renewable energy systems across Victoria. From the first conversation to the final connection, we see the whole system.</p>
+            <p>Our engineers and installation crews work as one team across solar, storage, EV charging and grid integration — making better energy practical for the places we live and work.</p>
+          </div>
+          <Link className="about-intro__cta" href={contactWithContext("about")}>Start a project <span aria-hidden="true">→</span></Link>
+        </section>
+
+        <div className="about-team-image" role="img" aria-label="Vagus Energy field electrician working on an electrical installation">
+          <Image src="/hero-electrician.jpg" alt="" fill sizes="100vw" />
+        </div>
+
+        <section className="about-purpose" aria-labelledby="purpose-title">
+          <div className="about-purpose__image">
+            <Image src="/hero-solar-homes.png" alt="Solar powered homes in a green valley" fill sizes="(max-width: 767px) 100vw, 46vw" />
+          </div>
+          <div className="about-purpose__copy">
+            <p className="about-eyebrow">Why We Exist</p>
+            <h2 id="purpose-title">A better energy future takes more than good hardware.</h2>
+            <div className="about-purpose__details">
+              <p>Energy is changing quickly. Homes, businesses and communities need systems that are designed to work together, and built to keep working long after installation.</p>
+              <p>We bring design, equipment and delivery together under one roof. That means practical advice, considered engineering and a team that stays accountable from start to finish.</p>
             </div>
-            <p>We employ our own engineers and our own crews. Solar, storage, EV charging and grid integration — connected by one team, with engineering at the centre.</p>
+            <Link href={routes.vision} className="about-purpose__link">How we think <span aria-hidden="true">↗</span></Link>
           </div>
-          <div className="about-intro__footer"><span>Based in Victoria. Built for the long term.</span><a href="#about-practice">Get to know us <span aria-hidden="true">↓</span></a></div>
         </section>
 
-        <section className="about-practice" id="about-practice" aria-labelledby="practice-title">
-          <Image src="/vagus%20images/pexels-trinh-tr-n-191284110-11645013.jpg" alt="" fill sizes="100vw" className="about-practice__background" />
-          <div className="about-practice__heading">
-            <p className="about-eyebrow">The way we work</p>
-            <h2 id="practice-title">Good energy starts<br />with good people.</h2>
-          </div>
-          <div className="about-practice__cards">
-            <article className="about-card">
-              <div className="about-card__copy">
-                <span className="about-card__number">01 / PEOPLE</span>
-                <h3>Our people</h3>
-                <p>Our own engineers. Our own installation crews. A team that stays connected from design through delivery.</p>
-                <Link href={routes.careers}>Meet your next opportunity <span aria-hidden="true">↗</span></Link>
-              </div>
-              <div className="about-card__image"><Image src="/vagus%20images/pexels-cristian-rojas-8853536.jpg" alt="Solar installers working together on a rooftop" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
-            </article>
-            <article className="about-card">
-              <div className="about-card__copy">
-                <span className="about-card__number">02 / PROJECTS</span>
-                <h3>Our projects</h3>
-                <p>From homes to commercial rooftops, we design energy systems around the places and people they serve.</p>
-                <Link href={routes.projects}>Explore our projects <span aria-hidden="true">↗</span></Link>
-              </div>
-              <div className="about-card__image"><Image src="/vagus%20images/pexels-quang-nguyen-vinh-222549-35105432.jpg" alt="Solar panels and wind turbines at sunset" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
-            </article>
-            <article className="about-card">
-              <div className="about-card__copy">
-                <span className="about-card__number">03 / THINKING</span>
-                <h3>Our approach</h3>
-                <p>Design first. Connect the whole system. Bring generation, storage and energy use together with purpose.</p>
-                <Link href={routes.vision}>See how we think <span aria-hidden="true">↗</span></Link>
-              </div>
-              <div className="about-card__image"><Image src="/vagus%20images/pexels-elite-power-group-661996115-39057093.jpg" alt="An electrician working on an energy installation" fill sizes="(max-width: 767px) 100vw, 33vw" /></div>
-            </article>
-          </div>
-          <p className="about-practice__caption">Illustrative imagery</p>
-        </section>
-
-        <section className="about-founder" aria-labelledby="founder-title">
-          <div><p className="about-eyebrow" id="founder-title">From the founder</p><span className="about-founder__mark" aria-hidden="true">“</span></div>
-          <blockquote>
-            <p>We started because too many systems were being sold before they were designed. <span>That order is the whole problem.</span></p>
-            <footer>Founder, Vagus Energy</footer>
-          </blockquote>
-        </section>
-
-        <section className="about-credentials" aria-labelledby="credentials-title">
-          <div className="about-section-heading"><p className="about-eyebrow">Accreditation</p><h2 id="credentials-title">Standards behind<br />every system.</h2></div>
+        {/* <section className="about-credentials" aria-labelledby="credentials-title">
+          <div className="about-section-heading"><p className="about-eyebrow">Accreditation</p><h2 id="credentials-title">Standards behind every system.</h2></div>
           <ul>
-            {site.accreditations.map((item, index) => <li key={item.label}><span className="about-card__number">0{index + 1}</span><h3>{item.label}</h3></li>)}
+            {site.accreditations.map((item, index) => <li key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.label}</h3></li>)}
           </ul>
-        </section>
+        </section> */}
 
         <section className="about-history" aria-labelledby="history-title">
           <div className="about-section-heading"><p className="about-eyebrow">Our journey</p><h2 id="history-title">Built on experience.<br />Looking ahead.</h2></div>
           <ol>{timeline.map((entry) => <li key={entry.year}><span>{entry.year}</span><p>{entry.event}</p></li>)}</ol>
         </section>
 
-        <section className="about-contact" aria-labelledby="about-contact-title">
-          <div><p className="about-eyebrow">Your next step</p><h2 id="about-contact-title">Let’s build something<br />that lasts.</h2></div>
-          <div className="about-contact__actions"><Link className="about-link" href={contactWithContext("about")}>Work with our engineers <span aria-hidden="true">↗</span></Link><Link href={routes.careers}>Looking to join the team? Explore careers <span aria-hidden="true">↗</span></Link></div>
-        </section>
-      </div>
+        {/* <section className="about-contact" aria-labelledby="about-contact-title">
+          <div><p className="about-eyebrow">Your next step</p><h2 id="about-contact-title">Let’s build something that lasts.</h2></div>
+          <Link className="about-contact__link" href={contactWithContext("about")}>Talk with our team <span aria-hidden="true">↗</span></Link>
+        </section> */}
+      </main>
     </>
   );
 }
