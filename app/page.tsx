@@ -1,6 +1,6 @@
 import { HomeCompanies } from "@/components/home-companies";
 import { HomeWhyChooseUs } from "@/components/home-why-choose-us";
-import { DeferredHomeLocation } from "@/components/deferred-home-location";
+import { HomeLocation } from "@/components/home-location";
 import { HomeJourney } from "@/components/home-journey";
 import { HomeHowWeWork } from "@/components/home-how-we-work";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export default function HomePage() {
               <Link className="energy-hero__cta" href="#contact-us">
                 Request a quote <span aria-hidden="true">↗</span>
               </Link>
-              <Link href={routes.whatWeDo} className="inline-flex min-h-11 items-center gap-2 text-base text-white underline underline-offset-4">
+              <Link href={routes.whatWeDo} className="inline-flex min-h-11 items-center gap-2 text-base text-ivory underline underline-offset-4">
                 Explore our solutions <span aria-hidden="true">↗</span>
               </Link>
             </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <DeferredHomeLocation />
+      <HomeLocation />
     </>
   );
 }

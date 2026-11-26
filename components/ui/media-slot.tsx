@@ -52,7 +52,7 @@ export function MediaSlot({
       {children ? (
         <>
           <div
-            className="[background:linear-gradient(_180deg,_rgb(255_255_255_/_0.44)_0%,_rgb(255_255_255_/_0.58)_56%,_rgb(255_255_255_/_0.72)_100%_)] absolute inset-0"
+            className="[background:linear-gradient(_180deg,_rgb(var(--rgb-ivory)_/_0.44)_0%,_rgb(var(--rgb-ivory)_/_0.58)_56%,_rgb(var(--rgb-ivory)_/_0.72)_100%_)] absolute inset-0"
             aria-hidden="true"
           />
           <div className="relative z-10 w-full py-16">{children}</div>

@@ -15,7 +15,6 @@ const stages = [
 export function HomeHowWeWork() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStage = stages[activeIndex];
-  const cardIndexes = [activeIndex + 3, activeIndex + 2, activeIndex + 1, activeIndex].map((index) => index % stages.length);
 
   function moveStage(direction: number) {
     setActiveIndex((index) => (index + direction + stages.length) % stages.length);
@@ -29,8 +28,15 @@ export function HomeHowWeWork() {
         <p className="method__summary">Four principles behind every system: considered design, accountable delivery, measured performance and room to grow.</p>
       </div>
       <div className="method__showcase">
+        <div className="method__media" aria-hidden="true">
+          {stages.map((stage, index) => (
+            <div key={stage.label} className={`method__image${index === activeIndex ? " is-active" : ""}`}>
+              <Image src={stage.image} alt="" fill sizes="100vw" priority={index === 0} />
+            </div>
+          ))}
+        </div>
         <div className="method__detail" aria-live="polite">
-          <p className="method__count">{activeIndex + 1} of {stages.length}</p>
+          <p className="method__count">0{activeIndex + 1} / 0{stages.length} — {activeStage.label}</p>
           <h3>{activeStage.title}</h3>
           <p className="method__description">{activeStage.body}</p>
           <ul>{activeStage.features.map((feature) => <li key={feature}><span aria-hidden="true">↗</span>{feature}</li>)}</ul>
@@ -40,19 +46,15 @@ export function HomeHowWeWork() {
             <Link className="method__link" href={routes.contact}>Request a quote <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
-        <div className="method__visual" aria-hidden="true">
-          <div className="method__stack">
-            {cardIndexes.map((stageIndex, position) => {
-              const stage = stages[stageIndex];
-              return (
-                <article className={`method__image-card method__image-card--${position + 1}`} key={`${position}-${stage.label}`} aria-hidden={position !== 3}>
-                  <div className="method__image"><Image src={stage.image} alt="" fill sizes="(max-width: 767px) 72vw, 320px" /></div>
-                  <div className="method__image-caption"><span>0{stageIndex + 1}</span><strong>{stage.label}</strong></div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
+        <ol className="method__stages">
+          {stages.map((stage, index) => (
+            <li key={stage.label}>
+              <button type="button" className={index === activeIndex ? "is-active" : undefined} aria-current={index === activeIndex} onClick={() => setActiveIndex(index)}>
+                <span>0{index + 1}</span>{stage.label}
+              </button>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

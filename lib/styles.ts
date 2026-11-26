@@ -104,7 +104,7 @@ export const surfaceStyles = `
   data-[surface=dark]:[--v-hairline-faint:rgb(var(--contrast-line)_/_0.08)]
   data-[surface=dark]:[--v-hairline:rgb(var(--contrast-line)_/_0.14)]
   data-[surface=dark]:[--v-hairline-strong:rgb(var(--contrast-line)_/_0.24)]
-  data-[surface=dark]:[--v-scrim:rgb(12_10_7_/_0.62)]
+  data-[surface=dark]:[--v-scrim:rgb(var(--rgb-forest-deep)_/_0.62)]
   data-[surface=dark]:[--v-nav-fill:var(--contrast-nav-fill)]
   data-[surface=dark]:[color-scheme:var(--contrast-scheme)]
   data-[surface=contrast]:[--v-bg:var(--contrast-bg)]
@@ -122,7 +122,7 @@ export const surfaceStyles = `
   data-[surface=contrast]:[--v-hairline-faint:rgb(var(--contrast-line)_/_0.08)]
   data-[surface=contrast]:[--v-hairline:rgb(var(--contrast-line)_/_0.14)]
   data-[surface=contrast]:[--v-hairline-strong:rgb(var(--contrast-line)_/_0.24)]
-  data-[surface=contrast]:[--v-scrim:rgb(12_10_7_/_0.62)]
+  data-[surface=contrast]:[--v-scrim:rgb(var(--rgb-forest-deep)_/_0.62)]
   data-[surface=contrast]:[--v-nav-fill:var(--contrast-nav-fill)]
   data-[surface=contrast]:[color-scheme:var(--contrast-scheme)]
   bg-bg

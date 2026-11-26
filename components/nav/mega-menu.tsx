@@ -179,7 +179,7 @@ export function MegaMenu({
             <Link
               href={routes.whatWeDo}
               onClick={() => linkClick("all", null, null)}
-              className="inline-flex min-h-14 items-center rounded-full border border-accent px-7 text-lg font-medium text-accent transition-colors hover:bg-accent hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              className="inline-flex min-h-14 items-center rounded-full border border-accent px-7 text-lg font-medium text-accent transition-colors hover:bg-accent hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               See everything we do →
             </Link>

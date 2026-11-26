@@ -77,7 +77,7 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className={`site-header ${surfaceStyles} relative z-100 w-full bg-white mb-[calc(-1*var(--nav-height))] shrink-0`}
+        className={`site-header ${surfaceStyles} relative z-100 w-full bg-paper mb-[calc(-1*var(--nav-height))] shrink-0`}
         data-panel-open={panelOpen}
       >
         <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[100px] items-center justify-between gap-6">
@@ -175,7 +175,7 @@ export function SiteHeader() {
                 button.style.setProperty("--cursor-x", `${event.clientX - bounds.left}px`);
                 button.style.setProperty("--cursor-y", `${event.clientY - bounds.top}px`);
               }}
-              className="group relative isolate hidden min-h-12 items-center gap-4 overflow-hidden rounded-full border border-[var(--palette-green-deep)] px-7 text-sm font-medium text-[var(--palette-forest)] transition-colors duration-250 hover:text-white focus-visible:text-white before:absolute before:inset-0 before:-z-10 before:bg-[var(--palette-green-deep)] before:[clip-path:circle(0%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] before:transition-[clip-path] before:duration-550 before:ease-[cubic-bezier(0.22,1,0.36,1)] hover:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] focus-visible:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] motion-reduce:transition-none motion-reduce:before:transition-none sm:inline-flex"
+              className="group relative isolate hidden min-h-12 items-center gap-4 overflow-hidden rounded-full border border-[var(--palette-green-deep)] px-7 text-sm font-medium text-[var(--palette-forest)] transition-colors duration-250 hover:text-paper focus-visible:text-paper before:absolute before:inset-0 before:-z-10 before:bg-[var(--palette-green-deep)] before:[clip-path:circle(0%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] before:transition-[clip-path] before:duration-550 before:ease-[cubic-bezier(0.22,1,0.36,1)] hover:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] focus-visible:before:[clip-path:circle(150%_at_var(--cursor-x,50%)_var(--cursor-y,50%))] motion-reduce:transition-none motion-reduce:before:transition-none sm:inline-flex"
             >
               Request a quote
               <span aria-hidden="true" className="text-lg transition-transform group-hover:translate-x-0.5">
