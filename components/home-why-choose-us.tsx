@@ -12,9 +12,11 @@ export function HomeWhyChooseUs() {
   return (
     <section className="why-vagus" aria-labelledby="why-vagus-title">
       <Image src="/vagus%20images/pexels-cristian-rojas-8853536.jpg" alt="" fill loading="eager" sizes="100vw" className="object-cover" />
+      <span className="why-vagus__wordmark" aria-hidden="true">Vagus</span>
       <div className="why-vagus__header">
-        <div><p>Why choose Vagus</p><h2 id="why-vagus-title">Built for performance.<br />Designed around you.</h2></div>
-        <Link href={routes.contact}>Request a quote <span aria-hidden="true">↗</span></Link>
+        <p>Why choose Vagus</p>
+        <h2 id="why-vagus-title">Built for performance.<br /><em>Designed around you.</em></h2>
+        <Link href={routes.contact} className="why-vagus__cta">Request a quote <span aria-hidden="true">↗</span></Link>
       </div>
       <ol className="why-vagus__reasons">{reasons.map((reason, index) => <li key={reason.title}><span>0{index + 1}</span><h3>{reason.title}</h3><p>{reason.body}</p></li>)}</ol>
     </section>
