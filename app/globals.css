@@ -2653,7 +2653,7 @@
 .site-footer {
   padding: var(--spacing-section-tight) var(--container-margin) 28px;
   margin-top: auto;
-  background: var(--palette-mist);
+  background: var(--palette-white);
   color: var(--palette-ink);
 }
 
