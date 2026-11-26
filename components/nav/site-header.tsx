@@ -77,10 +77,10 @@ export function SiteHeader() {
           clearHoverTimer();
           closePanel();
         }}
-        className={`site-header ${surfaceStyles} relative z-100 w-full bg-paper mb-[calc(-1*var(--nav-height))] shrink-0`}
+        className={`site-header ${surfaceStyles} absolute inset-x-0 top-0 z-100 w-full`}
         data-panel-open={panelOpen}
       >
-        <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] flex h-[100px] items-center justify-between gap-6">
+        <div className="w-full px-[var(--container-margin)] flex h-[var(--nav-height)] items-center justify-between gap-6">
           <Link
             href={routes.home}
             className="flex shrink-0 items-center"

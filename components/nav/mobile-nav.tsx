@@ -83,7 +83,7 @@ export function MobileNav({
       aria-label="Site menu"
       className={`${surfaceStyles} fixed inset-0 z-90 overflow-y-auto overscroll-contain xl:hidden`}
     >
-      <div className="w-full max-w-[var(--container-max)] mx-auto px-[var(--container-margin)] pt-[calc(var(--nav-height)+24px)] pb-16">
+      <div className="w-full px-[var(--container-margin)] pt-[calc(var(--nav-height)+24px)] pb-16">
         <nav aria-label="Primary">
           <ul className="border-t border-hairline">
             {primaryNav
